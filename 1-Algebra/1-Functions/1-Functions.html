@@ -1,440 +1,243 @@
 <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>Functions</title>
-            <style>
-/* From extension vscode.github */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-.vscode-dark img[src$=\#gh-light-mode-only],
-.vscode-light img[src$=\#gh-dark-mode-only],
-.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
-.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
-	display: none;
-}
-
-/* From extension jtpeller.nmd-highlighter */
-
-/* Ensure standalone NMD elements stay on their own line */
-.nmd-block-wrapper {
-    display: block;
-    margin: 6px 0;
-}
-
-/* Hide the default bullet for list items containing an NMD line */
-li:has(.nmd-line-inline) {
-    list-style: none !important;
-    /* Adjust margin to match where the bullet used to be */
-    margin-left: -1.6em;
-}
-
-/* Style the inline icon wrapper */
-.nmd-line-inline {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px; /* Space between icon and text */
-}
-
-.nmd-icon-inline {
-    display: inline-block;
-    width: 1.1em;
-    height: 1.1em;
-    flex-shrink: 0;
-    /* Vertically center the icon with the text line */
-    vertical-align: text-bottom;
-}
-
-.nmd-icon-inline svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-/* Text styling */
-.nmd-text-colored {
-    font-weight: 500;
-}
-
-.nmd-preview-issue {
-    color: #FF5252 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #FF5252;
-}
-
-.nmd-preview-bug {
-    color: #FF6900 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #FF6900;
-}
-
-.nmd-preview-task {
-    color: #FFB300 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #FFB300;
-}
-
-.nmd-preview-fix {
-    color: #448AFF !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #448AFF;
-}
-
-.nmd-preview-done {
-    color: #4CAF50 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #4CAF50;
-}
-
-.nmd-preview-verified {
-    color: #FFFFFF !important;
-    background-color: #137216 !important;
-    border-left: 4px solid #FFFFFF;
-}
-
-.nmd-preview-notes {
-    color: #fc79b2 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #fc79b2;
-}
-
-.nmd-preview-custom {
-    color: #FFFFFF !important;
-    background-color: #986754 !important;
-    border-left: 4px solid #FFFFFF;
-}
-
-</style>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-<style>
-            body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
-            }
-        </style>
-        <style>
-.task-list-item {
-    list-style-type: none;
-}
-
-.task-list-item-checkbox {
-    margin-left: -20px;
-    vertical-align: middle;
-    pointer-events: none;
-}
-</style>
-<style>
-:root {
-  --color-note: #0969da;
-  --color-tip: #1a7f37;
-  --color-warning: #9a6700;
-  --color-severe: #bc4c00;
-  --color-caution: #d1242f;
-  --color-important: #8250df;
-}
-
-</style>
-<style>
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-note: #2f81f7;
-    --color-tip: #3fb950;
-    --color-warning: #d29922;
-    --color-severe: #db6d28;
-    --color-caution: #f85149;
-    --color-important: #a371f7;
-  }
-}
-
-</style>
-<style>
-.markdown-alert {
-  padding: 0.5rem 1rem;
-  margin-bottom: 16px;
-  color: inherit;
-  border-left: .25em solid #888;
-}
-
-.markdown-alert>:first-child {
-  margin-top: 0
-}
-
-.markdown-alert>:last-child {
-  margin-bottom: 0
-}
-
-.markdown-alert .markdown-alert-title {
-  display: flex;
-  font-weight: 500;
-  align-items: center;
-  line-height: 1
-}
-
-.markdown-alert .markdown-alert-title .octicon {
-  margin-right: 0.5rem;
-  display: inline-block;
-  overflow: visible !important;
-  vertical-align: text-bottom;
-  fill: currentColor;
-}
-
-.markdown-alert.markdown-alert-note {
-  border-left-color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-note .markdown-alert-title {
-  color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-important {
-  border-left-color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-important .markdown-alert-title {
-  color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-warning {
-  border-left-color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-warning .markdown-alert-title {
-  color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-tip {
-  border-left-color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-tip .markdown-alert-title {
-  color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-caution {
-  border-left-color: var(--color-caution);
-}
-
-.markdown-alert.markdown-alert-caution .markdown-alert-title {
-  color: var(--color-caution);
-}
-
-</style>
-        
-        </head>
-        <body class="vscode-body vscode-light">
-            <h1 id="functions">Functions</h1>
-<h2 id="contents">Contents</h2>
-<ul>
-<li><a href="#functions">Functions</a>
-<ul>
-<li><a href="#contents">Contents</a></li>
-<li><a href="#essential-terminology">Essential Terminology</a>
-<ul>
-<li><a href="#variables-and-constants">Variables and Constants</a></li>
-<li><a href="#expressions-equations-and-formula">Expressions, Equations, and Formula</a></li>
-</ul>
-</li>
-<li><a href="#introduction-to-functions">Introduction to Functions</a>
-<ul>
-<li><a href="#what-qualifies-as-a-function">What Qualifies as a Function?</a></li>
-<li><a href="#using-a-function">Using a Function</a></li>
-<li><a href="#representation">Representation</a></li>
-</ul>
-</li>
-<li><a href="#components-of-a-function">Components of a Function</a>
-<ul>
-<li><a href="#inputs-and-outputs">Inputs and Outputs</a></li>
-<li><a href="#domain-and-range">Domain and Range</a></li>
-<li><a href="#intervals">Intervals</a></li>
-</ul>
-</li>
-<li><a href="#purpose">Purpose</a>
-<ul>
-<li><a href="#creating-a-function-to-model-a-scenario">Creating a Function to Model a Scenario</a></li>
-</ul>
-</li>
-<li><a href="#closing">Closing</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="essential-terminology">Essential Terminology</h2>
-<p>Algebra is built upon a fundemental concept known as a function. In order to understand functions, we need some other information first.</p>
-<h3 id="variables-and-constants">Variables and Constants</h3>
-<p>Functions rely on symbols known as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">variables</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{variables}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">variables</span></span></span></span></span>, which represent a particular quantity that represent some value. These represent an input or an output. Variables are not to be confused with <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">constants</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{constants}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">constants</span></span></span></span></span>, which are simply concrete numbers that do not vary.</p>
-<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>You may have a constant that is represented by a letter, just like a variable. The difference between a variable and a constant represented by a letter is literally in the name; a constant is held at a specific value (even if that value is unknown), while a variable may change.</p>
-</div>
-<h3 id="expressions-equations-and-formula">Expressions, Equations, and Formula</h3>
-<p>Recall that an expression is the representation of one or more terms. If there are more than one term, then they are connected with operations. Also recall that equations are mathematical statements that connect expressions using an equality relationship (that is, expression A = expression B).</p>
-<p>Now, a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">formula</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{formula}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">formula</span></span></span></span></span> is a particular type of equation that models a special situation or relationship between two quantities. It is typically used to represent ways of computing particular quantities that are important, special, or otherwise calculated the same way.</p>
-<p>For instance, if you made $15 per hour and wanted to know how much you make for some number of hours, you could set up the following formula:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>wages</mtext><mo>=</mo><mn>15</mn><mo>∗</mo><mtext>hours</mtext></mrow><annotation encoding="application/x-tex">\text{wages} = 15 * \text{hours}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">wages</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">15</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">hours</span></span></span></span></span></span></p>
-<p>Now, you can reuse this formula by plugging in different values in-place-of hours. You now defined a relationship between the hours worked and the wages you make. You know they're <em>related</em>, and can be calculated by using your hourly wage!</p>
-<p>A <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">function</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{function}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">function</span></span></span></span></span> is a particular kind of formula that has specific inputs and outputs. More particularly, it is a special formula where every input in its domain has exactly one output.</p>
-<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>More information on how to identify a function as opposed to a formula will be discussed in <a href="./3-Characteristics%20of%20Functions.html">Characteristics of Functions</a>.</p>
-</div>
-<p>You could represent the previous formula as a function:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>w</mi><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">)</mo><mo>=</mo><mn>15</mn><mo>∗</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">w(h) = 15 * h
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mopen">(</span><span class="mord mathnormal">h</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">15</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span></span></p>
-<p>Notice that we now modified how wages and hours have been represented. They are replaced with symbols (variables).</p>
-<p>Now, variables can be combined with other variables, constants, etc. in order to create a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">term</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{term}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">term</span></span></span></span></span>, which is simply one single piece that is separated by addition or subtraction.</p>
-<p>For instance, in the following expression:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>2</mn><mi>x</mi><mo>+</mo><mn>5</mn><mi>y</mi><mo>+</mo><mn>10</mn><mi>x</mi><mi>y</mi><mo>−</mo><mn>15</mn><mi>x</mi><mi>y</mi><mi>z</mi><mo>+</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">2x + 5y + 10xy - 15xyz + 1000
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">5</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">10</span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">15</span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.04398em;">yz</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1000</span></span></span></span></span></p>
-<p>has 5 terms: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">2x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mord mathnormal">x</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">5y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">5</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn><mi>x</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">10xy</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">10</span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>15</mn><mi>x</mi><mi>y</mi><mi>z</mi></mrow><annotation encoding="application/x-tex">-15xyz</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">−</span><span class="mord">15</span><span class="mord mathnormal">x</span><span class="mord mathnormal" style="margin-right:0.04398em;">yz</span></span></span></span>, and finally <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1000</mn></mrow><annotation encoding="application/x-tex">1000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1000</span></span></span></span>.</p>
-<p>Now, expressions can be classified by the number of terms it contains. A <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">binomial</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{binomial}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">binomial</span></span></span></span></span> contains two terms. Meanwhile, a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">trinomial</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{trinomial}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">trinomial</span></span></span></span></span> contains three terms. While there is a pattern, typically after 3 terms, it's just called a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">polynomial</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{polynomial}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">polynomial</span></span></span></span></span>.</p>
-<h2 id="introduction-to-functions">Introduction to Functions</h2>
-<p>Recall that equations are simply two expressions with an equal sign in between. For instance, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>+</mo><mn>7</mn><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">5+7=12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span></span></span></span> is an equation. Also recall that <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>+</mo><mn>7</mn><mo>&gt;</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">5+7&gt;10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6835em;vertical-align:-0.0391em;"></span><span class="mord">7</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span> represents an inequality statement (or sometimes referred to as just an inequality).</p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">Functions</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{Functions}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">Functions</span></span></span></span></span> are mathematical models where an input is used to compute an output. More specifically, functions are equations where there is <strong>exactly one output per one input</strong>.</p>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">Function</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{Function}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">Function</span></span></span></span></span> - A formula with inputs and outputs. The output is computed from the inputs based upon the defined relationship.</p>
-<h3 id="what-qualifies-as-a-function">What Qualifies as a Function?</h3>
-<p>We now know that functions are essentially special types of equations or formulas that model some particular behavior between two or more variables. However, this definition isn't quite descriptive enough, as it leaves out a key detail:</p>
-<div class="markdown-alert markdown-alert-important"><p class="markdown-alert-title"><svg class="octicon octicon-report mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Zm7 2.25v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Important</p><p>For a function, there <em><strong>must</strong></em> only be one output per set of inputs.</p>
-</div>
-<h3 id="using-a-function">Using a Function</h3>
-<p>Functions are utilized to discover the output at a particular input. The task of inputting this particular value is called <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mrow><mtext mathvariant="italic">plugging</mtext><mtext> </mtext><mtext mathvariant="italic">in</mtext></mrow></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{plugging in}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">plugging in</span></span></span></span></span>, and this is one of many interactions you will have with functions.</p>
-<blockquote>
-<p>A common term to describe this repeated activity is &quot;plug-and-chug&quot;, where you, likely repeatedly, plug in values of the input variable and solve (chug) for the output.</p>
-</blockquote>
-<h3 id="representation">Representation</h3>
-<p>Functions are typically represented by a symbol, say, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>g</mi></mrow><annotation encoding="application/x-tex">g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span></span></span>, etc. The letter chosen does not necessarily matter, but often they are chosen near <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>. Functions will have an input of some variable, which is often represented by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>. The output may also be rendered as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>. These variables may be different depending on the context of what is being modelled. A function may look as follows:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>15</mn></mrow><annotation encoding="application/x-tex">f(x) = 2x + 15
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">15</span></span></span></span></span></p>
-<p>This function represents that, given some input <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>, the output will be 15 more than double that input <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>. So, if <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x=4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span>, then the output is:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>15</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>f</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>+</mo><mn>15</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mi>f</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>=</mo><mn>8</mn><mo>+</mo><mn>15</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow></mrow></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><menclose notation="box"><mstyle scriptlevel="0" displaystyle="false"><mstyle scriptlevel="0" displaystyle="false"><mstyle scriptlevel="0" displaystyle="true"><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>=</mo><mn>23</mn></mrow></mstyle></mstyle></mstyle></menclose></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-&amp;f(x) = 2x + 15 \\
-&amp;f(4) = 2(4)+15 \\
-&amp;f(4) = 8+15 \\
-&amp;\boxed{f(4)= 23}
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:6.48em;vertical-align:-2.99em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.49em;"><span style="top:-5.74em;"><span class="pstrut" style="height:3.09em;"></span><span class="mord"></span></span><span style="top:-4.24em;"><span class="pstrut" style="height:3.09em;"></span><span class="mord"></span></span><span style="top:-2.74em;"><span class="pstrut" style="height:3.09em;"></span><span class="mord"></span></span><span style="top:-0.99em;"><span class="pstrut" style="height:3.09em;"></span><span class="mord"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.99em;"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.49em;"><span style="top:-5.74em;"><span class="pstrut" style="height:3.09em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">2</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">15</span></span></span><span style="top:-4.24em;"><span class="pstrut" style="height:3.09em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">2</span><span class="mopen">(</span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">15</span></span></span><span style="top:-2.74em;"><span class="pstrut" style="height:3.09em;"></span><span class="mord"><span class="mord"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">15</span></span></span><span style="top:-0.99em;"><span class="pstrut" style="height:3.09em;"></span><span class="mord"><span class="mord"></span><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.09em;"><span style="top:-3.68em;"><span class="pstrut" style="height:3.68em;"></span><span class="boxpad"><span class="mord"><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">23</span></span></span></span></span><span style="top:-3.09em;"><span class="pstrut" style="height:3.68em;"></span><span class="stretchy fbox" style="height:1.68em;border-style:solid;border-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.59em;"><span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.99em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<p>Therefore, the output of this function, when <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x=4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> yields a result of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>=</mo><mn>23</mn></mrow><annotation encoding="application/x-tex">y=f(4)=23</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">23</span></span></span></span>.</p>
-<p>As a side note, that number <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> is called a <em>coefficient</em>. More formally, a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">coefficient</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{coefficient}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">coefficient</span></span></span></span></span> is a constant number that multiplies with a variable. For instance, for the expression <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>x</mi><mo>+</mo><mn>9</mn><mi>y</mi><mo>+</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">3x+9y+5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">3</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">9</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">3</span></span></span></span> is the coefficient of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">9</span></span></span></span> is the coefficient of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>, and 5 is a <em>constant</em>.</p>
-<h2 id="components-of-a-function">Components of a Function</h2>
-<h3 id="inputs-and-outputs">Inputs and Outputs</h3>
-<p>Functions can be thought of as boxes where, given an input, they will produce an output of another type. Like a factory, a function &quot;does work&quot; to the input to transform it to the output.</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>input</mtext><mo>⇒</mo><menclose notation="box"><mstyle scriptlevel="0" displaystyle="false"><mstyle scriptlevel="0" displaystyle="false"><mstyle scriptlevel="0" displaystyle="true"><mtext>FUNCTION</mtext></mstyle></mstyle></mstyle></menclose><mo>⇒</mo><mtext>output</mtext></mrow><annotation encoding="application/x-tex">\text{input} \Rightarrow \boxed{\text{FUNCTION}} \Rightarrow \text{output}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8623em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">input</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.3633em;vertical-align:-0.34em;"></span><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0233em;"><span style="top:-3.3633em;"><span class="pstrut" style="height:3.3633em;"></span><span class="boxpad"><span class="mord"><span class="mord"><span class="mord text"><span class="mord">FUNCTION</span></span></span></span></span></span><span style="top:-3.0233em;"><span class="pstrut" style="height:3.3633em;"></span><span class="stretchy fbox" style="height:1.3633em;border-style:solid;border-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.34em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8095em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">output</span></span></span></span></span></span></p>
-<p>Functions are made up of two or more variables:</p>
-<ol>
-<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mrow><mtext mathvariant="italic">Input</mtext><mtext> </mtext><mtext mathvariant="italic">variable</mtext></mrow></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{Input variable}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">Input variable</span></span></span></span></span>: Describes variables that are provided to the function to be transformed.
-<ol>
-<li>Functions with more than one input variable are called <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">multivariate</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{multivariate}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">multivariate</span></span></span></span></span> functions.</li>
-</ol>
-</li>
-<li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mrow><mtext mathvariant="italic">Output</mtext><mtext> </mtext><mtext mathvariant="italic">variable</mtext></mrow></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{Output variable}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">Output variable</span></span></span></span></span>: The value that is produced by the function after all operations have been simplified.
-<ol>
-<li>Functions can only have one output variable.</li>
-</ol>
-</li>
-</ol>
-<p>Input variable(s) are sometimes referred to as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mrow><mtext mathvariant="italic">independent</mtext><mtext> </mtext><mtext mathvariant="italic">variables</mtext></mrow></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{independent variables}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">independent variables</span></span></span></span></span> (since they do not depend on other values in the function). Instead, they are provided <em>independently</em> to the function, and then utilized to calculate the output.</p>
-<p>The output variable may be referred to as a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mrow><mtext mathvariant="italic">depedent</mtext><mtext> </mtext><mtext mathvariant="italic">variable</mtext></mrow></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{depedent variable}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">depedent variable</span></span></span></span></span> since it depends on the independent variables for its value.</p>
-<p>Take the function:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo>=</mo><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>2</mn><mi>x</mi><mo>+</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">y = f(x) = 2x + 4
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">2</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span></span></p>
-<blockquote>
-<p>You could state this as &quot;The function <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span>, takes the input <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>, multiplies it by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> and adds <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> to compute the output variable, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>.&quot;</p>
-<p>Or more simply, &quot;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span> of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> equals two <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> plus four&quot;</p>
-</blockquote>
-<p>In this function, the independent variable is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>, the output variable is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> (or, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span></span></span></span>, if you prefer).</p>
-<h3 id="domain-and-range">Domain and Range</h3>
-<p>The set of all values for a particular input variable is the function's <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">domain</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{domain}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">domain</span></span></span></span></span> while the set of all values for the output variable is the function's <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">range</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{range}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">range</span></span></span></span></span>.</p>
-<p>Finding the domain and range for a particular function is a particularly important aspect of function analysis. Many times it is not too difficult, and is especially easiest for functions that have been <a href="./2-Visualizing%20Functions.html">graphed</a>. However, all functions may be analyzed mathematically to determine their domain and range.</p>
-<p>Many functions are typically unrestricted in their inputs; they will have a domain of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">-\infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">∞</span></span></span></span> to <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">\infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">∞</span></span></span></span>.</p>
-<p>Now, domain and range are both <em>intervals</em>, so let's define those now.</p>
-<h3 id="intervals">Intervals</h3>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">Intervals</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{Intervals}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">Intervals</span></span></span></span></span> are a consecutive series of numbers that are unique. Intervals typically represent a <em>continuous</em> set of numbers (such as &quot;numbers between 0 and 1&quot;), or a <em>discontinuous</em> set of numbers, such as &quot;only the numbers 1, 2, or 3&quot;.</p>
-<p>Continuous intervals may be represented by interval notation or with inequality operators.</p>
-<p>Inequality operators are the most straightforward way to represent an interval.</p>
-<blockquote>
-<h4 id="example-inequality-notation">Example: Inequality Notation</h4>
-<p>Say for instance you have a value, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>, that has a given interval.</p>
-<p>If it may be larger than -6 but less than 6, you would say:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>−</mo><mn>6</mn><mo>&lt;</mo><mi>x</mi><mo>&lt;</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">-6 \lt x \lt 6
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord">6</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">6</span></span></span></span></span></p>
-<p>Perhaps, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> may be larger than or equal to -10 but less than 100, it would be represented as:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo>−</mo><mn>10</mn><mo>≤</mo><mi>x</mi><mo>&lt;</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">-10 \leq x \lt 100
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7804em;vertical-align:-0.136em;"></span><span class="mord">−</span><span class="mord">10</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">100</span></span></span></span></span></p>
-<p>Notice how the inequality operators match the language.</p>
-</blockquote>
-<p>You may also represent unbounded sets of numbers. For instance, perhaps <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span> is greater than 23. In this case, it would be written as:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>y</mi><mo>&gt;</mo><mn>23</mn></mrow><annotation encoding="application/x-tex">y &gt; 23
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">23</span></span></span></span></span></p>
-<p>The implication of this is that all inequality expressions can be expressed as an interval!</p>
-<hr>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mrow><mtext mathvariant="italic">Interval</mtext><mtext> </mtext><mtext mathvariant="italic">Notation</mtext></mrow></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{Interval Notation}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">Interval Notation</span></span></span></span></span> is essentially shorthand for these inequality operators. This notation utilizes brackets or parentheses to represent a particular range of numbers.</p>
-<blockquote>
-<h4 id="example-interval-notation">Example: Interval Notation</h4>
-<p>Say, perhaps, you wanted to state <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> is greater than or equal to -5 but less than or equal to 5. In interval notation, you would write that the interval for <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> is</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">[</mo><mo>−</mo><mn>5</mn><mo separator="true">,</mo><mn>5</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[-5, 5]
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">5</span><span class="mclose">]</span></span></span></span></span></p>
-<p>Similarly, if you wanted to state that <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span> is greater than or equal to 2 but less than 55</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mo stretchy="false">[</mo><mn>2</mn><mo separator="true">,</mo><mn>55</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">[2, 55)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">55</span><span class="mclose">)</span></span></span></span></span></p>
-</blockquote>
-<p>That is, square brackets represent the &quot;or equal to&quot; or &quot;inclusive&quot; concept, while parentheses represent an exclusive behavior.</p>
-<p>Regarding unbounded intervals, you must NEVER state that a variable may be equal to infinity; no numerical value is &quot;equal to&quot; infinity. Therefore, reflect this in your interval notation via: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi mathvariant="normal">∞</mi></mrow><annotation encoding="application/x-tex">x \lt \infty</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord">∞</span></span></span></span> (for inequality notation) or <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo>−</mo><mi mathvariant="normal">∞</mi><mo separator="true">,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-\infty, \infty)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">∞</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">∞</span><span class="mclose">)</span></span></span></span> (for interval notation).</p>
-<h2 id="purpose">Purpose</h2>
-<p>Functions are used to represent relationships between values. The relationship(s) are defined by the function's terms, while the values themselves are the variables or numbers being operated on.</p>
-<p>For instance, if you wanted to represent how much money you would make at a job, you could do so with functions. Say your wage is $20 per hour, and you want to know how much you would make in 5 hours. This question is trivial enough, but you might wonder about 8 hours, or 40 hours, or 160 hours.</p>
-<p>You could model this <em><strong>relationship</strong></em> with a function! Say that the number of hours worked is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span>, and the function is represented by w(h), for &quot;wages&quot;. The situation is modelled by:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>w</mi><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">)</mo><mo>=</mo><mn>20</mn><mo>∗</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">w(h) = 20 * h
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mopen">(</span><span class="mord mathnormal">h</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">20</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span></span></p>
-<p>Now you can compute your wages <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span> for any number of hours <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span>. While this is a trivial example, functions are used to model relationships. That is, functions describe the behavior between two different variables. When the input variable changes, the output will change.</p>
-<h3 id="creating-a-function-to-model-a-scenario">Creating a Function to Model a Scenario</h3>
-<p>Remember, a function is simply just a means to model a scenario, but you must define it accurately so it adequately models the situation you're targeting. For instance, if your hourly wage was actually $15 per hour, then <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">w(h)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mopen">(</span><span class="mord mathnormal">h</span><span class="mclose">)</span></span></span></span> would be terribly inaccurate!</p>
-<p>Therefore, you need to follow a general process for defining a function to model your scenario. The general process is:</p>
-<ol>
-<li>Identify what you want to discover as an output? Your weekly pay? The distance traveled in your vehicle?</li>
-<li>Identify what this output depends upon, including constants and input variables.
-<ol>
-<li>For instance, in the scenario of your weekly pay, it would depend upon your hourly wage and the number of hours you work.</li>
-</ol>
-</li>
-<li>Strictly define the constants that will tie into your scenario.
-<ol>
-<li>This could be your hourly wage, the temperature outside, etc. This entirely depends on your scenario.</li>
-<li>These will remain the same no matter the input, so model them appropriately.</li>
-<li>If the constant is unknown, define it as a letter instead (e.g., if your hourly wage was unknown, you could represent it by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span></span></span></span>; your &quot;pay&quot;).</li>
-</ol>
-</li>
-<li>Strictly define the variables that you've identified.
-<ol>
-<li>In the case of your hourly wage scenario, this would be the number of hours you work, assuming your hourly wage is stable.</li>
-<li>You want to choose variable names that make sense. For instance, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>hours</mtext><mo>→</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">\text{hours} \rightarrow h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">hours</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>wages</mtext><mo>→</mo><mi>w</mi></mrow><annotation encoding="application/x-tex">\text{wages} \rightarrow w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">wages</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span></span></span></span>. It would be extremely confusing if you used something generic like <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span> or <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span>.</li>
-</ol>
-</li>
-<li>Create the function that will model your scenario.
-<ol>
-<li>You know what the outputs are, you know what the inputs are, and you know the relevant constants! Define the relationship!</li>
-</ol>
-</li>
-</ol>
-<h2 id="closing">Closing</h2>
-<table>
-<thead>
-<tr>
-<th>Previous</th>
-<th>Next</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">←</span></span></span></span> <a href="./0-Introduction.html">1.1.0: Introduction</a></td>
-<td><a href="./2-Visualizing%20Functions.html">1.1.2: Visualizing Functions</a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span></td>
-</tr>
-</tbody>
-</table>
-
-            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
-            
-        </body>
-        </html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-Functions</title>
+    <script src="math-config.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../../styles/styles.css">
+    <link rel="stylesheet" href="../../styles/extra.css">
+</head>
+<body>
+    <article class="markdown-body">
+        <h1 id="functions">Functions</h1>
+        <h2 id="contents">Contents</h2>
+        <ul>
+            <li>
+                <a href="#functions">Functions</a>
+                <ul>
+                    <li>
+                        <a href="#contents">Contents</a>
+                    </li>
+                    <li>
+                        <a href="#essential-terminology">Essential Terminology</a>
+                        <ul>
+                            <li>
+                                <a href="#variables-and-constants">Variables and Constants</a>
+                            </li>
+                            <li>
+                                <a href="#expressions-equations-and-formula">Expressions, Equations, and Formula</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#introduction-to-functions">Introduction to Functions</a>
+                        <ul>
+                            <li>
+                                <a href="#what-qualifies-as-a-function">What Qualifies as a Function?</a>
+                            </li>
+                            <li>
+                                <a href="#using-a-function">Using a Function</a>
+                            </li>
+                            <li>
+                                <a href="#representation">Representation</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#components-of-a-function">Components of a Function</a>
+                        <ul>
+                            <li>
+                                <a href="#inputs-and-outputs">Inputs and Outputs</a>
+                            </li>
+                            <li>
+                                <a href="#domain-and-range">Domain and Range</a>
+                            </li>
+                            <li>
+                                <a href="#intervals">Intervals</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#purpose">Purpose</a>
+                        <ul>
+                            <li>
+                                <a href="#creating-a-function-to-model-a-scenario">Creating a Function to Model a Scenario</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#closing">Closing</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h2 id="essential-terminology">Essential Terminology</h2>
+        <p>Algebra is built upon a fundemental concept known as a function. In order to understand functions, we need some other information first.</p>
+        <h3 id="variables-and-constants">Variables and Constants</h3>
+        <p>Functions rely on symbols known as <span style="color: var(--color-definition); font-style: italic;">variables</span>, which represent a particular quantity that represent some value. These represent an input or an output. Variables are not to be confused with <span style="color: var(--color-definition); font-style: italic;">constants</span>, which are simply concrete numbers that do not vary.</p>
+        <div class="markdown-alert alert-note">
+            <p>You may have a constant that is represented by a letter, just like a variable. The difference between a variable and a constant represented by a letter is literally in the name; a constant is held at a specific value (even if that value is unknown), while a variable may change.</p>
+        </div>
+        <h3 id="expressions-equations-and-formula">Expressions, Equations, and Formula</h3>
+        <p>Recall that an expression is the representation of one or more terms. If there are more than one term, then they are connected with operations. Also recall that equations are mathematical statements that connect expressions using an equality relationship (that is, expression A = expression B).</p>
+        <p>Now, a <span style="color: var(--color-definition); font-style: italic;">formula</span> is a particular type of equation that models a special situation or relationship between two quantities. It is typically used to represent ways of computing particular quantities that are important, special, or otherwise calculated the same way.</p>
+        <p>For instance, if you made $15 per hour and wanted to know how much you make for some number of hours, you could set up the following formula:</p>
+        <p><span class="math display">\[ \text{wages} = 15 * \text{hours} \]</span></p>
+        <p>Now, you can reuse this formula by plugging in different values in-place-of hours. You now defined a relationship between the hours worked and the wages you make. You know they’re <em>related</em>, and can be calculated by using your hourly wage!</p>
+        <p>A <span style="color: var(--color-definition); font-style: italic;">function</span> is a particular kind of formula that has specific inputs and outputs. More particularly, it is a special formula where every input in its domain has exactly one output.</p>
+        <div class="markdown-alert alert-note">
+            <p>More information on how to identify a function as opposed to a formula will be discussed in <a href="./3-Characteristics%20of%20Functions.html">Characteristics of Functions</a>.</p>
+        </div>
+        <p>You could represent the previous formula as a function:</p>
+        <p><span class="math display">\[ w(h) = 15 * h \]</span></p>
+        <p>Notice that we now modified how wages and hours have been represented. They are replaced with symbols (variables).</p>
+        <p>Now, variables can be combined with other variables, constants, etc. in order to create a <span style="color: var(--color-definition); font-style: italic;">term</span>, which is simply one single piece that is separated by addition or subtraction.</p>
+        <p>For instance, in the following expression:</p>
+        <p><span class="math display">\[ 2x + 5y + 10xy - 15xyz + 1000 \]</span></p>
+        <p>has 5 terms: <span class="math inline">\(2x\)</span>, <span class="math inline">\(5y\)</span>, <span class="math inline">\(10xy\)</span>, <span class="math inline">\(-15xyz\)</span>, and finally <span class="math inline">\(1000\)</span>.</p>
+        <p>Now, expressions can be classified by the number of terms it contains. A <span style="color: var(--color-definition); font-style: italic;">binomial</span> contains two terms. Meanwhile, a <span style="color: var(--color-definition); font-style: italic;">trinomial</span> contains three terms. While there is a pattern, typically after 3 terms, it’s just called a <span style="color: var(--color-definition); font-style: italic;">polynomial</span>.</p>
+        <h2 id="introduction-to-functions">Introduction to Functions</h2>
+        <p>Recall that equations are simply two expressions with an equal sign in between. For instance, <span class="math inline">\(5+7=12\)</span> is an equation. Also recall that <span class="math inline">\(5+7&gt;10\)</span> represents an inequality statement (or sometimes referred to as just an inequality).</p>
+        <p><span style="color: var(--color-definition); font-style: italic;">Functions</span> are mathematical models where an input is used to compute an output. More specifically, functions are equations where there is <strong>exactly one output per one input</strong>.</p>
+        <p><span style="color: var(--color-definition); font-style: italic;">Function</span> - A formula with inputs and outputs. The output is computed from the inputs based upon the defined relationship.</p>
+        <h3 id="what-qualifies-as-a-function">What Qualifies as a Function?</h3>
+        <p>We now know that functions are essentially special types of equations or formulas that model some particular behavior between two or more variables. However, this definition isn’t quite descriptive enough, as it leaves out a key detail:</p>
+        <div class="markdown-alert alert-important">
+            <p>For a function, there <strong><em>must</em></strong> only be one output per set of inputs.</p>
+        </div>
+        <h3 id="using-a-function">Using a Function</h3>
+        <p>Functions are utilized to discover the output at a particular input. The task of inputting this particular value is called <span style="color: var(--color-definition); font-style: italic;">plugging in</span>, and this is one of many interactions you will have with functions.</p>
+        <blockquote>
+            <p>A common term to describe this repeated activity is “plug-and-chug”, where you, likely repeatedly, plug in values of the input variable and solve (chug) for the output.</p>
+        </blockquote>
+        <h3 id="representation">Representation</h3>
+        <p>Functions are typically represented by a symbol, say, <span class="math inline">\(f\)</span>, <span class="math inline">\(g\)</span>, etc. The letter chosen does not necessarily matter, but often they are chosen near <span class="math inline">\(f\)</span>. Functions will have an input of some variable, which is often represented by <span class="math inline">\(x\)</span>. The output may also be rendered as <span class="math inline">\(y\)</span>. These variables may be different depending on the context of what is being modelled. A function may look as follows:</p>
+        <p><span class="math display">\[ f(x) = 2x + 15 \]</span></p>
+        <p>This function represents that, given some input <span class="math inline">\(x\)</span>, the output will be 15 more than double that input <span class="math inline">\(x\)</span>. So, if <span class="math inline">\(x=4\)</span>, then the output is:</p>
+        <p><span class="math display">\[ \begin{aligned} &amp;f(x) = 2x + 15 \\ &amp;f(4) = 2(4)+15 \\ &amp;f(4) = 8+15 \\ &amp;\boxed{f(4)= 23} \end{aligned} \]</span></p>
+        <p>Therefore, the output of this function, when <span class="math inline">\(x=4\)</span> yields a result of <span class="math inline">\(y=f(4)=23\)</span>.</p>
+        <p>As a side note, that number <span class="math inline">\(2\)</span> is called a <em>coefficient</em>. More formally, a <span style="color: var(--color-definition); font-style: italic;">coefficient</span> is a constant number that multiplies with a variable. For instance, for the expression <span class="math inline">\(3x+9y+5\)</span>, <span class="math inline">\(3\)</span> is the coefficient of <span class="math inline">\(x\)</span>, <span class="math inline">\(9\)</span> is the coefficient of <span class="math inline">\(y\)</span>, and 5 is a <em>constant</em>.</p>
+        <h2 id="components-of-a-function">Components of a Function</h2>
+        <h3 id="inputs-and-outputs">Inputs and Outputs</h3>
+        <p>Functions can be thought of as boxes where, given an input, they will produce an output of another type. Like a factory, a function “does work” to the input to transform it to the output.</p>
+        <p><span class="math display">\[ \text{input} \Rightarrow \boxed{\text{FUNCTION}} \Rightarrow \text{output} \]</span></p>
+        <p>Functions are made up of two or more variables:</p>
+        <ol type="1">
+            <li>
+                <span style="color: var(--color-definition); font-style: italic;">Input variable</span>: Describes variables that are provided to the function to be transformed.
+                <ol type="1">
+                    <li>Functions with more than one input variable are called <span style="color: var(--color-definition); font-style: italic;">multivariate</span> functions.</li>
+                </ol>
+            </li>
+            <li>
+                <span style="color: var(--color-definition); font-style: italic;">Output variable</span>: The value that is produced by the function after all operations have been simplified.
+                <ol type="1">
+                    <li>Functions can only have one output variable.</li>
+                </ol>
+            </li>
+        </ol>
+        <p>Input variable(s) are sometimes referred to as <span style="color: var(--color-definition); font-style: italic;">independent variables</span> (since they do not depend on other values in the function). Instead, they are provided <em>independently</em> to the function, and then utilized to calculate the output.</p>
+        <p>The output variable may be referred to as a <span style="color: var(--color-definition); font-style: italic;">depedent variable</span> since it depends on the independent variables for its value.</p>
+        <p>Take the function:</p>
+        <p><span class="math display">\[ y = f(x) = 2x + 4 \]</span></p>
+        <blockquote>
+            <p>You could state this as “The function <span class="math inline">\(f\)</span>, takes the input <span class="math inline">\(x\)</span>, multiplies it by <span class="math inline">\(2\)</span> and adds <span class="math inline">\(4\)</span> to compute the output variable, <span class="math inline">\(y\)</span>.”</p>
+            <p>Or more simply, “<span class="math inline">\(f\)</span> of <span class="math inline">\(x\)</span> equals two <span class="math inline">\(x\)</span> plus four”</p>
+        </blockquote>
+        <p>In this function, the independent variable is <span class="math inline">\(x\)</span>, the output variable is <span class="math inline">\(y\)</span> (or, <span class="math inline">\(f(x)\)</span>, if you prefer).</p>
+        <h3 id="domain-and-range">Domain and Range</h3>
+        <p>The set of all values for a particular input variable is the function’s <span style="color: var(--color-definition); font-style: italic;">domain</span> while the set of all values for the output variable is the function’s <span style="color: var(--color-definition); font-style: italic;">range</span>.</p>
+        <p>Finding the domain and range for a particular function is a particularly important aspect of function analysis. Many times it is not too difficult, and is especially easiest for functions that have been <a href="./2-Visualizing%20Functions.html">graphed</a>. However, all functions may be analyzed mathematically to determine their domain and range.</p>
+        <p>Many functions are typically unrestricted in their inputs; they will have a domain of <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(\infty\)</span>.</p>
+        <p>Now, domain and range are both <em>intervals</em>, so let’s define those now.</p>
+        <h3 id="intervals">Intervals</h3>
+        <p><span style="color: var(--color-definition); font-style: italic;">Intervals</span> are a consecutive series of numbers that are unique. Intervals typically represent a <em>continuous</em> set of numbers (such as “numbers between 0 and 1”), or a <em>discontinuous</em> set of numbers, such as “only the numbers 1, 2, or 3”.</p>
+        <p>Continuous intervals may be represented by interval notation or with inequality operators.</p>
+        <p>Inequality operators are the most straightforward way to represent an interval.</p>
+        <blockquote>
+            <h4 id="example-inequality-notation">Example: Inequality Notation</h4>
+            <p>Say for instance you have a value, <span class="math inline">\(x\)</span>, that has a given interval.</p>
+            <p>If it may be larger than -6 but less than 6, you would say:</p>
+            <p><span class="math display">\[-6 \lt x \lt 6\]</span></p>
+            <p>Perhaps, <span class="math inline">\(x\)</span> may be larger than or equal to -10 but less than 100, it would be represented as:</p>
+            <p><span class="math display">\[-10 \leq x \lt 100\]</span></p>
+            <p>Notice how the inequality operators match the language.</p>
+        </blockquote>
+        <p>You may also represent unbounded sets of numbers. For instance, perhaps <span class="math inline">\(y\)</span> is greater than 23. In this case, it would be written as:</p>
+        <p><span class="math display">\[y &gt; 23\]</span></p>
+        <p>The implication of this is that all inequality expressions can be expressed as an interval!</p>
+        <hr>
+        <p><span style="color: var(--color-definition); font-style: italic;">Interval Notation</span> is essentially shorthand for these inequality operators. This notation utilizes brackets or parentheses to represent a particular range of numbers.</p>
+        <blockquote>
+            <h4 id="example-interval-notation">Example: Interval Notation</h4>
+            <p>Say, perhaps, you wanted to state <span class="math inline">\(x\)</span> is greater than or equal to -5 but less than or equal to 5. In interval notation, you would write that the interval for <span class="math inline">\(x\)</span> is</p>
+            <p><span class="math display">\[[-5, 5]\]</span></p>
+            <p>Similarly, if you wanted to state that <span class="math inline">\(q\)</span> is greater than or equal to 2 but less than 55</p>
+            <p><span class="math display">\[[2, 55)\]</span></p>
+        </blockquote>
+        <p>That is, square brackets represent the “or equal to” or “inclusive” concept, while parentheses represent an exclusive behavior.</p>
+        <p>Regarding unbounded intervals, you must NEVER state that a variable may be equal to infinity; no numerical value is “equal to” infinity. Therefore, reflect this in your interval notation via: <span class="math inline">\(x \lt \infty\)</span> (for inequality notation) or <span class="math inline">\((-\infty, \infty)\)</span> (for interval notation).</p>
+        <h2 id="purpose">Purpose</h2>
+        <p>Functions are used to represent relationships between values. The relationship(s) are defined by the function’s terms, while the values themselves are the variables or numbers being operated on.</p>
+        <p>For instance, if you wanted to represent how much money you would make at a job, you could do so with functions. Say your wage is $20 per hour, and you want to know how much you would make in 5 hours. This question is trivial enough, but you might wonder about 8 hours, or 40 hours, or 160 hours.</p>
+        <p>You could model this <strong><em>relationship</em></strong> with a function! Say that the number of hours worked is <span class="math inline">\(h\)</span>, and the function is represented by w(h), for “wages”. The situation is modelled by:</p>
+        <p><span class="math display">\[ w(h) = 20 * h \]</span></p>
+        <p>Now you can compute your wages <span class="math inline">\(w\)</span> for any number of hours <span class="math inline">\(h\)</span>. While this is a trivial example, functions are used to model relationships. That is, functions describe the behavior between two different variables. When the input variable changes, the output will change.</p>
+        <h3 id="creating-a-function-to-model-a-scenario">Creating a Function to Model a Scenario</h3>
+        <p>Remember, a function is simply just a means to model a scenario, but you must define it accurately so it adequately models the situation you’re targeting. For instance, if your hourly wage was actually $15 per hour, then <span class="math inline">\(w(h)\)</span> would be terribly inaccurate!</p>
+        <p>Therefore, you need to follow a general process for defining a function to model your scenario. The general process is:</p>
+        <ol type="1">
+            <li>Identify what you want to discover as an output? Your weekly pay? The distance traveled in your vehicle?</li>
+            <li>Identify what this output depends upon, including constants and input variables.
+                <ol type="1">
+                    <li>For instance, in the scenario of your weekly pay, it would depend upon your hourly wage and the number of hours you work.</li>
+                </ol>
+            </li>
+            <li>Strictly define the constants that will tie into your scenario.
+                <ol type="1">
+                    <li>This could be your hourly wage, the temperature outside, etc. This entirely depends on your scenario.</li>
+                    <li>These will remain the same no matter the input, so model them appropriately.</li>
+                    <li>If the constant is unknown, define it as a letter instead (e.g., if your hourly wage was unknown, you could represent it by <span class="math inline">\(p\)</span>; your “pay”).</li>
+                </ol>
+            </li>
+            <li>Strictly define the variables that you’ve identified.
+                <ol type="1">
+                    <li>In the case of your hourly wage scenario, this would be the number of hours you work, assuming your hourly wage is stable.</li>
+                    <li>You want to choose variable names that make sense. For instance, <span class="math inline">\(\text{hours} \rightarrow h\)</span> and <span class="math inline">\(\text{wages} \rightarrow w\)</span>. It would be extremely confusing if you used something generic like <span class="math inline">\(x\)</span> or <span class="math inline">\(y\)</span>.</li>
+                </ol>
+            </li>
+            <li>Create the function that will model your scenario.
+                <ol type="1">
+                    <li>You know what the outputs are, you know what the inputs are, and you know the relevant constants! Define the relationship!</li>
+                </ol>
+            </li>
+        </ol>
+        <h2 id="closing">Closing</h2>
+        <table aria-label="Data table generated by Pandoc" data-summary="Data table generated by Pandoc" style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
+            <colgroup>
+                <col style="width: 40%">
+                <col style="width: 59%">
+            </colgroup>
+            <thead>
+                <tr class="header">
+                    <th>Previous</th>
+                    <th>Next</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="odd">
+                    <td>
+                        ← <a href="./0-Introduction.html">1.1.0: Introduction</a>
+                    </td>
+                    <td>
+                        <a href="./2-Visualizing%20Functions.html">1.1.2: Visualizing Functions</a> →
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+</body>
+</html>

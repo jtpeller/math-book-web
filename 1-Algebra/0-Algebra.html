@@ -1,292 +1,91 @@
 <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>Unit I&colon; Algebra</title>
-            <style>
-/* From extension vscode.github */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-.vscode-dark img[src$=\#gh-light-mode-only],
-.vscode-light img[src$=\#gh-dark-mode-only],
-.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
-.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
-	display: none;
-}
-
-/* From extension jtpeller.nmd-highlighter */
-
-/* Ensure standalone NMD elements stay on their own line */
-.nmd-block-wrapper {
-    display: block;
-    margin: 6px 0;
-}
-
-/* Hide the default bullet for list items containing an NMD line */
-li:has(.nmd-line-inline) {
-    list-style: none !important;
-    /* Adjust margin to match where the bullet used to be */
-    margin-left: -1.6em;
-}
-
-/* Style the inline icon wrapper */
-.nmd-line-inline {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px; /* Space between icon and text */
-}
-
-.nmd-icon-inline {
-    display: inline-block;
-    width: 1.1em;
-    height: 1.1em;
-    flex-shrink: 0;
-    /* Vertically center the icon with the text line */
-    vertical-align: text-bottom;
-}
-
-.nmd-icon-inline svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-/* Text styling */
-.nmd-text-colored {
-    font-weight: 500;
-}
-
-.nmd-preview-issue {
-    color: #FF5252 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #FF5252;
-}
-
-.nmd-preview-bug {
-    color: #FF6900 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #FF6900;
-}
-
-.nmd-preview-task {
-    color: #FFB300 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #FFB300;
-}
-
-.nmd-preview-fix {
-    color: #448AFF !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #448AFF;
-}
-
-.nmd-preview-done {
-    color: #4CAF50 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #4CAF50;
-}
-
-.nmd-preview-verified {
-    color: #FFFFFF !important;
-    background-color: #137216 !important;
-    border-left: 4px solid #FFFFFF;
-}
-
-.nmd-preview-notes {
-    color: #fc79b2 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #fc79b2;
-}
-
-.nmd-preview-custom {
-    color: #FFFFFF !important;
-    background-color: #986754 !important;
-    border-left: 4px solid #FFFFFF;
-}
-
-</style>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-<style>
-            body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
-            }
-        </style>
-        <style>
-.task-list-item {
-    list-style-type: none;
-}
-
-.task-list-item-checkbox {
-    margin-left: -20px;
-    vertical-align: middle;
-    pointer-events: none;
-}
-</style>
-<style>
-:root {
-  --color-note: #0969da;
-  --color-tip: #1a7f37;
-  --color-warning: #9a6700;
-  --color-severe: #bc4c00;
-  --color-caution: #d1242f;
-  --color-important: #8250df;
-}
-
-</style>
-<style>
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-note: #2f81f7;
-    --color-tip: #3fb950;
-    --color-warning: #d29922;
-    --color-severe: #db6d28;
-    --color-caution: #f85149;
-    --color-important: #a371f7;
-  }
-}
-
-</style>
-<style>
-.markdown-alert {
-  padding: 0.5rem 1rem;
-  margin-bottom: 16px;
-  color: inherit;
-  border-left: .25em solid #888;
-}
-
-.markdown-alert>:first-child {
-  margin-top: 0
-}
-
-.markdown-alert>:last-child {
-  margin-bottom: 0
-}
-
-.markdown-alert .markdown-alert-title {
-  display: flex;
-  font-weight: 500;
-  align-items: center;
-  line-height: 1
-}
-
-.markdown-alert .markdown-alert-title .octicon {
-  margin-right: 0.5rem;
-  display: inline-block;
-  overflow: visible !important;
-  vertical-align: text-bottom;
-  fill: currentColor;
-}
-
-.markdown-alert.markdown-alert-note {
-  border-left-color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-note .markdown-alert-title {
-  color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-important {
-  border-left-color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-important .markdown-alert-title {
-  color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-warning {
-  border-left-color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-warning .markdown-alert-title {
-  color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-tip {
-  border-left-color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-tip .markdown-alert-title {
-  color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-caution {
-  border-left-color: var(--color-caution);
-}
-
-.markdown-alert.markdown-alert-caution .markdown-alert-title {
-  color: var(--color-caution);
-}
-
-</style>
-        
-        </head>
-        <body class="vscode-body vscode-light">
-            <h1 id="unit-i-algebra">Unit I: Algebra</h1>
-<h2 id="contents">Contents</h2>
-<ul>
-<li><a href="#unit-i-algebra">Unit I: Algebra</a>
-<ul>
-<li><a href="#contents">Contents</a></li>
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#closing">Closing</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="introduction">Introduction</h2>
-<p>This section introduces Algebra. Algebra is broken into multiple chapters:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">#</th>
-<th style="text-align:center">Name</th>
-<th style="text-align:left">Description</th>
-<th style="text-align:center">Link</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">Functions</td>
-<td style="text-align:left">Basics of functions, how to work with functions, graphing, and linear functions</td>
-<td style="text-align:center"><a href="./1-Functions/0-Introduction.html">Chapter 1</a></td>
-</tr>
-<tr>
-<td style="text-align:center">2</td>
-<td style="text-align:center">Non-Linear Functions</td>
-<td style="text-align:left">Introduction of non-linear functions, including polynomials and more.</td>
-<td style="text-align:center"><a href="./2-IntermediateFunctions/0-Introduction.html">Chapter 2</a></td>
-</tr>
-<tr>
-<td style="text-align:center">3</td>
-<td style="text-align:center">TBD</td>
-<td style="text-align:left">TBD</td>
-<td style="text-align:center">TBD</td>
-</tr>
-</tbody>
-</table>
-<h2 id="closing">Closing</h2>
-<table>
-<thead>
-<tr>
-<th>Next</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="./1-Functions/1-FunctionBasics.html">Functions</a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span></td>
-</tr>
-</tbody>
-</table>
-
-            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
-            
-        </body>
-        </html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0-Algebra</title>
+    <script src="math-config.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/extra.css">
+</head>
+<body>
+    <article class="markdown-body">
+        <h1 id="unit-i-algebra">Unit I: Algebra</h1>
+        <h2 id="contents">Contents</h2>
+        <ul>
+            <li>
+                <a href="#unit-i-algebra">Unit I: Algebra</a>
+                <ul>
+                    <li>
+                        <a href="#contents">Contents</a>
+                    </li>
+                    <li>
+                        <a href="#introduction">Introduction</a>
+                    </li>
+                    <li>
+                        <a href="#closing">Closing</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h2 id="introduction">Introduction</h2>
+        <p>This section introduces Algebra. Algebra is broken into multiple chapters:</p>
+        <table aria-label="Data table generated by Pandoc" data-summary="Data table generated by Pandoc" style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
+            <colgroup>
+                <col style="width: 3%">
+                <col style="width: 12%">
+                <col style="width: 49%">
+                <col style="width: 35%">
+            </colgroup>
+            <thead>
+                <tr class="header">
+                    <th style="text-align: center;">#</th>
+                    <th style="text-align: center;">Name</th>
+                    <th style="text-align: left;">Description</th>
+                    <th style="text-align: center;">Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="odd">
+                    <td style="text-align: center;">1</td>
+                    <td style="text-align: center;">Functions</td>
+                    <td style="text-align: left;">Basics of functions, how to work with functions, graphing, and linear functions</td>
+                    <td style="text-align: center;">
+                        <a href="./1-Functions/0-Introduction.html">Chapter 1</a>
+                    </td>
+                </tr>
+                <tr class="even">
+                    <td style="text-align: center;">2</td>
+                    <td style="text-align: center;">Non-Linear Functions</td>
+                    <td style="text-align: left;">Introduction of non-linear functions, including polynomials and more.</td>
+                    <td style="text-align: center;">
+                        <a href="./2-IntermediateFunctions/0-Introduction.html">Chapter 2</a>
+                    </td>
+                </tr>
+                <tr class="odd">
+                    <td style="text-align: center;">3</td>
+                    <td style="text-align: center;">TBD</td>
+                    <td style="text-align: left;">TBD</td>
+                    <td style="text-align: center;">TBD</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 id="closing">Closing</h2>
+        <table aria-label="Data table generated by Pandoc" data-summary="Data table generated by Pandoc" style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
+            <thead>
+                <tr class="header">
+                    <th>Next</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="odd">
+                    <td>
+                        <a href="./1-Functions/1-FunctionBasics.html">Functions</a> →
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+</body>
+</html>

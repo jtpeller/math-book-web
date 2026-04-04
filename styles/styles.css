@@ -1,0 +1,224 @@
+:root {
+    --color-note: #0969da;
+    --color-tip: #1a7f37;
+    --color-warning: #9a6700;
+    --color-severe: #bc4c00;
+    --color-caution: #d1242f;
+    --color-important: #8250df;
+    --color-link: #8250df;
+    --color-text: #000000;
+    --color-definition: #0969da;
+    --bg-color: #ffffff;
+
+    --quote-color: #f4e1ff;
+    --quote-border-color: #ca6eff;
+
+    --alert-bg-color: #e4e7ec;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-note: #2f81f7;
+        --color-tip: #3fb950;
+        --color-warning: #d29922;
+        --color-severe: #db6d28;
+        --color-caution: #f85149;
+        --color-important: #a371f7;
+        --color-link: #a371f7;
+        --color-text: #ffffff;
+        --color-definition: #09da8a;
+        --bg-color: #0a0a0a;
+
+        --quote-color: #03000f;
+        --quote-border-color: #000c50;
+
+        --alert-bg-color: #0a0d14;
+    }
+}
+
+html, body {
+    background-color: var(--bg-color);
+    color: var(--color-text);
+}
+
+a {
+    color: var(--color-link);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+code {
+    white-space: pre-wrap;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+}
+
+h1, h2 {
+    border-bottom: 1px solid lightgray;
+}
+
+h1 {
+    text-align: center;
+}
+
+table, th, td {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid grey;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th, td {
+    padding: 8px;
+}
+
+blockquote {
+    background-color: var(--quote-color);
+    border-left: 4px solid var(--quote-border-color);
+    border-radius: 4px;
+    padding: 2px 15px;
+}
+
+/* Center display math blocks */
+.math.display {
+    display: block;
+    margin: 1rem auto;
+    overflow-x: auto;
+    text-align: center;
+}
+
+/* Ensure inline math doesn't break lines awkwardly */
+.math.inline {
+    white-space: nowrap;
+}
+
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+
+span.smallcaps {
+    font-variant: small-caps;
+}
+
+div.columns {
+    display: flex;
+    gap: min(4vw, 1.5em);
+}
+
+div.column {
+    flex: auto;
+    overflow-x: auto;
+}
+
+div.hanging-indent {
+    margin-left: 1.5em;
+    text-indent: -1.5em;
+}
+
+/* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+ul.task-list[class] {
+    list-style: none;
+}
+
+ul.task-list li input[type="checkbox"] {
+    font-size: inherit;
+    width: 0.8em;
+    margin: 0 0.8em 0.2em -1.6em;
+    vertical-align: middle;
+}
+
+.display.math {
+    display: block;
+    text-align: center;
+    margin: 0.5rem auto;
+}
+
+/* Base Alert Style */
+.markdown-alert {
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    color: inherit;
+    border-left: 0.25rem solid;
+    border-radius: 0.3rem;
+    background-color: var(--alert-bg-color);
+    /* Light grey background */
+}
+
+/* Note (Blue) */
+.alert-note {
+    border-left-color: var(--color-note);
+}
+
+.alert-note::before {
+    content: "ⓘ Note";
+    font-weight: bold;
+    color: var(--color-note);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Warning (Yellow/Orange) */
+.alert-warning {
+    border-left-color: #9a6700;
+}
+
+.alert-warning::before {
+    content: "⚠ Warning";
+    font-weight: bold;
+    color: var(--color-warning);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Tip (Green) */
+.alert-tip {
+    border-left-color: var(--color-tip);
+}
+
+.alert-tip::before {
+    content: "💡 Tip";
+    font-weight: bold;
+    color: var(--color-tip);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Important (Purple) */
+.alert-important {
+    border-left-color: var(--color-important);
+}
+
+.alert-important::before {
+    content: "❗ Important";
+    font-weight: bold;
+    color: var(--color-important);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Caution (Red) */
+.alert-caution {
+    border-left-color: var(--color-caution);
+}
+
+.alert-caution::before {
+    content: "🛑 Caution";
+    font-weight: bold;
+    color: var(--color-caution);
+    display: block;
+    margin-bottom: 0.5rem;
+}

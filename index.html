@@ -1,326 +1,132 @@
 <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>math-book</title>
-            <style>
-/* From extension vscode.github */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-.vscode-dark img[src$=\#gh-light-mode-only],
-.vscode-light img[src$=\#gh-dark-mode-only],
-.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
-.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
-	display: none;
-}
-
-/* From extension jtpeller.nmd-highlighter */
-
-/* Ensure standalone NMD elements stay on their own line */
-.nmd-block-wrapper {
-    display: block;
-    margin: 6px 0;
-}
-
-/* Hide the default bullet for list items containing an NMD line */
-li:has(.nmd-line-inline) {
-    list-style: none !important;
-    /* Adjust margin to match where the bullet used to be */
-    margin-left: -1.6em;
-}
-
-/* Style the inline icon wrapper */
-.nmd-line-inline {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px; /* Space between icon and text */
-}
-
-.nmd-icon-inline {
-    display: inline-block;
-    width: 1.1em;
-    height: 1.1em;
-    flex-shrink: 0;
-    /* Vertically center the icon with the text line */
-    vertical-align: text-bottom;
-}
-
-.nmd-icon-inline svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-/* Text styling */
-.nmd-text-colored {
-    font-weight: 500;
-}
-
-.nmd-preview-issue {
-    color: #FF5252 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #FF5252;
-}
-
-.nmd-preview-bug {
-    color: #FF6900 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #FF6900;
-}
-
-.nmd-preview-task {
-    color: #FFB300 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #FFB300;
-}
-
-.nmd-preview-fix {
-    color: #448AFF !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #448AFF;
-}
-
-.nmd-preview-done {
-    color: #4CAF50 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #4CAF50;
-}
-
-.nmd-preview-verified {
-    color: #FFFFFF !important;
-    background-color: #137216 !important;
-    border-left: 4px solid #FFFFFF;
-}
-
-.nmd-preview-notes {
-    color: #fc79b2 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #fc79b2;
-}
-
-.nmd-preview-custom {
-    color: #FFFFFF !important;
-    background-color: #986754 !important;
-    border-left: 4px solid #FFFFFF;
-}
-
-</style>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-<style>
-            body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
-            }
-        </style>
-        <style>
-.task-list-item {
-    list-style-type: none;
-}
-
-.task-list-item-checkbox {
-    margin-left: -20px;
-    vertical-align: middle;
-    pointer-events: none;
-}
-</style>
-<style>
-:root {
-  --color-note: #0969da;
-  --color-tip: #1a7f37;
-  --color-warning: #9a6700;
-  --color-severe: #bc4c00;
-  --color-caution: #d1242f;
-  --color-important: #8250df;
-}
-
-</style>
-<style>
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-note: #2f81f7;
-    --color-tip: #3fb950;
-    --color-warning: #d29922;
-    --color-severe: #db6d28;
-    --color-caution: #f85149;
-    --color-important: #a371f7;
-  }
-}
-
-</style>
-<style>
-.markdown-alert {
-  padding: 0.5rem 1rem;
-  margin-bottom: 16px;
-  color: inherit;
-  border-left: .25em solid #888;
-}
-
-.markdown-alert>:first-child {
-  margin-top: 0
-}
-
-.markdown-alert>:last-child {
-  margin-bottom: 0
-}
-
-.markdown-alert .markdown-alert-title {
-  display: flex;
-  font-weight: 500;
-  align-items: center;
-  line-height: 1
-}
-
-.markdown-alert .markdown-alert-title .octicon {
-  margin-right: 0.5rem;
-  display: inline-block;
-  overflow: visible !important;
-  vertical-align: text-bottom;
-  fill: currentColor;
-}
-
-.markdown-alert.markdown-alert-note {
-  border-left-color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-note .markdown-alert-title {
-  color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-important {
-  border-left-color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-important .markdown-alert-title {
-  color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-warning {
-  border-left-color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-warning .markdown-alert-title {
-  color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-tip {
-  border-left-color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-tip .markdown-alert-title {
-  color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-caution {
-  border-left-color: var(--color-caution);
-}
-
-.markdown-alert.markdown-alert-caution .markdown-alert-title {
-  color: var(--color-caution);
-}
-
-</style>
-        
-        </head>
-        <body class="vscode-body vscode-light">
-            <h1 id="math-book">math-book</h1>
-<p>A math book I am writing that covers math from basic operations all the way to differential equations. Based upon my own knowledge, my old school notes, and many things I picked up along the way.</p>
-<h2 id="contents">Contents</h2>
-<ul>
-<li><a href="#math-book">math-book</a>
-<ul>
-<li><a href="#contents">Contents</a></li>
-<li><a href="#origins">Origins</a></li>
-<li><a href="#units">Units</a></li>
-<li><a href="#conventions">Conventions</a>
-<ul>
-<li><a href="#units-conventions">Units: Conventions</a></li>
-<li><a href="#chapters-conventions">Chapters: Conventions</a></li>
-<li><a href="#sections-conventions">Sections: Conventions</a></li>
-</ul>
-</li>
-<li><a href="#download-usage-whatnot">Download, Usage, Whatnot</a></li>
-<li><a href="#other-books">Other books</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="origins">Origins</h2>
-<p>This book was originally began in October of 2019, completed sometime during the COVID-19 pandemic, left to collect digital dust for a few years (to age like fine wine, of course), and finally revived in 2025 when I decided to finally get around to making the document a lot better.</p>
-<p>This document began as a Word doc that became around 210 pages (43231 words). Maintaining this was cumbersome as even loading the document took a couple minutes, not to mention the lag and slow-loading images.</p>
-<p>Therefore, Markdown has been selected for the revival, so it can be version controlled, cleaned up, and separated nicely. It also has the added benefit of being relatively easily converted to other formats, like HTML, Word docs, etc.</p>
-<p>The goal is to have a free, open-source centralized book that can be used as a reference, as teaching material, etc. I believe knowledge should be freely available, and hiding it behind a paywall is ridiculous.</p>
-<h2 id="units">Units</h2>
-<p>There are currently 4 units (more are in the works). Each are split into their own folders:</p>
-<ol start="0">
-<li><a href="./0-Prologue/0-Prologue.html">Prologue: The Foundation</a></li>
-<li><a href="./1-Algebra/0-Algebra.html">Unit I: Algebra</a></li>
-<li><a href="./2-Geometry/0-Geometry.html">Unit II: Geometry</a></li>
-<li><a href="./3-DiscreteMath/0-DiscreteMath.html">Unit III: Discrete Math</a></li>
-<li>Unit IV and beyond TBD.</li>
-</ol>
-<h2 id="conventions">Conventions</h2>
-<p>This follows a few conventions, written as requirements to be extra fancy.</p>
-<h3 id="units-conventions">Units: Conventions</h3>
-<ol>
-<li><em><strong>Units</strong></em> shall be folders.</li>
-<li>Unit folder shall be named by their Unit number, then Unit Name. Example: <code>0-Prologue</code> (Note: The number ensures proper ordering.)</li>
-<li>Subsections shall be named using the same format. Example: <code>0-Introduction.md</code>.</li>
-<li>Each unit folder shall contain an <code>img</code> folder, which will hold all images used in that unit.</li>
-<li>If a unit uses no images, its <code>img</code> folder shall be removed.</li>
-<li>Each unit folder shall have a file called <code>0-&lt;UnitName&gt;.md</code> that introduces the Unit.</li>
-<li>Units shall contain any and all relevant <em><strong>Chapters</strong></em>.</li>
-</ol>
-<h3 id="chapters-conventions">Chapters: Conventions</h3>
-<ol>
-<li>Chapters shall be folders.</li>
-<li>Every chapter shall be named by their Chapter number, then Chapter Name. Example: <code>1-Functions</code></li>
-<li>Chapters' number shall start at 1.</li>
-<li>Chapters shall only contain <em><strong>Sections</strong></em>.</li>
-</ol>
-<h3 id="sections-conventions">Sections: Conventions</h3>
-<ol>
-<li>Sections shall be Markdown files (extension: <code>.md</code>)</li>
-<li>Sections' first line shall be their Section Name.</li>
-<li>Then, each section file shall contain a second-level section named Contents.
-<ol>
-<li>This Contents section shall contain an accurate table of contents.</li>
-</ol>
-</li>
-<li>Words that are being defined must be in the LaTeX format: <code>$\textcolor{cyan}{\textit{TermName}}$</code>
-<ol>
-<li>Definitions may be included in-line, or be defined in a more Glossary style, like &quot;term - definition&quot;. This depends on context.</li>
-<li>The inclusion of <code>\textit</code> is not necessary, but it (1) is more explicit and (2) allows for easy find-and-replace if I decide to change the format!</li>
-</ol>
-</li>
-<li>Mathematical notations shall use LaTeX.</li>
-<li>Hyperlinks shall exist throughout the book to point to related material.</li>
-<li>Hyperlinks shall utilize relative linking.</li>
-<li>Notes or other &quot;aside&quot; information shall utilize Markdown's &quot;quote&quot; format.</li>
-<li>Images shall include a caption</li>
-<li>Images shall include alt text.</li>
-<li>Every section file shall end with a <code>Closing</code> section.
-<ol>
-<li>This Closing section shall contain links to the previous and next sections.</li>
-<li>If a previous section does not exist, it shall be omitted (e.g., for the very first file).</li>
-<li>If a next section does not exist, but a next unit does, it shall point to the next section instead.</li>
-<li>If a next section does not exist, and there is no subsequent unit, it shall be omitted (for the very final file).</li>
-<li>The previous section table header shall be: &quot;Previous&quot;</li>
-<li>The next section table header shall be: &quot;Next&quot;</li>
-</ol>
-</li>
-</ol>
-<h2 id="download-usage-whatnot">Download, Usage, Whatnot</h2>
-<p>This is licensed under the GNU GPLv3 License. This is meant to be a free book, so just don't sell it.</p>
-<h2 id="other-books">Other books</h2>
-<p>Although not on GitHub (yet), I have many other books, including Physics, Chemistry, Astronomy, and plenty of others that will be done &quot;eventually&quot;. Math is just the first one I am beginning with.</p>
-
-            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
-            
-        </body>
-        </html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>README</title>
+    <script src="math-config.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/extra.css">
+</head>
+<body>
+    <article class="markdown-body">
+        <h1 id="math-book">math-book</h1>
+        <p>A math book I am writing that covers math from basic operations all the way to differential equations. Based upon my own knowledge, my old school notes, and many things I picked up along the way.</p>
+        <h2 id="contents">Contents</h2>
+        <ul>
+            <li>
+                <a href="#math-book">math-book</a>
+                <ul>
+                    <li>
+                        <a href="#contents">Contents</a>
+                    </li>
+                    <li>
+                        <a href="#origins">Origins</a>
+                    </li>
+                    <li>
+                        <a href="#units">Units</a>
+                    </li>
+                    <li>
+                        <a href="#conventions">Conventions</a>
+                        <ul>
+                            <li>
+                                <a href="#units-conventions">Units: Conventions</a>
+                            </li>
+                            <li>
+                                <a href="#chapters-conventions">Chapters: Conventions</a>
+                            </li>
+                            <li>
+                                <a href="#sections-conventions">Sections: Conventions</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#download-usage-whatnot">Download, Usage, Whatnot</a>
+                    </li>
+                    <li>
+                        <a href="#other-books">Other books</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h2 id="origins">Origins</h2>
+        <p>This book was originally began in October of 2019, completed sometime during the COVID-19 pandemic, left to collect digital dust for a few years (to age like fine wine, of course), and finally revived in 2025 when I decided to finally get around to making the document a lot better.</p>
+        <p>This document began as a Word doc that became around 210 pages (43231 words). Maintaining this was cumbersome as even loading the document took a couple minutes, not to mention the lag and slow-loading images.</p>
+        <p>Therefore, Markdown has been selected for the revival, so it can be version controlled, cleaned up, and separated nicely. It also has the added benefit of being relatively easily converted to other formats, like HTML, Word docs, etc.</p>
+        <p>The goal is to have a free, open-source centralized book that can be used as a reference, as teaching material, etc. I believe knowledge should be freely available, and hiding it behind a paywall is ridiculous.</p>
+        <h2 id="units">Units</h2>
+        <p>There are currently 4 units (more are in the works). Each are split into their own folders:</p>
+        <ol start="0" type="1">
+            <li>
+                <a href="./0-Prologue/0-Prologue.html">Prologue: The Foundation</a>
+            </li>
+            <li>
+                <a href="./1-Algebra/0-Algebra.html">Unit I: Algebra</a>
+            </li>
+            <li>
+                <a href="./2-Geometry/0-Geometry.html">Unit II: Geometry</a>
+            </li>
+            <li>
+                <a href="./3-DiscreteMath/0-DiscreteMath.html">Unit III: Discrete Math</a>
+            </li>
+            <li>Unit IV and beyond TBD.</li>
+        </ol>
+        <h2 id="conventions">Conventions</h2>
+        <p>This follows a few conventions, written as requirements to be extra fancy.</p>
+        <h3 id="units-conventions">Units: Conventions</h3>
+        <ol type="1">
+            <li><strong><em>Units</em></strong> shall be folders.</li>
+            <li>Unit folder shall be named by their Unit number, then Unit Name. Example: <code>0-Prologue</code> (Note: The number ensures proper ordering.)</li>
+            <li>Subsections shall be named using the same format. Example: <code>0-Introduction.md</code>.</li>
+            <li>Each unit folder shall contain an <code>img</code> folder, which will hold all images used in that unit.</li>
+            <li>If a unit uses no images, its <code>img</code> folder shall be removed.</li>
+            <li>Each unit folder shall have a file called <code>0-&lt;UnitName&gt;.md</code> that introduces the Unit.</li>
+            <li>Units shall contain any and all relevant <strong><em>Chapters</em></strong>.</li>
+        </ol>
+        <h3 id="chapters-conventions">Chapters: Conventions</h3>
+        <ol type="1">
+            <li>Chapters shall be folders.</li>
+            <li>Every chapter shall be named by their Chapter number, then Chapter Name. Example: <code>1-Functions</code></li>
+            <li>Chapters’ number shall start at 1.</li>
+            <li>Chapters shall only contain <strong><em>Sections</em></strong>.</li>
+        </ol>
+        <h3 id="sections-conventions">Sections: Conventions</h3>
+        <ol type="1">
+            <li>Sections shall be Markdown files (extension: <code>.md</code>)</li>
+            <li>Sections’ first line shall be their Section Name.</li>
+            <li>Then, each section file shall contain a second-level section named Contents.
+                <ol type="1">
+                    <li>This Contents section shall contain an accurate table of contents.</li>
+                </ol>
+            </li>
+            <li>Words that are being defined must be in the LaTeX format: <code>$\textcolor{cyan}{\textit{TermName}}$</code>
+                <ol type="1">
+                    <li>Definitions may be included in-line, or be defined in a more Glossary style, like “term - definition”. This depends on context.</li>
+                    <li>The inclusion of <code>\textit</code> is not necessary, but it (1) is more explicit and (2) allows for easy find-and-replace if I decide to change the format!</li>
+                </ol>
+            </li>
+            <li>Mathematical notations shall use LaTeX.</li>
+            <li>Hyperlinks shall exist throughout the book to point to related material.</li>
+            <li>Hyperlinks shall utilize relative linking.</li>
+            <li>Notes or other “aside” information shall utilize Markdown’s “quote” format.</li>
+            <li>Images shall include a caption</li>
+            <li>Images shall include alt text.</li>
+            <li>Every section file shall end with a <code>Closing</code> section.
+                <ol type="1">
+                    <li>This Closing section shall contain links to the previous and next sections.</li>
+                    <li>If a previous section does not exist, it shall be omitted (e.g., for the very first file).</li>
+                    <li>If a next section does not exist, but a next unit does, it shall point to the next section instead.</li>
+                    <li>If a next section does not exist, and there is no subsequent unit, it shall be omitted (for the very final file).</li>
+                    <li>The previous section table header shall be: “Previous”</li>
+                    <li>The next section table header shall be: “Next”</li>
+                </ol>
+            </li>
+        </ol>
+        <h2 id="download-usage-whatnot">Download, Usage, Whatnot</h2>
+        <p>This is licensed under the GNU GPLv3 License. This is meant to be a free book, so just don’t sell it.</p>
+        <h2 id="other-books">Other books</h2>
+        <p>Although not on GitHub (yet), I have many other books, including Physics, Chemistry, Astronomy, and plenty of others that will be done “eventually”. Math is just the first one I am beginning with.</p>
+    </article>
+</body>
+</html>

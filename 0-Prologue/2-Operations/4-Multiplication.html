@@ -1,441 +1,128 @@
 <!DOCTYPE html>
-        <html>
-        <head>
-            <meta charset="UTF-8">
-            <title>Multiplication and Division</title>
-            <style>
-/* From extension vscode.github */
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) Microsoft Corporation. All rights reserved.
- *  Licensed under the MIT License. See License.txt in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-
-.vscode-dark img[src$=\#gh-light-mode-only],
-.vscode-light img[src$=\#gh-dark-mode-only],
-.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
-.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
-	display: none;
-}
-
-/* From extension jtpeller.nmd-highlighter */
-
-/* Ensure standalone NMD elements stay on their own line */
-.nmd-block-wrapper {
-    display: block;
-    margin: 6px 0;
-}
-
-/* Hide the default bullet for list items containing an NMD line */
-li:has(.nmd-line-inline) {
-    list-style: none !important;
-    /* Adjust margin to match where the bullet used to be */
-    margin-left: -1.6em;
-}
-
-/* Style the inline icon wrapper */
-.nmd-line-inline {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px; /* Space between icon and text */
-}
-
-.nmd-icon-inline {
-    display: inline-block;
-    width: 1.1em;
-    height: 1.1em;
-    flex-shrink: 0;
-    /* Vertically center the icon with the text line */
-    vertical-align: text-bottom;
-}
-
-.nmd-icon-inline svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-/* Text styling */
-.nmd-text-colored {
-    font-weight: 500;
-}
-
-.nmd-preview-issue {
-    color: #FF5252 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #FF5252;
-}
-
-.nmd-preview-bug {
-    color: #FF6900 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #FF6900;
-}
-
-.nmd-preview-task {
-    color: #FFB300 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #FFB300;
-}
-
-.nmd-preview-fix {
-    color: #448AFF !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #448AFF;
-}
-
-.nmd-preview-done {
-    color: #4CAF50 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #4CAF50;
-}
-
-.nmd-preview-verified {
-    color: #FFFFFF !important;
-    background-color: #137216 !important;
-    border-left: 4px solid #FFFFFF;
-}
-
-.nmd-preview-notes {
-    color: #fc79b2 !important;
-    background-color: var(--vscode-editor-selectionHighlightBackground) !important;
-    border-left: 4px solid #fc79b2;
-}
-
-.nmd-preview-custom {
-    color: #FFFFFF !important;
-    background-color: #986754 !important;
-    border-left: 4px solid #FFFFFF;
-}
-
-</style>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-<style>
-            body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
-            }
-        </style>
-        <style>
-.task-list-item {
-    list-style-type: none;
-}
-
-.task-list-item-checkbox {
-    margin-left: -20px;
-    vertical-align: middle;
-    pointer-events: none;
-}
-</style>
-<style>
-:root {
-  --color-note: #0969da;
-  --color-tip: #1a7f37;
-  --color-warning: #9a6700;
-  --color-severe: #bc4c00;
-  --color-caution: #d1242f;
-  --color-important: #8250df;
-}
-
-</style>
-<style>
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-note: #2f81f7;
-    --color-tip: #3fb950;
-    --color-warning: #d29922;
-    --color-severe: #db6d28;
-    --color-caution: #f85149;
-    --color-important: #a371f7;
-  }
-}
-
-</style>
-<style>
-.markdown-alert {
-  padding: 0.5rem 1rem;
-  margin-bottom: 16px;
-  color: inherit;
-  border-left: .25em solid #888;
-}
-
-.markdown-alert>:first-child {
-  margin-top: 0
-}
-
-.markdown-alert>:last-child {
-  margin-bottom: 0
-}
-
-.markdown-alert .markdown-alert-title {
-  display: flex;
-  font-weight: 500;
-  align-items: center;
-  line-height: 1
-}
-
-.markdown-alert .markdown-alert-title .octicon {
-  margin-right: 0.5rem;
-  display: inline-block;
-  overflow: visible !important;
-  vertical-align: text-bottom;
-  fill: currentColor;
-}
-
-.markdown-alert.markdown-alert-note {
-  border-left-color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-note .markdown-alert-title {
-  color: var(--color-note);
-}
-
-.markdown-alert.markdown-alert-important {
-  border-left-color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-important .markdown-alert-title {
-  color: var(--color-important);
-}
-
-.markdown-alert.markdown-alert-warning {
-  border-left-color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-warning .markdown-alert-title {
-  color: var(--color-warning);
-}
-
-.markdown-alert.markdown-alert-tip {
-  border-left-color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-tip .markdown-alert-title {
-  color: var(--color-tip);
-}
-
-.markdown-alert.markdown-alert-caution {
-  border-left-color: var(--color-caution);
-}
-
-.markdown-alert.markdown-alert-caution .markdown-alert-title {
-  color: var(--color-caution);
-}
-
-</style>
-        
-        </head>
-        <body class="vscode-body vscode-light">
-            <h1 id="multiplication-and-division">Multiplication and Division</h1>
-<h2 id="contents">Contents</h2>
-<ul>
-<li><a href="#multiplication-and-division">Multiplication and Division</a>
-<ul>
-<li><a href="#contents">Contents</a></li>
-<li><a href="#multiplication">Multiplication</a></li>
-<li><a href="#example-of-multiplication">Example of Multiplication</a></li>
-<li><a href="#operands-of-multiplication">Operands of Multiplication</a></li>
-<li><a href="#conventions-of-multiplication">Conventions of Multiplication</a></li>
-<li><a href="#long-multiplication">Long Multiplication</a></li>
-<li><a href="#closing">Closing</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="multiplication">Multiplication</h2>
-<p>Multiplication is repeated addition. It is an incredibly helpful operation that can be used to compute rates (like distance when travelling at a certain speed, or how much your wages would be after an 8-hour shift).</p>
-<p>Multiplication is essentially repeated addition.</p>
-<blockquote>
-<p>Multiplication answers: &quot;What if I add a number to itself a certain number of times?&quot;</p>
-</blockquote>
-<h2 id="example-of-multiplication">Example of Multiplication</h2>
-<p>This sounds strange, so let's look at an example. Say you make $15 an hour, and work 4 hours. How much money did you make?</p>
-<p>You could represent this as chunks of hours, added together, like this:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>15</mn><mo>+</mo><mn>15</mn><mo>+</mo><mn>15</mn><mo>+</mo><mn>15</mn><mo>=</mo><mn>60</mn></mrow><annotation encoding="application/x-tex">15 + 15 + 15 + 15 = 60
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">15</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">15</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">15</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">15</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">60</span></span></span></span></span></p>
-<p>Imagine if you worked 8 hours, or wanted to summarize a whole month of work (say, 160 hours). Writing that whole situation out for 160 hours would be quite redundant. Multiplication makes this a lot simpler. To model the original situation of $15 an hour for 4 hours, you could instead write:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>15</mn><mo>×</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">15 \times 4
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">15</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span></span></p>
-<p>Now multiplication actually has multiple symbols (<em>go figure</em>), which can be any of the following: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">×</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⋅</mo></mrow><annotation encoding="application/x-tex">\cdot</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4445em;"></span><span class="mord">⋅</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4653em;"></span><span class="mord">∗</span></span></span></span>, etc. While they all look different, they represent the same operation.</p>
-<h2 id="operands-of-multiplication">Operands of Multiplication</h2>
-<p>Multiplication refers to their operands as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">factors</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{factors}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">factors</span></span></span></span></span>. Sometimes, you will hear <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">multiplicand</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{multiplicand}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">multiplicand</span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">multiplier</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{multiplier}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">multiplier</span></span></span></span></span>, which refer to the first and second terms respectively. The result of multiplication is known as the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mtext mathvariant="italic">product</mtext></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{product}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">product</span></span></span></span></span>. That is, multiplication can be modeled as either:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>factor</mtext><mo>⋅</mo><mtext>factor</mtext><mo>=</mo><mtext>product</mtext></mrow><annotation encoding="application/x-tex">\text{factor} \cdot \text{factor} = \text{product}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">factor</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">factor</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">product</span></span></span></span></span></span></p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>multiplicand</mtext><mo>⋅</mo><mtext>multiplier</mtext><mo>=</mo><mtext>product</mtext></mrow><annotation encoding="application/x-tex">\text{multiplicand} \cdot \text{multiplier} = \text{product}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">multiplicand</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">multiplier</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">product</span></span></span></span></span></span></p>
-<h2 id="conventions-of-multiplication">Conventions of Multiplication</h2>
-<p>There are a few conventions that should be followed when writing these operations.</p>
-<p>When multiplication is presented with parentheses, you can omit the symbol:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>4</mn><mo>⋅</mo><mo stretchy="false">(</mo><mn>3</mn><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo>=</mo><mn>4</mn><mo stretchy="false">(</mo><mn>3</mn><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">4 \cdot (3 + 2) = 4(3+2)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mopen">(</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span></span></span></span></span></p>
-<p>When multiplication is presented with letters or non-numerical symbols, you can omit the symbol:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mn>4</mn><mo>⋅</mo><mi>x</mi><mo>=</mo><mn>4</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">4 \cdot x = 4x
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span><span class="mord mathnormal">x</span></span></span></span></span></p>
-<p>Typically, to avoid confusion, if you are using an kind of letters or non-numerical symbols, you would want to avoid using the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">×</span></span></span></span> symbol, since (especially with hand-writing) that could be confused with the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span></span></span></span>.</p>
-<h2 id="long-multiplication">Long Multiplication</h2>
-<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle mathcolor="cyan"><mrow><mtext mathvariant="italic">Long</mtext><mtext> </mtext><mtext mathvariant="italic">Multiplication</mtext></mrow></mstyle></mrow><annotation encoding="application/x-tex">\textcolor{cyan}{\textit{Long Multiplication}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text" style="color:cyan;"><span class="mord textit" style="color:cyan;">Long Multiplication</span></span></span></span></span> is a common way of performing multiplication by-hand. It is of a similar form as long subtraction and long addition. In fact, it will utilize long addition as a means of computing the final result.</p>
-<p>Let's start with a simple example:</p>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>52</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>×</mo><mphantom><mn>00</mn></mphantom><mn>29</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo></mphantom><mn>1508</mn></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
-\phantom{\times0}52 \\
-\underline{\times\phantom{00}29} \\
-\phantom{\times}1508 \\
-\end{aligned}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:4.5em;vertical-align:-2em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:2.5em;"><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">52</span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">×</span><span class="mord" style="color:transparent;">00</span><span class="mord">29</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:-1.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord">1508</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2em;"><span></span></span></span></span></span></span></span></span></span></span></span></p>
-<p>Now, similar to the previous chapters, I will walk through the problem in a series of snapshots to show how long multiplication works.</p>
-<p>The general algorithm (process) to do this is to:</p>
-<ol>
-<li>Start with the ones place on the second number, and multiply it against every digit in the first number.</li>
-<li>Write the result of each multiplication on the line below the equals slash, just like you do in long addition.</li>
-<li>Then, move to the next digit (the tens place) on the second number and repeat this process.</li>
-<li>You will write this on the next line. You must shift it to the left by 1 place to account for the fact that this digit you are now using is in the tens place, and thus represents a larger magnitude number.</li>
-</ol>
-<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtable rowspacing="0.25em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><msub><mphantom><mn>00</mn></mphantom><mn>1</mn></msub><mphantom><mn>0</mn></mphantom></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>52</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>×</mo><mphantom><mn>00</mn></mphantom><mn>29</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>000</mn></mphantom><mn>8</mn></mrow></mstyle></mtd></mtr></mtable><mspace linebreak="newline"></mspace><mn>9</mn><mo>⋅</mo><mn>2</mn><mo>=</mo><mn>18.</mn><mtext> You must carry!</mtext><mspace linebreak="newline"></mspace><mpadded height="0em" voffset="0em"><mspace mathbackground="black" width="22.7622em" height="0.04em"></mspace></mpadded><mspace linebreak="newline"></mspace><mtable rowspacing="0.25em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><msub><mphantom><mn>0</mn></mphantom><mn>4</mn></msub><mphantom><mn>00</mn></mphantom></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>52</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>×</mo><mphantom><mn>00</mn></mphantom><mn>29</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>00</mn></mphantom><mn>68</mn></mrow></mstyle></mtd></mtr></mtable><mspace linebreak="newline"></mspace><mn>9</mn><mo>⋅</mo><mn>5</mn><mo>=</mo><mn>45.</mn><mtext> But don’t forget the carry! </mtext><mn>45</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>46</mn><mspace linebreak="newline"></mspace><mpadded height="0em" voffset="0em"><mspace mathbackground="black" width="22.7622em" height="0.04em"></mspace></mpadded><mspace linebreak="newline"></mspace><mphantom><mtext> </mtext></mphantom><mspace linebreak="newline"></mspace><mtext>At this point, the ones place is done! Bring the carry down!</mtext><mspace linebreak="newline"></mspace><mtable rowspacing="0.25em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mn>00</mn></mphantom><mphantom><mn>00</mn></mphantom></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>52</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>×</mo><mphantom><mn>00</mn></mphantom><mn>29</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>468</mn></mrow></mstyle></mtd></mtr></mtable><mspace linebreak="newline"></mspace><mtext> Now, move onto the next digit. </mtext><mspace linebreak="newline"></mspace><mpadded height="0em" voffset="0em"><mspace mathbackground="black" width="22.7622em" height="0.04em"></mspace></mpadded><mspace linebreak="newline"></mspace><mtable rowspacing="0.25em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mn>00</mn></mphantom><mphantom><mn>00</mn></mphantom></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>52</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>×</mo><mphantom><mn>00</mn></mphantom><mn>29</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>468</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>000</mn></mphantom><mn>0</mn></mrow></mstyle></mtd></mtr></mtable><mspace linebreak="newline"></mspace><mtext>First, add the 0 as a placeholder.</mtext><mspace linebreak="newline"></mspace><mpadded height="0em" voffset="0em"><mspace mathbackground="black" width="22.7622em" height="0.04em"></mspace></mpadded><mspace linebreak="newline"></mspace><mtable rowspacing="0.25em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mn>00</mn></mphantom><mphantom><mn>00</mn></mphantom></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>52</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>×</mo><mphantom><mn>00</mn></mphantom><mn>29</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>468</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>00</mn></mphantom><mn>40</mn></mrow></mstyle></mtd></mtr></mtable><mspace linebreak="newline"></mspace><mn>2</mn><mo>⋅</mo><mn>2</mn><mo>=</mo><mn>4.</mn><mtext> No carry!</mtext><mspace linebreak="newline"></mspace><mpadded height="0em" voffset="0em"><mspace mathbackground="black" width="22.7622em" height="0.04em"></mspace></mpadded><mspace linebreak="newline"></mspace><mtable rowspacing="0.25em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><msub><mphantom></mphantom><mn>1</mn></msub><mphantom><mn>000</mn></mphantom></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>52</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>×</mo><mphantom><mn>00</mn></mphantom><mn>29</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>468</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>040</mn></mrow></mstyle></mtd></mtr></mtable><mspace linebreak="newline"></mspace><mn>2</mn><mo>⋅</mo><mn>5</mn><mo>=</mo><mn>10.</mn><mtext> Carry the 1.</mtext><mspace linebreak="newline"></mspace><mpadded height="0em" voffset="0em"><mspace mathbackground="black" width="22.7622em" height="0.04em"></mspace></mpadded><mspace linebreak="newline"></mspace><mtable rowspacing="0.25em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>52</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>×</mo><mphantom><mn>00</mn></mphantom><mn>29</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>468</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo></mphantom><mn>1040</mn></mrow></mstyle></mtd></mtr></mtable><mspace linebreak="newline"></mspace><mtext>Bring the carry down.</mtext><mspace linebreak="newline"></mspace><mphantom><mtext> </mtext></mphantom><mspace linebreak="newline"></mspace><mtext>Now you will perform long addition!</mtext><mspace linebreak="newline"></mspace><mpadded height="0em" voffset="0em"><mspace mathbackground="black" width="22.7622em" height="0.04em"></mspace></mpadded><mspace linebreak="newline"></mspace><mtable rowspacing="0.25em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>52</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>×</mo><mphantom><mn>00</mn></mphantom><mn>29</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>468</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>+</mo><mphantom><mn>0</mn></mphantom><mn>1040</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mn>0000</mn></mphantom><mn>8</mn></mrow></mstyle></mtd></mtr></mtable><mspace linebreak="newline"></mspace><mn>8</mn><mo>+</mo><mn>0</mn><mo>=</mo><mn>8.</mn><mtext> No carry!</mtext><mspace linebreak="newline"></mspace><mpadded height="0em" voffset="0em"><mspace mathbackground="black" width="22.7622em" height="0.04em"></mspace></mpadded><mspace linebreak="newline"></mspace><mphantom><mtext> </mtext></mphantom><mspace linebreak="newline"></mspace><mtable rowspacing="0.25em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>52</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>×</mo><mphantom><mn>00</mn></mphantom><mn>29</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><msub><mphantom><mn>0</mn></mphantom><mn>1</mn></msub><mphantom><mn>00</mn></mphantom></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>468</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>+</mo><mphantom><mn>0</mn></mphantom><mn>1040</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mn>000</mn></mphantom><mn>08</mn></mrow></mstyle></mtd></mtr></mtable><mspace linebreak="newline"></mspace><mn>6</mn><mo>+</mo><mn>4</mn><mo>=</mo><mn>10.</mn><mtext> Carry the 1 to the next digit!</mtext><mspace linebreak="newline"></mspace><mpadded height="0em" voffset="0em"><mspace mathbackground="black" width="22.7622em" height="0.04em"></mspace></mpadded><mspace linebreak="newline"></mspace><mtable rowspacing="0.25em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>52</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>×</mo><mphantom><mn>00</mn></mphantom><mn>29</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><msub><mphantom><mn>0</mn></mphantom><mn>1</mn></msub><mphantom><mn>00</mn></mphantom></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>468</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>+</mo><mphantom><mn>0</mn></mphantom><mn>1040</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mn>00</mn></mphantom><mn>508</mn></mrow></mstyle></mtd></mtr></mtable><mspace linebreak="newline"></mspace><mn>4</mn><mo>+</mo><mn>1</mn><mo>+</mo><mn>0</mn><mo>=</mo><mn>5</mn><mspace linebreak="newline"></mspace><mpadded height="0em" voffset="0em"><mspace mathbackground="black" width="22.7622em" height="0.04em"></mspace></mpadded><mspace linebreak="newline"></mspace><mtable rowspacing="0.25em" columnalign="right" columnspacing=""><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>52</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>×</mo><mphantom><mn>00</mn></mphantom><mn>29</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mo>×</mo><mn>0</mn></mphantom><mn>468</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><munder accentunder="true"><mrow><mo>+</mo><mphantom><mn>0</mn></mphantom><mn>1040</mn></mrow><mo stretchy="true">‾</mo></munder></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mphantom><mn>0</mn></mphantom><mn>1508</mn></mrow></mstyle></mtd></mtr></mtable><mspace linebreak="newline"></mspace><mpadded height="0em" voffset="0em"><mspace mathbackground="black" width="22.7622em" height="0.04em"></mspace></mpadded><mspace linebreak="newline"></mspace><mphantom><mtext> </mtext></mphantom><mspace linebreak="newline"></mspace><mtext>Congratulations! You’re finished! We computed that </mtext><mspace linebreak="newline"></mspace><mphantom><mtext> </mtext></mphantom><mspace linebreak="newline"></mspace><menclose notation="box"><mstyle scriptlevel="0" displaystyle="false"><mstyle scriptlevel="0" displaystyle="false"><mstyle scriptlevel="0" displaystyle="true"><mrow><mn>52</mn><mo>⋅</mo><mn>29</mn><mo>=</mo><mn>1508</mn></mrow></mstyle></mstyle></mstyle></menclose></mrow><annotation encoding="application/x-tex">\begin{aligned}
-\phantom{00}_1\phantom{0}\\
-\phantom{\times0}52 \\
-\underline{\times\phantom{00}29} \\
-\phantom{\times000}8 \\
-\end{aligned}\\
-
-9 \cdot 2 = 18. \text{ You must carry!} \\
-\rule{8cm}{0.4pt}\\
-
-\begin{aligned}
-\phantom{0}_4\phantom{00}\\
-\phantom{\times0}52 \\
-\underline{\times\phantom{00}29} \\
-\phantom{\times00}68 \\
-\end{aligned}\\
-
-9 \cdot 5 = 45. \text{ But don&#x27;t forget the carry! } 45+1 = 46 \\
-\rule{8cm}{0.4pt}\\
-\phantom{\space} \\
-\text{At this point, the ones place is done! Bring the carry down!} \\
-
-\begin{aligned}
-\phantom{00}\phantom{00}\\
-\phantom{\times0}52 \\
-\underline{\times\phantom{00}29} \\
-\phantom{\times0}468 \\
-\end{aligned}\\
-
-\text{ Now, move onto the next digit. } \\
-\rule{8cm}{0.4pt}\\
-
-\begin{aligned}
-\phantom{00}\phantom{00}\\
-\phantom{\times0}52 \\
-\underline{\times\phantom{00}29} \\
-\phantom{\times0}468 \\
-\phantom{\times000}0 \\
-\end{aligned}\\
-
-\text{First, add the 0 as a placeholder.} \\
-\rule{8cm}{0.4pt}\\
-
-\begin{aligned}
-\phantom{00}\phantom{00}\\
-\phantom{\times0}52 \\
-\underline{\times\phantom{00}29} \\
-\phantom{\times0}468 \\
-\phantom{\times00}40 \\
-\end{aligned}\\
-
-2 \cdot 2 = 4. \text{ No carry!} \\
-\rule{8cm}{0.4pt}\\
-
-\begin{aligned}
-\phantom{}_1\phantom{000}\\
-\phantom{\times0}52 \\
-\underline{\times\phantom{00}29} \\
-\phantom{\times0}468 \\
-\phantom{\times0}040 \\
-\end{aligned}\\
-
-2 \cdot 5 = 10. \text{ Carry the 1.} \\
-\rule{8cm}{0.4pt}\\
-
-\begin{aligned}
-\phantom{\times0}52 \\
-\underline{\times\phantom{00}29} \\
-\phantom{\times0}468 \\
-\phantom{\times}1040 \\
-\end{aligned}\\
-
-\text{Bring the carry down.} \\
-\phantom{\space} \\
-\text{Now you will perform long addition!} \\
-\rule{8cm}{0.4pt}\\
-
-\begin{aligned}
-\phantom{\times0}52 \\
-\underline{\times\phantom{00}29} \\
-\phantom{\times0}468 \\
-\underline{+\phantom{0}1040} \\
-\phantom{0000}8
-\end{aligned}\\
-
-8 + 0 = 8. \text{ No carry!}\\
-\rule{8cm}{0.4pt}\\
-\phantom{\space} \\
-
-\begin{aligned}
-\phantom{\times0}52 \\
-\underline{\times\phantom{00}29} \\
-\phantom{0}_1\phantom{00}\\
-\phantom{\times0}468 \\
-\underline{+\phantom{0}1040} \\
-\phantom{000}08
-\end{aligned}\\
-
-6 + 4 = 10. \text{ Carry the 1 to the next digit!} \\
-\rule{8cm}{0.4pt}\\
-
-\begin{aligned}
-\phantom{\times0}52 \\
-\underline{\times\phantom{00}29} \\
-\phantom{0}_1\phantom{00}\\
-\phantom{\times0}468 \\
-\underline{+\phantom{0}1040} \\
-\phantom{00}508
-\end{aligned}\\
-
-4 + 1 + 0 = 5 \\
-\rule{8cm}{0.4pt}\\
-
-\begin{aligned}
-\phantom{\times0}52 \\
-\underline{\times\phantom{00}29} \\
-\phantom{\times0}468 \\
-\underline{+\phantom{0}1040} \\
-\phantom{0}1508
-\end{aligned}\\
-
-\rule{8cm}{0.4pt}\\
-\phantom{\space}\\
-\text{Congratulations! You&#x27;re finished! We computed that }\\
-\phantom{\space}\\
-
-\boxed{52 \cdot 29 = 1508}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:6em;vertical-align:-2.75em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.25em;"><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord" style="color:transparent;">00</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord" style="color:transparent;">0</span></span></span><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">52</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">×</span><span class="mord" style="color:transparent;">00</span><span class="mord">29</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:-0.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">000</span><span class="mord">8</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.75em;"><span></span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">9</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">18.</span><span class="mord text"><span class="mord"> You must carry!</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.04em;"></span><span class="mord rule" style="border-right-width:22.7622em;border-top-width:0.04em;bottom:0em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:6em;vertical-align:-2.75em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.25em;"><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord" style="color:transparent;">0</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">4</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord" style="color:transparent;">00</span></span></span><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">52</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">×</span><span class="mord" style="color:transparent;">00</span><span class="mord">29</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:-0.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">00</span><span class="mord">68</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.75em;"><span></span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">9</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">45.</span><span class="mord text"><span class="mord"> But don’t forget the carry! </span></span><span class="mord">45</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">46</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.04em;"></span><span class="mord rule" style="border-right-width:22.7622em;border-top-width:0.04em;bottom:0em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="color:transparent;"><span style="color:transparent;"> </span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">At this point, the ones place is done! Bring the carry down!</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:6em;vertical-align:-2.75em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.25em;"><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">0000</span></span></span><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">52</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">×</span><span class="mord" style="color:transparent;">00</span><span class="mord">29</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:-0.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">468</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.75em;"><span></span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord"> Now, move onto the next digit. </span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.04em;"></span><span class="mord rule" style="border-right-width:22.7622em;border-top-width:0.04em;bottom:0em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:7.5em;vertical-align:-3.5em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4em;"><span style="top:-6.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">0000</span></span></span><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">52</span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">×</span><span class="mord" style="color:transparent;">00</span><span class="mord">29</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:-1.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">468</span></span></span><span style="top:-0.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">000</span><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.5em;"><span></span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">First, add the 0 as a placeholder.</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.04em;"></span><span class="mord rule" style="border-right-width:22.7622em;border-top-width:0.04em;bottom:0em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:7.5em;vertical-align:-3.5em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4em;"><span style="top:-6.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">0000</span></span></span><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">52</span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">×</span><span class="mord" style="color:transparent;">00</span><span class="mord">29</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:-1.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">468</span></span></span><span style="top:-0.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">00</span><span class="mord">40</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.5em;"><span></span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">4.</span><span class="mord text"><span class="mord"> No carry!</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.04em;"></span><span class="mord rule" style="border-right-width:22.7622em;border-top-width:0.04em;bottom:0em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:7.5em;vertical-align:-3.5em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4em;"><span style="top:-6.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord" style="color:transparent;">000</span></span></span><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">52</span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">×</span><span class="mord" style="color:transparent;">00</span><span class="mord">29</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:-1.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">468</span></span></span><span style="top:-0.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">040</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.5em;"><span></span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">10.</span><span class="mord text"><span class="mord"> Carry the 1.</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.04em;"></span><span class="mord rule" style="border-right-width:22.7622em;border-top-width:0.04em;bottom:0em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:6em;vertical-align:-2.75em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:3.25em;"><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">52</span></span></span><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">×</span><span class="mord" style="color:transparent;">00</span><span class="mord">29</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">468</span></span></span><span style="top:-0.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord">1040</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:2.75em;"><span></span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Bring the carry down.</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="color:transparent;"><span style="color:transparent;"> </span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Now you will perform long addition!</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.04em;"></span><span class="mord rule" style="border-right-width:22.7622em;border-top-width:0.04em;bottom:0em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:7.5em;vertical-align:-3.5em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4em;"><span style="top:-6.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">52</span></span></span><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">×</span><span class="mord" style="color:transparent;">00</span><span class="mord">29</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">468</span></span></span><span style="top:-1.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">+</span><span class="mord" style="color:transparent;">0</span><span class="mord">1040</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:-0.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">0000</span><span class="mord">8</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.5em;"><span></span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">8.</span><span class="mord text"><span class="mord"> No carry!</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.04em;"></span><span class="mord rule" style="border-right-width:22.7622em;border-top-width:0.04em;bottom:0em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="color:transparent;"><span style="color:transparent;"> </span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:9em;vertical-align:-4.25em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4.75em;"><span style="top:-6.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">52</span></span></span><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">×</span><span class="mord" style="color:transparent;">00</span><span class="mord">29</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord" style="color:transparent;">0</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord" style="color:transparent;">00</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">468</span></span></span><span style="top:-0.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">+</span><span class="mord" style="color:transparent;">0</span><span class="mord">1040</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:0.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">000</span><span class="mord">08</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:4.25em;"><span></span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">10.</span><span class="mord text"><span class="mord"> Carry the 1 to the next digit!</span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.04em;"></span><span class="mord rule" style="border-right-width:22.7622em;border-top-width:0.04em;bottom:0em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:9em;vertical-align:-4.25em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4.75em;"><span style="top:-6.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">52</span></span></span><span style="top:-5.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">×</span><span class="mord" style="color:transparent;">00</span><span class="mord">29</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:-3.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord"><span class="mord" style="color:transparent;">0</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord" style="color:transparent;">00</span></span></span><span style="top:-2.41em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">468</span></span></span><span style="top:-0.91em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">+</span><span class="mord" style="color:transparent;">0</span><span class="mord">1040</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:0.59em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">00</span><span class="mord">508</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:4.25em;"><span></span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.04em;"></span><span class="mord rule" style="border-right-width:22.7622em;border-top-width:0.04em;bottom:0em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:7.5em;vertical-align:-3.5em;"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:4em;"><span style="top:-6.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">52</span></span></span><span style="top:-4.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">×</span><span class="mord" style="color:transparent;">00</span><span class="mord">29</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:-3.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">×</span><span class="mord" style="color:transparent;">0</span><span class="mord">468</span></span></span><span style="top:-1.66em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord underline"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6444em;"><span style="top:-2.7567em;"><span class="pstrut" style="height:3em;"></span><span class="underline-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">+</span><span class="mord" style="color:transparent;">0</span><span class="mord">1040</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2833em;"><span></span></span></span></span></span></span></span><span style="top:-0.16em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord" style="color:transparent;">0</span><span class="mord">1508</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:3.5em;"><span></span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.04em;"></span><span class="mord rule" style="border-right-width:22.7622em;border-top-width:0.04em;bottom:0em;"></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="color:transparent;"><span style="color:transparent;"> </span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">Congratulations! You’re finished! We computed that </span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0em;"></span><span class="mspace" style="color:transparent;"><span style="color:transparent;"> </span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1.3244em;vertical-align:-0.34em;"></span><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9844em;"><span style="top:-3.3244em;"><span class="pstrut" style="height:3.3244em;"></span><span class="boxpad"><span class="mord"><span class="mord"><span class="mord">52</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">29</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mord">1508</span></span></span></span></span><span style="top:-2.9844em;"><span class="pstrut" style="height:3.3244em;"></span><span class="stretchy fbox" style="height:1.3244em;border-style:solid;border-width:0.04em;"></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.34em;"><span></span></span></span></span></span></span></span></span></span></p>
-<h2 id="closing">Closing</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Previous</th>
-<th style="text-align:left">Next</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>←</mo></mrow><annotation encoding="application/x-tex">\leftarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">←</span></span></span></span> <a href="./3-Subtraction.html">0.2.3: Subtraction</a></td>
-<td style="text-align:left"><a href="./5-Division.html">0.2.5: Division</a> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">→</span></span></span></span></td>
-</tr>
-</tbody>
-</table>
-
-            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
-            
-        </body>
-        </html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-Multiplication</title>
+    <script src="math-config.js"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../../styles/styles.css">
+    <link rel="stylesheet" href="../../styles/extra.css">
+</head>
+<body>
+    <article class="markdown-body">
+        <h1 id="multiplication-and-division">Multiplication and Division</h1>
+        <h2 id="contents">Contents</h2>
+        <ul>
+            <li>
+                <a href="#multiplication-and-division">Multiplication and Division</a>
+                <ul>
+                    <li>
+                        <a href="#contents">Contents</a>
+                    </li>
+                    <li>
+                        <a href="#multiplication">Multiplication</a>
+                    </li>
+                    <li>
+                        <a href="#example-of-multiplication">Example of Multiplication</a>
+                    </li>
+                    <li>
+                        <a href="#operands-of-multiplication">Operands of Multiplication</a>
+                    </li>
+                    <li>
+                        <a href="#conventions-of-multiplication">Conventions of Multiplication</a>
+                    </li>
+                    <li>
+                        <a href="#long-multiplication">Long Multiplication</a>
+                    </li>
+                    <li>
+                        <a href="#closing">Closing</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h2 id="multiplication">Multiplication</h2>
+        <p>Multiplication is repeated addition. It is an incredibly helpful operation that can be used to compute rates (like distance when travelling at a certain speed, or how much your wages would be after an 8-hour shift).</p>
+        <p>Multiplication is essentially repeated addition.</p>
+        <blockquote>
+            <p>Multiplication answers: “What if I add a number to itself a certain number of times?”</p>
+        </blockquote>
+        <h2 id="example-of-multiplication">Example of Multiplication</h2>
+        <p>This sounds strange, so let’s look at an example. Say you make $15 an hour, and work 4 hours. How much money did you make?</p>
+        <p>You could represent this as chunks of hours, added together, like this:</p>
+        <p><span class="math display">\[15 + 15 + 15 + 15 = 60\]</span></p>
+        <p>Imagine if you worked 8 hours, or wanted to summarize a whole month of work (say, 160 hours). Writing that whole situation out for 160 hours would be quite redundant. Multiplication makes this a lot simpler. To model the original situation of $15 an hour for 4 hours, you could instead write:</p>
+        <p><span class="math display">\[15 \times 4\]</span></p>
+        <p>Now multiplication actually has multiple symbols (<em>go figure</em>), which can be any of the following: <span class="math inline">\(\times\)</span>, <span class="math inline">\(\cdot\)</span>, <span class="math inline">\(*\)</span>, etc. While they all look different, they represent the same operation.</p>
+        <h2 id="operands-of-multiplication">Operands of Multiplication</h2>
+        <p>Multiplication refers to their operands as <span style="color: var(--color-definition); font-style: italic;">factors</span>. Sometimes, you will hear <span style="color: var(--color-definition); font-style: italic;">multiplicand</span> and <span style="color: var(--color-definition); font-style: italic;">multiplier</span>, which refer to the first and second terms respectively. The result of multiplication is known as the <span style="color: var(--color-definition); font-style: italic;">product</span>. That is, multiplication can be modeled as either:</p>
+        <p><span class="math display">\[\text{factor} \cdot \text{factor} = \text{product}\]</span> <span class="math display">\[\text{multiplicand} \cdot \text{multiplier} = \text{product}\]</span></p>
+        <h2 id="conventions-of-multiplication">Conventions of Multiplication</h2>
+        <p>There are a few conventions that should be followed when writing these operations.</p>
+        <p>When multiplication is presented with parentheses, you can omit the symbol:</p>
+        <p><span class="math display">\[4 \cdot (3 + 2) = 4(3+2)\]</span></p>
+        <p>When multiplication is presented with letters or non-numerical symbols, you can omit the symbol:</p>
+        <p><span class="math display">\[4 \cdot x = 4x\]</span></p>
+        <p>Typically, to avoid confusion, if you are using an kind of letters or non-numerical symbols, you would want to avoid using the <span class="math inline">\(\times\)</span> symbol, since (especially with hand-writing) that could be confused with the <span class="math inline">\(x\)</span>.</p>
+        <h2 id="long-multiplication">Long Multiplication</h2>
+        <p><span style="color: var(--color-definition); font-style: italic;">Long Multiplication</span> is a common way of performing multiplication by-hand. It is of a similar form as long subtraction and long addition. In fact, it will utilize long addition as a means of computing the final result.</p>
+        <p>Let’s start with a simple example:</p>
+        <p><span class="math display">\[ \begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times}1508 \\ \end{aligned} \]</span></p>
+        <p>Now, similar to the previous chapters, I will walk through the problem in a series of snapshots to show how long multiplication works.</p>
+        <p>The general algorithm (process) to do this is to:</p>
+        <ol type="1">
+            <li>Start with the ones place on the second number, and multiply it against every digit in the first number.</li>
+            <li>Write the result of each multiplication on the line below the equals slash, just like you do in long addition.</li>
+            <li>Then, move to the next digit (the tens place) on the second number and repeat this process.</li>
+            <li>You will write this on the next line. You must shift it to the left by 1 place to account for the fact that this digit you are now using is in the tens place, and thus represents a larger magnitude number.</li>
+        </ol>
+        <p><span class="math display">\[ \begin{aligned} &amp;\phantom{000}_1\phantom{0}\\ &amp;\phantom{\times00}52 \\ &amp;\underline{\times\phantom{00}29} \\ &amp;\phantom{\times000}8 \\ &amp;\end{aligned} \]</span></p>
+        <p><span class="math display">\[ \text{Notice that you must carry, since }9 \cdot 2 = 18 \]</span></p>
+        <p><span class="math display">\[ \begin{aligned} \phantom{0}_4\phantom{00}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times00}68 \\ \end{aligned} \]</span></p>
+        <p><span class="math display">\[ \text{You must consider the carry. We know that }9 \cdot 5 = 45 \text{, but then include the carry: }45+1 = 46.\\ \phantom{\n} \\ \text{Now, the ones place is done! Bring the carry down!} \]</span></p>
+        <p><span class="math display">\[ \begin{aligned} \phantom{00}\phantom{00}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \end{aligned} \]</span></p>
+        <p><span class="math display">\[ \text{Then, move onto the next digit.} \]</span></p>
+        <p><span class="math display">\[ \begin{aligned} \phantom{00}\phantom{00}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \phantom{\times000}0 \\ \end{aligned} \]</span></p>
+        <p><span class="math display">\[ \text{The first step is to add the 0 as a placeholder.} \]</span></p>
+        <p><span class="math display">\[ \begin{aligned} \phantom{00}\phantom{00}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \phantom{\times00}40 \\ \end{aligned} \]</span></p>
+        <p><span class="math display">\[ \text{There&#39;s no carry here, because }2 \cdot 2 = 4 \]</span></p>
+        <p><span class="math display">\[ \begin{aligned} \phantom{}_1\phantom{000}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \phantom{\times0}040 \\ \end{aligned} \]</span></p>
+        <p><span class="math display">\[ \text{We need to carry the 1, since }2 \cdot 5 = 10 \]</span></p>
+        <p><span class="math display">\[ \begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \phantom{\times}1040 \\ \end{aligned} \]</span></p>
+        <p><span class="math display">\[ \text{Once you bring the carry down, you can perform long addition!} \]</span></p>
+        <p><span class="math display">\[ \begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \underline{+\phantom{0}1040} \\ \phantom{0000}8 \end{aligned} \]</span></p>
+        <p><span class="math display">\[ \text{The addition is: } 8+0=8 \text{, which results in no carry. Continue:} \]</span></p>
+        <p><span class="math display">\[ \begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{0}_1\phantom{00}\\ \phantom{\times0}468 \\ \underline{+\phantom{0}1040} \\ \phantom{000}08 \end{aligned} \]</span></p>
+        <p><span class="math display">\[ \text{This step&#39;s addition is }6 + 4 = 10.\text{ Carry the 1 to the next digit, and continue.} \]</span></p>
+        <p><span class="math display">\[ \begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{0}_1\phantom{00}\\ \phantom{\times0}468 \\ \underline{+\phantom{0}1040} \\ \phantom{00}508 \end{aligned} \]</span></p>
+        <p><span class="math display">\[ \text{This step&#39;s addition must include the carry: }4 + 1 + 0 = 5 \]</span></p>
+        <p><span class="math display">\[ \begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \underline{+\phantom{0}1040} \\ \phantom{0}1508 \end{aligned} \]</span></p>
+        <p><span class="math display">\[ \text{Congratulations! You&#39;re finished! We computed that:} \]</span></p>
+        <p><span class="math display">\[ \boxed{52 \cdot 29 = 1508} \]</span></p>
+        <h2 id="closing">Closing</h2>
+        <table aria-label="Data table generated by Pandoc" data-summary="Data table generated by Pandoc" style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
+            <colgroup>
+                <col style="width: 53%">
+                <col style="width: 46%">
+            </colgroup>
+            <thead>
+                <tr class="header">
+                    <th style="text-align: center;">Previous</th>
+                    <th style="text-align: left;">Next</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="odd">
+                    <td style="text-align: center;">
+                        ← <a href="./3-Subtraction.html">0.2.3: Subtraction</a>
+                    </td>
+                    <td style="text-align: left;">
+                        <a href="./5-Division.html">0.2.5: Division</a> →
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+</body>
+</html>
