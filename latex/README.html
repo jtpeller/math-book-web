@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../styles/extra.css">
 </head>
 <body>
+    <div id="nav-placeholder"></div>
     <article class="markdown-body">
         <h1 id="utilities">Utilities</h1>
         <p>This folder contains the source TeX files used to generate plenty of the images in this book.</p>
@@ -41,5 +42,21 @@
         <hr>
         <hr>
     </article>
+    <script>
+        // Fetch and inject the navigation menu
+        fetch('/math-book-web/util/nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+            });
+
+        // Navigation Toggle Logic
+        function openNav() {
+            document.getElementById("side-menu").style.width = "250px";
+        }
+        function closeNav() {
+            document.getElementById("side-menu").style.width = "0";
+        }
+    </script>
 </body>
 </html>

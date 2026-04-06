@@ -14,26 +14,28 @@
     --quote-border-color: #ca6eff;
 
     --alert-bg-color: #e4e7ec;
+
+    --offcanvas-bg-color: #ababab;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-note: #2f81f7;
-        --color-tip: #3fb950;
-        --color-warning: #d29922;
-        --color-severe: #db6d28;
-        --color-caution: #f85149;
-        --color-important: #a371f7;
-        --color-link: #a371f7;
-        --color-text: #ffffff;
-        --color-definition: #09da8a;
-        --bg-color: #0a0a0a;
+[data-bs-theme="dark"] {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+    --color-link: #a371f7;
+    --color-text: #ffffff;
+    --color-definition: #09da8a;
+    --bg-color: #0a0a0a;
 
-        --quote-color: #03000f;
-        --quote-border-color: #000c50;
+    --quote-color: #03000f;
+    --quote-border-color: #000c50;
 
-        --alert-bg-color: #0a0d14;
-    }
+    --alert-bg-color: #0a0d14;
+
+    --offcanvas-bg-color: #0a0d14;
 }
 
 html, body {
@@ -65,6 +67,23 @@ h1, h2 {
 
 h1 {
     text-align: center;
+    padding-bottom: 10px;
+}
+
+h2 {
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 1.75rem;
+}
+
+h3 {
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 1.25rem;
+}
+
+blockquote > p {
+    margin-bottom: 5px;
 }
 
 table, th, td {
@@ -83,7 +102,11 @@ blockquote {
     background-color: var(--quote-color);
     border-left: 4px solid var(--quote-border-color);
     border-radius: 4px;
-    padding: 2px 15px;
+    padding: 5px 15px;
+}
+
+figcaption {
+    text-align: center;
 }
 
 /* Center display math blocks */

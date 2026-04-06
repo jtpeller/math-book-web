@@ -1,16 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    <script>
+        function updateTheme() {
+            // Check if the user has a manually saved preference
+            const savedTheme = localStorage.getItem('theme');
+
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-bs-theme', savedTheme);
+            } else {
+                // Otherwise, follow the system preference
+                const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-bs-theme', systemTheme);
+            }
+        }
+
+        // Run immediately
+        updateTheme();
+
+        // Listen for system changes (e.g., if their computer switches to night mode while they are reading)
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            if (!localStorage.getItem('theme')) {
+                updateTheme();
+            }
+        });
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>0-Introduction</title>
+    <title>Section 1.3.0: Introduction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="math-config.js"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/extra.css">
 </head>
 <body>
-    <article class="markdown-body">
+    <header class="sticky-top">
+        <nav class="navbar fixed-top shadow border-bottom">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"><span class="navbar-toggler-icon">&nbsp;</span></button> <a class="navbar-brand" href="/index.html">Math</a>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
+                    <div class="offcanvas-header border-bottom">
+                        <h5 class="offcanvas-title">Table of Contents</h5>
+                        <div class="ms-auto d-flex align-items-center">
+                            <button id="theme-toggle" class="btn btn-link nav-link p-0 me-3" type="button"><span id="theme-icon">🌓</span></button> <button type="button" class="btn-close" data-bs-dismiss="offcanvas">&nbsp;</button>
+                        </div>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="mb-3 px-2">
+                            <input type="text" id="nav-search" class="form-control form-control-sm border-secondary" placeholder="Filter sections...">
+                        </div>
+                        <ul class="navbar-nav flex-column" id="nav-list">
+                            <li class="nav-item">
+                                <h6 class="nav-header text-secondary mt-2" style="padding-left: 15px;">Unit 0: Prologue</h6>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../0-Prologue/0-Prologue.html" style="padding-left: 30px;">Section 0: Prologue</a>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-header text-secondary mt-2" style="padding-left: 30px;">Chapter 1: Basics Of Math</h6>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../0-Prologue/1-Basics%20of%20Math/1-Math.html" style="padding-left: 45px;">Section 1: Math</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../0-Prologue/1-Basics%20of%20Math/2-Numbers.html" style="padding-left: 45px;">Section 2: Numbers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../0-Prologue/1-Basics%20of%20Math/3-Characteristics%20of%20Numbers.html" style="padding-left: 45px;">Section 3: Characteristics Of Numbers</a>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-header text-secondary mt-2" style="padding-left: 30px;">Chapter 2: Operations</h6>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../0-Prologue/2-Operations/1-Arithmetic.html" style="padding-left: 45px;">Section 1: Arithmetic</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../0-Prologue/2-Operations/2-Addition.html" style="padding-left: 45px;">Section 2: Addition</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../0-Prologue/2-Operations/3-Subtraction.html" style="padding-left: 45px;">Section 3: Subtraction</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../0-Prologue/2-Operations/4-Multiplication.html" style="padding-left: 45px;">Section 4: Multiplication</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../0-Prologue/2-Operations/5-Division.html" style="padding-left: 45px;">Section 5: Division</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../0-Prologue/2-Operations/6-Equality.html" style="padding-left: 45px;">Section 6: Equality</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../0-Prologue/2-Operations/7-Properties%20of%20Operations.html" style="padding-left: 45px;">Section 7: Properties Of Operations</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../0-Prologue/2-Operations/8-Exponentiation.html" style="padding-left: 45px;">Section 8: Exponentiation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../0-Prologue/2-Operations/9-Nth%20Root.html" style="padding-left: 45px;">Section 9: Nth Root</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../0-Prologue/2-Operations/10-Logarithms.html" style="padding-left: 45px;">Section 10: Logarithms</a>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-header text-secondary mt-2" style="padding-left: 15px;">Unit 1: Algebra</h6>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/0-Algebra.html" style="padding-left: 30px;">Section 0: Algebra</a>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-header text-secondary mt-2" style="padding-left: 30px;">Chapter 1: Functions</h6>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/1-Functions/0-Introduction.html" style="padding-left: 45px;">Section 0: Introduction</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/1-Functions/1-Functions.html" style="padding-left: 45px;">Section 1: Functions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/1-Functions/2-Visualizing%20Functions.html" style="padding-left: 45px;">Section 2: Visualizing Functions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/1-Functions/3-Characteristics%20of%20Functions.html" style="padding-left: 45px;">Section 3: Characteristics Of Functions</a>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-header text-secondary mt-2" style="padding-left: 30px;">Chapter 2: Manipulating Functions</h6>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/2-Manipulating%20Functions/0-Introduction.html" style="padding-left: 45px;">Section 0: Introduction</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/2-Manipulating%20Functions/1-Simplifications.html" style="padding-left: 45px;">Section 1: Simplifications</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/2-Manipulating%20Functions/2-Factoring.html" style="padding-left: 45px;">Section 2: Factoring</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/2-Manipulating%20Functions/3-Distribution.html" style="padding-left: 45px;">Section 3: Distribution</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/2-Manipulating%20Functions/4-Limits.html" style="padding-left: 45px;">Section 4: Limits</a>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-header text-secondary mt-2" style="padding-left: 30px;">Chapter 3: Linear Functions</h6>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/3-Linear%20Functions/0-Introduction.html" style="padding-left: 45px;">Section 0: Introduction</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/3-Linear%20Functions/1-Linear%20Functions.html" style="padding-left: 45px;">Section 1: Linear Functions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/3-Linear%20Functions/2-Forms.html" style="padding-left: 45px;">Section 2: Forms</a>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-header text-secondary mt-2" style="padding-left: 30px;">Chapter 4: Polynomials</h6>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/4-Polynomials/0-Introduction.html" style="padding-left: 45px;">Section 0: Introduction</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../1-Algebra/4-Polynomials/1-Polynomials.html" style="padding-left: 45px;">Section 1: Polynomials</a>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-header text-secondary mt-2" style="padding-left: 15px;">Unit 2: Geometry</h6>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../2-Geometry/0-Geometry.html" style="padding-left: 30px;">Section 0: Geometry</a>
+                            </li>
+                            <li class="nav-item">
+                                <h6 class="nav-header text-secondary mt-2" style="padding-left: 15px;">Unit 3: Discrete Math</h6>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="../../3-Discrete%20Math/0-Discrete%20Math.html" style="padding-left: 30px;">Section 0: Discrete Math</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="markdown-body">
         <h1 id="linear-functions">Linear Functions</h1>
         <h2 id="contents">Contents</h2>
         <ul>
@@ -31,6 +202,8 @@
         </ul>
         <h2 id="introduction">Introduction</h2>
         <p>Linear Functions are those with a constant rate of change. That means, for a given change in the input, the change in the output between those two points will be identical. This will be explored in further detail in the following sections!</p>
+        <hr>
+        <hr>
         <h2 id="closing">Closing</h2>
         <table aria-label="Data table generated by Pandoc" data-summary="Data table generated by Pandoc" style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
             <colgroup>
@@ -54,6 +227,69 @@
                 </tr>
             </tbody>
         </table>
-    </article>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <!-- This controls navbar linking. -->
+     
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const projectName = window.location.pathname.split('/')[1];
+            document.querySelectorAll('.navbar-nav a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('/') && !href.startsWith('/' + projectName)) {
+                    link.setAttribute('href', '/' + projectName + href);
+                }
+            });
+        });
+
+        const currentPath = window.location.pathname;
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.href === window.location.href) {
+                    link.classList.add('text-white', 'fw-bold');
+                    link.style.borderLeft = "2px solid #0dcaf0";
+                }
+            });
+    </script> <!-- This script controls Theme Toggling. -->
+     
+    <script>
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+
+        const setTheme = theme => {
+            document.documentElement.setAttribute('data-bs-theme', theme);
+            localStorage.setItem('theme', theme);
+            // Update icon based on theme
+            themeIcon.innerText = theme === 'dark' ? '🌙' : '☀️';
+        };
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+
+        // Set initial icon on load
+        themeIcon.innerText = document.documentElement.getAttribute('data-bs-theme') === 'dark' ? '🌙' : '☀️';
+    </script> <!-- This script controls search bar.. -->
+     
+    <script>
+
+        document.getElementById('nav-search').addEventListener('input', function (e) {
+            const term = e.target.value.toLowerCase();
+            const navItems = document.querySelectorAll('#nav-list .nav-item');
+
+            navItems.forEach(item => {
+                // Get text from links and headers within this item
+                const text = item.textContent.toLowerCase();
+
+                if (text.includes(term)) {
+                    item.classList.remove('d-none');
+                    // Optional: If it's a Section, ensure its parent Unit/Chapter stays visible
+                } else {
+                    item.classList.add('d-none');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,132 @@
+/* Implement the relevant colors based on light/dark mode. */
+:root {
+    --offcanvas-bg-color: #ababab;
+    --offcanvas-text-hover-color: #000;
+    --offcanvas-text-color: #171717;
+    --nav-bg: #f8f9fa;
+    --text-main: #212529;
+}
+
+[data-bs-theme="dark"] {
+    --offcanvas-bg-color: #0a0d14;
+    --offcanvas-text-hover-color: #fff;
+    --offcanvas-text-color: #afafaf;
+    --nav-bg: #0a0a0a;
+    --text-main: #dee2e6;
+}
+
+body {
+    /* Prevent content from hiding behind the top bar */
+    padding-top: 70px;
+}
+
+/***************************** NAVBAR STUFF */
+.navbar {
+    background-color: var(--nav-bg) !important;
+}
+
+.offcanvas-body .nav-link {
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--offcanvas-bg-color);
+    padding: 10px 5px;
+}
+
+.offcanvas-body .nav-link:hover {
+    background-color: var(--offcanvas-bg-color);
+    color: var(--offcanvas-text-hover-color) !important;
+}
+
+/* Common header formatting. */
+.nav-header {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+
+/* Unit headers should pop more than Chapter headers */
+h6.nav-header[style*="padding-left: 15px"] {
+    color: #0dcaf0 !important;
+    /* Cyan for Units */
+    font-size: 0.85rem;
+}
+
+/* Chapters must be a different color. */
+h6.nav-header[style*="padding-left: 30px"] {
+    color: #ffc107 !important;
+    /* Gold for Chapters */
+    font-size: 0.75rem;
+}
+
+/* Section links should be subtle */
+.offcanvas-body .nav-link {
+    color: #ced4da !important;
+    font-size: 0.9rem;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/* Style the links with a vertical "guide" line */
+.offcanvas-body .nav-link {
+    font-size: 1rem;
+    color: var(--offcanvas-text-color) !important;
+    border-left: 1px solid #495057;
+    /* The vertical line */
+    transition: all 150ms;
+}
+
+/* Highlight line on hover */
+.offcanvas-body .nav-link:hover {
+    color: var(--offcanvas-text-hover-color) !important;
+    border-left: 3px solid #0d6efd;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Ensure the root level doesn't have the border-left */
+.offcanvas-body .nav-link[style*="padding-left: 15px"] {
+    border-left: none;
+}
+
+/* Ensure MathJax containers don't overlap with the navbar z-index */
+.sticky-top {
+    /* Bootstrap's default for sticky-top */
+    z-index: 1030;
+}
+
+/* Make the navbar look a bit more book-like */
+.navbar-brand {
+    font-weight: bold;
+    font-family: 'serif';
+}
+
+/* To force the search bar to stick */
+.offcanvas-body {
+    display: flex;
+    flex-direction: column;
+}
+
+#nav-search {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    margin-bottom: 1rem;
+}
+
+#nav-list {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+/* END: CSS STICKY SEARCH BAR */
+
+/***************************** END: NAVBAR STUFF */
+
+/* Ease images to ensure they aren't blinding */
+[data-bs-theme="dark"] img {
+    filter: brightness(.75) contrast(1.25);
+    transition: filter 250ms ease;
+}
+
+[data-bs-theme="dark"] img:hover {
+    filter: brightness(1);
+}
+/* END: EASE IMAGES */
