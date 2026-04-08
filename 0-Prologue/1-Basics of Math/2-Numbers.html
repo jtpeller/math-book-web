@@ -29,10 +29,40 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section 0.1.2: Numbers</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../util/math-config.js"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-    <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><!-- MATH -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <script>
+        // This script is responsible for kickstarting the KaTeX rendering.
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "\x24\x24", right: "\x24\x24", display: true },
+                    { left: "\x24", right: "\x24", display: false },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true }
+                ]
+            });
+        });
+    </script>
+    <script defer src="/usr/share/javascript/katex/katex.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var mathElements = document.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+    katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+    });
+    }}});
+    </script>
+    <link rel="stylesheet" href="/usr/share/javascript/katex/katex.min.css"><!-- CSS -->
     <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/extra.css">
 </head>
@@ -217,18 +247,18 @@
             </li>
         </ul>
         <h2 id="what-are-numbers">What are Numbers?</h2>
-        <p>As mentioned in the previous section, <span style="color: var(--color-definition); font-style: italic;">numbers</span> are the most fundamental block of mathematics. They represent a quantity, which is really just some amount of something.</p>
+        <p>As mentioned in the previous section, <span class="math inline">\color{cyan}{\textnormal{numbers}}</span> are the most fundamental block of mathematics. They represent a quantity, which is really just some amount of something.</p>
         <p>Since numbers represent a quantity, they can intuitively be used to count how many of an object. Say you open your fridge and find that you have 452 cartons of apple juice (you must have a substantial fridge and a large apple juice budget), or maybe your look at your desk and count 4 legs, 1 surface, and 3 drawers.</p>
         <h2 id="units">Units</h2>
         <p>Numbers can be represented in so many ways. Most obvious is that they can be used to count how many items exist. Like 1 water bottle, 15 watermelons, or maybe 350 dollars.</p>
-        <p>You may notice that each of those quantities also have something called a <span style="color: var(--color-definition); font-style: italic;">unit</span>; that is, what the number represents. In this case, the units above are water bottles, watermelons, and dollars.</p>
+        <p>You may notice that each of those quantities also have something called a <span class="math inline">\color{cyan}{\textnormal{unit}}</span>; that is, what the number represents. In this case, the units above are water bottles, watermelons, and dollars.</p>
         <p>Numbers and units are both important to mathematics, although arguably units are more useful in applied mathematics, since you don’t <em>need</em> to have a unit in the most fundamental levels of math.</p>
         <h2 id="numerals">Numerals</h2>
         <p>Numbers can be represented via words (‘one’, ‘two’, ‘three’, …) or via <strong><em>numerals</em></strong>.</p>
-        <p><span style="color: var(--color-definition); font-style: italic;">Numerals</span> describe the symbols used to represent a number. For instance, <span class="math inline">\(1\)</span> represents having a single item, while <span class="math inline">\(2\)</span> represents two items. Numerals are how numbers are displayed for reading; in other words, how the quantity is represented. Representation of numbers is crucial. For instance, <span style="color: var(--color-definition); font-style: italic;">Arabic Numerals</span> include what you probably are familiar with: <span class="math inline">\(0, 1, 2, 3, 4, ...\)</span></p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Numerals}}</span> describe the symbols used to represent a number. For instance, <span class="math inline">1</span> represents having a single item, while <span class="math inline">2</span> represents two items. Numerals are how numbers are displayed for reading; in other words, how the quantity is represented. Representation of numbers is crucial. For instance, <span class="math inline">\color{cyan}{\textnormal{Arabic Numerals}}</span> include what you probably are familiar with: <span class="math inline">0, 1, 2, 3, 4, ...</span></p>
         <blockquote>
             <h3 id="extra-credit">Extra Credit</h3>
-            <p>Another representation is <span style="color: var(--color-definition); font-style: italic;">Roman Numerals</span>. This numbering system looks something like this: <span class="math inline">\(I, II, III, IV, V, VI, VII, VIII, IX, X, ...\)</span></p>
+            <p>Another representation is <span class="math inline">\color{cyan}{\textnormal{Roman Numerals}}</span>. This numbering system looks something like this: <span class="math inline">I, II, III, IV, V, VI, VII, VIII, IX, X, ...</span></p>
             <p>The full table of Roman Numeral symbols and their values is shown in the table below. Note that there is no zero.</p>
             <table aria-label="Data table generated by Pandoc" data-summary="Data table generated by Pandoc" style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
                 <thead>
@@ -268,53 +298,53 @@
                     </tr>
                 </tbody>
             </table>
-            <p>Roman numerals work by addition or subtraction represented by the order of these symbols. There are all sorts of conventions and rules (for instance, you wouldn’t want to represent <span class="math inline">\(4\)</span> by <span class="math inline">\(IIII\)</span>), but they aren’t really important to this section. Really, the point is that there are many representations possible. In fact, there are plenty of numeral systems that won’t be discussed here, since this book will be using Arabic Numerals anyway.</p>
+            <p>Roman numerals work by addition or subtraction represented by the order of these symbols. There are all sorts of conventions and rules (for instance, you wouldn’t want to represent <span class="math inline">4</span> by <span class="math inline">IIII</span>), but they aren’t really important to this section. Really, the point is that there are many representations possible. In fact, there are plenty of numeral systems that won’t be discussed here, since this book will be using Arabic Numerals anyway.</p>
         </blockquote>
         <h2 id="values">Values</h2>
         <p>Numerals represent a particular quantity, and are thus placed in a particular order to denote a specific quantity value. They are read in a particular manner, too.</p>
-        <p>For instance, <span class="math inline">\(42\)</span> represents four tens, and two ones. Or, <span class="math inline">\(1,234\)</span> represents one thousands, two hundreds, three tens, and four ones. To see how this works and why, see <a href="#numerical-bases">Numerical Bases</a>. You may also have partial numbers, which is discussed in <a href="#representing-partial-numbers">Representing Partial Numbers</a>.</p>
-        <p>Values can be represented on a <span style="color: var(--color-definition); font-style: italic;">number line</span>, which is a means of graphically displaying the relative values of numbers.</p>
+        <p>For instance, <span class="math inline">42</span> represents four tens, and two ones. Or, <span class="math inline">1,234</span> represents one thousands, two hundreds, three tens, and four ones. To see how this works and why, see <a href="#numerical-bases">Numerical Bases</a>. You may also have partial numbers, which is discussed in <a href="#representing-partial-numbers">Representing Partial Numbers</a>.</p>
+        <p>Values can be represented on a <span class="math inline">\color{cyan}{\textnormal{number line}}</span>, which is a means of graphically displaying the relative values of numbers.</p>
         <figure>
-            <img src="./img/number-line.png" style="display: block; margin-left: auto; margin-right: auto; text-align: center;" alt="Figure 0.1.1: Number Line from -3.5 to 3.5, with tick marks at whole numbers.">
+            <img src="./img/number-line.png" alt="Figure 0.1.1: Number Line from -3.5 to 3.5, with tick marks at whole numbers.">
             <figcaption aria-hidden="true">
                 Figure 0.1.1: Number Line from -3.5 to 3.5, with tick marks at whole numbers.
             </figcaption>
         </figure>
-        <p>Traditionally, a number line flows from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(\infty\)</span>; in other words, from smallest (left) to largest (right).</p>
+        <p>Traditionally, a number line flows from <span class="math inline">-\infty</span> to <span class="math inline">\infty</span>; in other words, from smallest (left) to largest (right).</p>
         <h2 id="representing-partial-numbers">Representing Partial Numbers</h2>
         <p>Number lines do not have to represent whole numbers; they can instead represent decimals, fractions, mixed numbers, etc. The value just has to be in the correct location (i.e., you would not place 3.5 anywhere except halfway between 3 and 4). Number lines are <em>continuous</em> in that it represents every number.</p>
         <p>You can represent partial numbers using the following two representations. <em>(That partial apple juice should come to mind, unless you finished it already…)</em></p>
-        <p>The first representation is a <span style="color: var(--color-definition); font-style: italic;">Decimal</span> which involves a dot (or comma, in some parts in the world) between the ones place and values smaller than it.</p>
+        <p>The first representation is a <span class="math inline">\color{cyan}{\textnormal{Decimal}}</span> which involves a dot (or comma, in some parts in the world) between the ones place and values smaller than it.</p>
         <ul>
-            <li>Example: <span class="math inline">\(2.4\)</span>, <span class="math inline">\(2\)</span> is in the <em>ones</em> place, while <span class="math inline">\(4\)</span> is in the <em>tenths</em> place.</li>
-            <li>The “th” suffix denotes the digit’s place after a decimal point. So, <span class="math inline">\(0.1234\)</span> means 1 <em>tenths</em>, 2 <em>hundredths</em>, 3 <em>thousandths</em> and 4 <em>ten-thousandths</em>.</li>
+            <li>Example: <span class="math inline">2.4</span>, <span class="math inline">2</span> is in the <em>ones</em> place, while <span class="math inline">4</span> is in the <em>tenths</em> place.</li>
+            <li>The “th” suffix denotes the digit’s place after a decimal point. So, <span class="math inline">0.1234</span> means 1 <em>tenths</em>, 2 <em>hundredths</em>, 3 <em>thousandths</em> and 4 <em>ten-thousandths</em>.</li>
         </ul>
-        <p>The second representation is a <span style="color: var(--color-definition); font-style: italic;">Fraction</span>, which represents a ratio of two numbers (that is, one number divided by another).</p>
+        <p>The second representation is a <span class="math inline">\color{cyan}{\textnormal{Fraction}}</span>, which represents a ratio of two numbers (that is, one number divided by another).</p>
         <p>For more on the concept of division, on fractions, or on decimals, see <a href="../2-Operations/5-Division.html">Division</a>. This will provide the necessary context for understanding what a fraction actually represents and why.</p>
         <h2 id="numerical-bases">Numerical Bases</h2>
-        <p>Numbers can also be represented by a “base”. <span style="color: var(--color-definition); font-style: italic;">Base</span> refers to how many numerals there are. For instance, base-10 includes 10 numerals: 0 through 9. That means there are 10 representations before a new digit must be added to continue counting. That is, <span class="math inline">\(0, 1, 2, ..., 8, 9, 10, 11, 12, ..., 98, 99, 100, ...\)</span></p>
-        <p>Each place in the base-representation corresponds to a power of that base. For instance, for the number 123, that represents: one 100, 2 ten, and 3 ones. In other words: <span class="math inline">\(1\cdot10^2 + 2\cdot10^1 + 3\cdot10^3\)</span>. This is how every single base-representation works. This is also known as a <strong><em>radix positional numeral system</em></strong>.</p>
+        <p>Numbers can also be represented by a “base”. <span class="math inline">\color{cyan}{\textnormal{Base}}</span> refers to how many numerals there are. For instance, base-10 includes 10 numerals: 0 through 9. That means there are 10 representations before a new digit must be added to continue counting. That is, <span class="math inline">0, 1, 2, ..., 8, 9, 10, 11, 12, ..., 98, 99, 100, ...</span></p>
+        <p>Each place in the base-representation corresponds to a power of that base. For instance, for the number 123, that represents: one 100, 2 ten, and 3 ones. In other words: <span class="math inline">1\cdot10^2 + 2\cdot10^1 + 3\cdot10^3</span>. This is how every single base-representation works. This is also known as a <strong><em>radix positional numeral system</em></strong>.</p>
         <p>Here are some base values you may come across:</p>
         <ul>
             <li>
-                <span style="color: var(--color-definition); font-style: italic;">Binary</span> (<em>base-2</em>) - Represented by two numerals: <span class="math inline">\(0, 1\)</span>. For instance, <span class="math inline">\(5\)</span> in base-2 is <span class="math inline">\(0b101\)</span>.
+                <span class="math inline">\color{cyan}{\textnormal{Binary}}</span> (<em>base-2</em>) - Represented by two numerals: <span class="math inline">0, 1</span>. For instance, <span class="math inline">5</span> in base-2 is <span class="math inline">0b101</span>.
                 <ul>
-                    <li>In other words, <span class="math inline">\((1\cdot2^2)+(0\cdot2^1)+(1\cdot2^0) = 4 + 0 + 1 = 5\)</span></li>
-                    <li>The prefix of <span class="math inline">\(0b\)</span> is common to differentiate between numbers represented by different bases.</li>
+                    <li>In other words, <span class="math inline">(1\cdot2^2)+(0\cdot2^1)+(1\cdot2^0) = 4 + 0 + 1 = 5</span></li>
+                    <li>The prefix of <span class="math inline">0b</span> is common to differentiate between numbers represented by different bases.</li>
                 </ul>
             </li>
-            <li><span style="color: var(--color-definition); font-style: italic;">Octal</span> (<em>base-8</em>) - Represented by 8 numerals <span class="math inline">\((0 ... 7)\)</span>.</li>
-            <li><span style="color: var(--color-definition); font-style: italic;">Decimal</span> (<em>base-10</em>) - Represented by 10 numerals <span class="math inline">\((0 ... 9)\)</span>.</li>
+            <li><span class="math inline">\color{cyan}{\textnormal{Octal}}</span> (<em>base-8</em>) - Represented by 8 numerals <span class="math inline">(0 ... 7)</span>.</li>
+            <li><span class="math inline">\color{cyan}{\textnormal{Decimal}}</span> (<em>base-10</em>) - Represented by 10 numerals <span class="math inline">(0 ... 9)</span>.</li>
             <li>
-                <span style="color: var(--color-definition); font-style: italic;">Hexadecimal</span> (<em>base-16</em>) - Represented by 16 numerals <span class="math inline">\((0 ... 9, a ... f)\)</span>
+                <span class="math inline">\color{cyan}{\textnormal{Hexadecimal}}</span> (<em>base-16</em>) - Represented by 16 numerals <span class="math inline">(0 ... 9, a ... f)</span>
                 <ul>
-                    <li>So, 38 in base-16 is <span class="math inline">\(0x26\)</span>, because <span class="math inline">\((2\cdot16^1)+(6\cdot16^0) = 38\)</span></li>
+                    <li>So, 38 in base-16 is <span class="math inline">0x26</span>, because <span class="math inline">(2\cdot16^1)+(6\cdot16^0) = 38</span></li>
                     <li>You would represent 15 as 0xf (usually read as “zero hex f”), but 16 as 0x10 (read as “zero hex ten” or “zero hex one zero”)</li>
                 </ul>
             </li>
         </ul>
         <div class="markdown-alert alert-warning">
-            <p>You might be tempted to say that Roman numerals are “base-7”, since there are 7 symbols. While true that there are 7 symbols, each one represents a non-sequential values, so this does not apply. You wouldn’t count like this: <span class="math inline">\(I, V, X, ...\)</span>, but instead by <span class="math inline">\(I, II, III, IV, ...\)</span> (you count sequentially). Roman numerals technically don’t have a base at all, since it’s not a radix numeral system.</p>
+            <p>You might be tempted to say that Roman numerals are “base-7”, since there are 7 symbols. While true that there are 7 symbols, each one represents a non-sequential values, so this does not apply. You wouldn’t count like this: <span class="math inline">I, V, X, ...</span>, but instead by <span class="math inline">I, II, III, IV, ...</span> (you count sequentially). Roman numerals technically don’t have a base at all, since it’s not a radix numeral system.</p>
         </div>
         <p>Various number representations are useful for different reasons, for instance, binary and hexadecimal are central to computing.</p>
         <div class="markdown-alert alert-note">

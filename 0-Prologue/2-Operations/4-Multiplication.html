@@ -29,10 +29,40 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section 0.2.4: Multiplication</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../util/math-config.js"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-    <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><!-- MATH -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <script>
+        // This script is responsible for kickstarting the KaTeX rendering.
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "\x24\x24", right: "\x24\x24", display: true },
+                    { left: "\x24", right: "\x24", display: false },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true }
+                ]
+            });
+        });
+    </script>
+    <script defer src="/usr/share/javascript/katex/katex.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var mathElements = document.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+    katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+    });
+    }}});
+    </script>
+    <link rel="stylesheet" href="/usr/share/javascript/katex/katex.min.css"><!-- CSS -->
     <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/extra.css">
 </head>
@@ -222,24 +252,24 @@
         <h2 id="example-of-multiplication">Example of Multiplication</h2>
         <p>This sounds strange, so let’s look at an example. Say you make $15 an hour, and work 4 hours. How much money did you make?</p>
         <p>You could represent this as chunks of hours, added together, like this:</p>
-        <p><span class="math display">\[15 + 15 + 15 + 15 = 60\]</span></p>
+        <p><span class="math display">15 + 15 + 15 + 15 = 60</span></p>
         <p>Imagine if you worked 8 hours, or wanted to summarize a whole month of work (say, 160 hours). Writing that whole situation out for 160 hours would be quite redundant. Multiplication makes this a lot simpler. To model the original situation of $15 an hour for 4 hours, you could instead write:</p>
-        <p><span class="math display">\[15 \times 4\]</span></p>
-        <p>Now multiplication actually has multiple symbols (<em>go figure</em>), which can be any of the following: <span class="math inline">\(\times\)</span>, <span class="math inline">\(\cdot\)</span>, <span class="math inline">\(*\)</span>, etc. While they all look different, they represent the same operation.</p>
+        <p><span class="math display">15 \times 4</span></p>
+        <p>Now multiplication actually has multiple symbols (<em>go figure</em>), which can be any of the following: <span class="math inline">\times</span>, <span class="math inline">\cdot</span>, <span class="math inline">*</span>, etc. While they all look different, they represent the same operation.</p>
         <h2 id="operands-of-multiplication">Operands of Multiplication</h2>
-        <p>Multiplication refers to their operands as <span style="color: var(--color-definition); font-style: italic;">factors</span>. Sometimes, you will hear <span style="color: var(--color-definition); font-style: italic;">multiplicand</span> and <span style="color: var(--color-definition); font-style: italic;">multiplier</span>, which refer to the first and second terms respectively. The result of multiplication is known as the <span style="color: var(--color-definition); font-style: italic;">product</span>. That is, multiplication can be modeled as either:</p>
-        <p><span class="math display">\[\text{factor} \cdot \text{factor} = \text{product}\]</span> <span class="math display">\[\text{multiplicand} \cdot \text{multiplier} = \text{product}\]</span></p>
+        <p>Multiplication refers to their operands as <span class="math inline">\color{cyan}{\textnormal{factors}}</span>. Sometimes, you will hear <span class="math inline">\color{cyan}{\textnormal{multiplicand}}</span> and <span class="math inline">\color{cyan}{\textnormal{multiplier}}</span>, which refer to the first and second terms respectively. The result of multiplication is known as the <span class="math inline">\color{cyan}{\textnormal{product}}</span>. That is, multiplication can be modeled as either:</p>
+        <p><span class="math display">\text{factor} \cdot \text{factor} = \text{product}</span> <span class="math display">\text{multiplicand} \cdot \text{multiplier} = \text{product}</span></p>
         <h2 id="conventions-of-multiplication">Conventions of Multiplication</h2>
         <p>There are a few conventions that should be followed when writing these operations.</p>
         <p>When multiplication is presented with parentheses, you can omit the symbol:</p>
-        <p><span class="math display">\[4 \cdot (3 + 2) = 4(3+2)\]</span></p>
+        <p><span class="math display">4 \cdot (3 + 2) = 4(3+2)</span></p>
         <p>When multiplication is presented with letters or non-numerical symbols, you can omit the symbol:</p>
-        <p><span class="math display">\[4 \cdot x = 4x\]</span></p>
-        <p>Typically, to avoid confusion, if you are using an kind of letters or non-numerical symbols, you would want to avoid using the <span class="math inline">\(\times\)</span> symbol, since (especially with hand-writing) that could be confused with the <span class="math inline">\(x\)</span>.</p>
+        <p><span class="math display">4 \cdot x = 4x</span></p>
+        <p>Typically, to avoid confusion, if you are using an kind of letters or non-numerical symbols, you would want to avoid using the <span class="math inline">\times</span> symbol, since (especially with hand-writing) that could be confused with the <span class="math inline">x</span>.</p>
         <h2 id="long-multiplication">Long Multiplication</h2>
-        <p><span style="color: var(--color-definition); font-style: italic;">Long Multiplication</span> is a common way of performing multiplication by-hand. It is of a similar form as long subtraction and long addition. In fact, it will utilize long addition as a means of computing the final result.</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Long Multiplication}}</span> is a common way of performing multiplication by-hand. It is of a similar form as long subtraction and long addition. In fact, it will utilize long addition as a means of computing the final result.</p>
         <p>Let’s start with a simple example:</p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times}1508 \\ \end{aligned} \]</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times}1508 \\ \end{aligned}</span></p>
         <p>Now, similar to the previous chapters, I will walk through the problem in a series of snapshots to show how long multiplication works.</p>
         <p>The general algorithm (process) to do this is to:</p>
         <ol type="1">
@@ -248,29 +278,29 @@
             <li>Then, move to the next digit (the tens place) on the second number and repeat this process.</li>
             <li>You will write this on the next line. You must shift it to the left by 1 place to account for the fact that this digit you are now using is in the tens place, and thus represents a larger magnitude number.</li>
         </ol>
-        <p><span class="math display">\[ \begin{aligned} &amp;\phantom{000}_1\phantom{0}\\ &amp;\phantom{\times00}52 \\ &amp;\underline{\times\phantom{00}29} \\ &amp;\phantom{\times000}8 \\ &amp;\end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{Notice that you must carry, since }9 \cdot 2 = 18 \]</span></p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{0}_4\phantom{00}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times00}68 \\ \end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{You must consider the carry. We know that }9 \cdot 5 = 45 \text{, but then include the carry: }45+1 = 46.\\ \phantom{\n} \\ \text{Now, the ones place is done! Bring the carry down!} \]</span></p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{00}\phantom{00}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{Then, move onto the next digit.} \]</span></p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{00}\phantom{00}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \phantom{\times000}0 \\ \end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{The first step is to add the 0 as a placeholder.} \]</span></p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{00}\phantom{00}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \phantom{\times00}40 \\ \end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{There&#39;s no carry here, because }2 \cdot 2 = 4 \]</span></p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{}_1\phantom{000}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \phantom{\times0}040 \\ \end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{We need to carry the 1, since }2 \cdot 5 = 10 \]</span></p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \phantom{\times}1040 \\ \end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{Once you bring the carry down, you can perform long addition!} \]</span></p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \underline{+\phantom{0}1040} \\ \phantom{0000}8 \end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{The addition is: } 8+0=8 \text{, which results in no carry. Continue:} \]</span></p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{0}_1\phantom{00}\\ \phantom{\times0}468 \\ \underline{+\phantom{0}1040} \\ \phantom{000}08 \end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{This step&#39;s addition is }6 + 4 = 10.\text{ Carry the 1 to the next digit, and continue.} \]</span></p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{0}_1\phantom{00}\\ \phantom{\times0}468 \\ \underline{+\phantom{0}1040} \\ \phantom{00}508 \end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{This step&#39;s addition must include the carry: }4 + 1 + 0 = 5 \]</span></p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \underline{+\phantom{0}1040} \\ \phantom{0}1508 \end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{Congratulations! You&#39;re finished! We computed that:} \]</span></p>
-        <p><span class="math display">\[ \boxed{52 \cdot 29 = 1508} \]</span></p>
+        <p><span class="math display">\begin{aligned} &amp;\phantom{000}_1\phantom{0}\\ &amp;\phantom{\times00}52 \\ &amp;\underline{\times\phantom{00}29} \\ &amp;\phantom{\times000}8 \\ &amp;\end{aligned}</span></p>
+        <p><span class="math display">\text{Notice that you must carry, since }9 \cdot 2 = 18</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{0}_4\phantom{00}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times00}68 \\ \end{aligned}</span></p>
+        <p><span class="math display">\text{You must consider the carry. We know that }9 \cdot 5 = 45 \text{, but then include the carry: }45+1 = 46.\\ \phantom{\n} \\ \text{Now, the ones place is done! Bring the carry down!}</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{00}\phantom{00}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \end{aligned}</span></p>
+        <p><span class="math display">\text{Then, move onto the next digit.}</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{00}\phantom{00}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \phantom{\times000}0 \\ \end{aligned}</span></p>
+        <p><span class="math display">\text{The first step is to add the 0 as a placeholder.}</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{00}\phantom{00}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \phantom{\times00}40 \\ \end{aligned}</span></p>
+        <p><span class="math display">\text{There&#39;s no carry here, because }2 \cdot 2 = 4</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{}_1\phantom{000}\\ \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \phantom{\times0}040 \\ \end{aligned}</span></p>
+        <p><span class="math display">\text{We need to carry the 1, since }2 \cdot 5 = 10</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \phantom{\times}1040 \\ \end{aligned}</span></p>
+        <p><span class="math display">\text{Once you bring the carry down, you can perform long addition!}</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \underline{+\phantom{0}1040} \\ \phantom{0000}8 \end{aligned}</span></p>
+        <p><span class="math display">\text{The addition is: } 8+0=8 \text{, which results in no carry. Continue:}</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{0}_1\phantom{00}\\ \phantom{\times0}468 \\ \underline{+\phantom{0}1040} \\ \phantom{000}08 \end{aligned}</span></p>
+        <p><span class="math display">\text{This step&#39;s addition is }6 + 4 = 10.\text{ Carry the 1 to the next digit, and continue.}</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{0}_1\phantom{00}\\ \phantom{\times0}468 \\ \underline{+\phantom{0}1040} \\ \phantom{00}508 \end{aligned}</span></p>
+        <p><span class="math display">\text{This step&#39;s addition must include the carry: }4 + 1 + 0 = 5</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{\times0}52 \\ \underline{\times\phantom{00}29} \\ \phantom{\times0}468 \\ \underline{+\phantom{0}1040} \\ \phantom{0}1508 \end{aligned}</span></p>
+        <p><span class="math display">\text{Congratulations! You&#39;re finished! We computed that:}</span></p>
+        <p><span class="math display">\boxed{52 \cdot 29 = 1508}</span></p>
         <hr>
         <hr>
         <h2 id="closing">Closing</h2>
@@ -282,7 +312,7 @@
             <thead>
                 <tr class="header">
                     <th style="text-align: center;">Previous</th>
-                    <th style="text-align: left;">Next</th>
+                    <th style="text-align: center;">Next</th>
                 </tr>
             </thead>
             <tbody>
@@ -290,7 +320,7 @@
                     <td style="text-align: center;">
                         ← <a href="./3-Subtraction.html">0.2.3: Subtraction</a>
                     </td>
-                    <td style="text-align: left;">
+                    <td style="text-align: center;">
                         <a href="./5-Division.html">0.2.5: Division</a> →
                     </td>
                 </tr>

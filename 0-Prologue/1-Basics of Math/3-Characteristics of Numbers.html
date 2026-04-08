@@ -29,10 +29,40 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section 0.1.3: Characteristics Of Numbers</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../util/math-config.js"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-    <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><!-- MATH -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <script>
+        // This script is responsible for kickstarting the KaTeX rendering.
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "\x24\x24", right: "\x24\x24", display: true },
+                    { left: "\x24", right: "\x24", display: false },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true }
+                ]
+            });
+        });
+    </script>
+    <script defer src="/usr/share/javascript/katex/katex.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var mathElements = document.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+    katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+    });
+    }}});
+    </script>
+    <link rel="stylesheet" href="/usr/share/javascript/katex/katex.min.css"><!-- CSS -->
     <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/extra.css">
 </head>
@@ -229,82 +259,82 @@
         <h2 id="properties-of-numbers">Properties of Numbers</h2>
         <p>Numbers can have different characteristics which describe a number’s behavior.</p>
         <h3 id="even-vs.-odd">Even vs.&nbsp;Odd</h3>
-        <p>One of the most basic characteristics is whether a number is even versus odd. An <span style="color: var(--color-definition); font-style: italic;">Even</span> number is divisible by 2 while an <span style="color: var(--color-definition); font-style: italic;">Odd</span> number is not. Even numbers are: <span class="math inline">\(2, 4, 6, ...\)</span> while odd numbers are: <span class="math inline">\(1, 3, 5, ...\)</span>.</p>
-        <p>More formally, it is any number <span class="math inline">\(n\)</span> such that there exists another number <span class="math inline">\(k\)</span> such that: <span class="math inline">\(n = 2k\)</span>. In other words, <span class="math inline">\(n\)</span> is divisible by <span class="math inline">\(2\)</span>.</p>
-        <p>Likewise, odd numbers are those such that <span class="math inline">\(n = 2k+1\)</span>. In other words, <span class="math inline">\(n_{odd}\)</span> is guaranteed to not be divisible by <span class="math inline">\(2\)</span>.</p>
+        <p>One of the most basic characteristics is whether a number is even versus odd. An <span class="math inline">\color{cyan}{\textnormal{Even}}</span> number is divisible by 2 while an <span class="math inline">\color{cyan}{\textnormal{Odd}}</span> number is not. Even numbers are: <span class="math inline">2, 4, 6, ...</span> while odd numbers are: <span class="math inline">1, 3, 5, ...</span>.</p>
+        <p>More formally, it is any number <span class="math inline">n</span> such that there exists another number <span class="math inline">k</span> such that: <span class="math inline">n = 2k</span>. In other words, <span class="math inline">n</span> is divisible by <span class="math inline">2</span>.</p>
+        <p>Likewise, odd numbers are those such that <span class="math inline">n = 2k+1</span>. In other words, <span class="math inline">n_{odd}</span> is guaranteed to not be divisible by <span class="math inline">2</span>.</p>
         <h3 id="prime-vs.-composite">Prime vs.&nbsp;Composite</h3>
-        <p>Another characteristic of a number is whether it is divisible by numbers other than itself and 1. If it may be divided by other numbers, that number is considered <span style="color: var(--color-definition); font-style: italic;">Composite</span>. If not, that number is <span style="color: var(--color-definition); font-style: italic;">Prime</span>.</p>
+        <p>Another characteristic of a number is whether it is divisible by numbers other than itself and 1. If it may be divided by other numbers, that number is considered <span class="math inline">\color{cyan}{\textnormal{Composite}}</span>. If not, that number is <span class="math inline">\color{cyan}{\textnormal{Prime}}</span>.</p>
         <p>In other words, a prime number is a number divisible only by itself and 1. A composite is divisible by itself, 1, and other numbers.</p>
         <blockquote>
             <p>Every number greater than 1 is either prime or composite.</p>
-            <p>It is said that <span class="math inline">\(1\)</span> is neither prime nor composite.</p>
+            <p>It is said that <span class="math inline">1</span> is neither prime nor composite.</p>
         </blockquote>
         <p>Prime numbers are special numbers and are the subject of a lot of studies and discoveries in mathematics, due to their complicated nature. Their discovery is not exactly straightforward, and no distinguishable pattern for each and every prime number has been found (yet?).</p>
         <h2 id="types-of-numbers">Types of Numbers</h2>
-        <p>Numbers are described in sets, where all numbers in that set share some unique property or characteristic. Such sets are described via a special symbol which is commonly a bolded, captilalized letter often with double-lined parts of the letter, like <span class="math inline">\(\mathbb{Z}\)</span> or <span class="math inline">\(\mathbb{Q}\)</span>. These are the symbols used to refer to the set, and will be provided below.</p>
+        <p>Numbers are described in sets, where all numbers in that set share some unique property or characteristic. Such sets are described via a special symbol which is commonly a bolded, captilalized letter often with double-lined parts of the letter, like <span class="math inline">\mathbb{Z}</span> or <span class="math inline">\mathbb{Q}</span>. These are the symbols used to refer to the set, and will be provided below.</p>
         <h3 id="integers">Integers</h3>
-        <p>The following represent numbers that do not have any decimal parts (e.g., <span class="math inline">\(5\)</span>, <span class="math inline">\(6\)</span>, or <span class="math inline">\(7\)</span>, but not <span class="math inline">\(0.34\)</span>, <span class="math inline">\(3.14\)</span>, or <span class="math inline">\(1.\bar{2}\)</span>)</p>
-        <p><span style="color: var(--color-definition); font-style: italic;">Integers</span> <span class="math inline">\((\mathbb{Z})\)</span> - Positive and negative numbers, including zero. These do not have any decimal part (e.g., are “whole”).</p>
-        <p><span class="math display">\[\lbrace ..., -3, -2, -1, 0, 1, 2, 3, ...,\rbrace\]</span></p>
-        <p><span style="color: var(--color-definition); font-style: italic;">Whole Numbers</span> - Integers larger than <span class="math inline">\(0\)</span></p>
-        <p><span class="math display">\[\lbrace 0, 1, 2, 3, ... \rbrace\]</span></p>
-        <p><span style="color: var(--color-definition); font-style: italic;">Natural Numbers</span> <span class="math inline">\((\mathbb{N})\)</span> - Integers larger than <span class="math inline">\(1\)</span>.</p>
-        <p><span class="math display">\[\lbrace 1, 2, 3, ... \rbrace\]</span></p>
+        <p>The following represent numbers that do not have any decimal parts (e.g., <span class="math inline">5</span>, <span class="math inline">6</span>, or <span class="math inline">7</span>, but not <span class="math inline">0.34</span>, <span class="math inline">3.14</span>, or <span class="math inline">1.\bar{2}</span>)</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Integers}}</span> <span class="math inline">(\mathbb{Z})</span> - Positive and negative numbers, including zero. These do not have any decimal part (e.g., are “whole”).</p>
+        <p><span class="math display">\lbrace ..., -3, -2, -1, 0, 1, 2, 3, ...,\rbrace</span></p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Whole Numbers}}</span> - Integers larger than <span class="math inline">0</span></p>
+        <p><span class="math display">\lbrace 0, 1, 2, 3, ... \rbrace</span></p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Natural Numbers}}</span> <span class="math inline">(\mathbb{N})</span> - Integers larger than <span class="math inline">1</span>.</p>
+        <p><span class="math display">\lbrace 1, 2, 3, ... \rbrace</span></p>
         <h3 id="real-numbers">Real Numbers</h3>
-        <p>Real numbers describe essentially any number on a number line. For instance, <span class="math inline">\(3.2\)</span>, <span class="math inline">\(4\)</span>, <span class="math inline">\(-695849887432.685498\)</span>, etc.</p>
-        <p><span style="color: var(--color-definition); font-style: italic;">Real Numbers</span> <span class="math inline">\((\mathbb{R})\)</span> - Continuous values of the number line. Includes decimals, integers, negative and positive numbers, fractions, etc. A sign is used to denote a specific range (e.g., <span class="math inline">\(\mathbb{R}^+\)</span> represents positive real numbers, while <span class="math inline">\(\mathbb{R}^-\)</span> represents negative real numbers).</p>
-        <p><span style="color: var(--color-definition); font-style: italic;">Rational Numbers</span> <span class="math inline">\((\mathbb{Q})\)</span> - Ratio of an integer to a non-zero integer.</p>
-        <p>Rational numbers are a subset of the real numbers that can be described by a fraction of integers. For instance: <span class="math inline">\(\frac{2}{3}, \frac{1}{2}, \frac{3}{4}, \frac{7}{8}, \frac{58}{123}, etc.\)</span></p>
-        <p><span style="color: var(--color-definition); font-style: italic;">Irrational Numbers</span> - Real numbers that cannot be described by a fraction. For instance, <span class="math inline">\(\pi, \sqrt{2}\)</span>, etc.</p>
+        <p>Real numbers describe essentially any number on a number line. For instance, <span class="math inline">3.2</span>, <span class="math inline">4</span>, <span class="math inline">-695849887432.685498</span>, etc.</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Real Numbers}}</span> <span class="math inline">(\mathbb{R})</span> - Continuous values of the number line. Includes decimals, integers, negative and positive numbers, fractions, etc. A sign is used to denote a specific range (e.g., <span class="math inline">\mathbb{R}^+</span> represents positive real numbers, while <span class="math inline">\mathbb{R}^-</span> represents negative real numbers).</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Rational Numbers}}</span> <span class="math inline">(\mathbb{Q})</span> - Ratio of an integer to a non-zero integer.</p>
+        <p>Rational numbers are a subset of the real numbers that can be described by a fraction of integers. For instance: <span class="math inline">\frac{2}{3}, \frac{1}{2}, \frac{3}{4}, \frac{7}{8}, \frac{58}{123}, etc.</span></p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Irrational Numbers}}</span> - Real numbers that cannot be described by a fraction. For instance, <span class="math inline">\pi, \sqrt{2}</span>, etc.</p>
         <h3 id="imaginary-numbers">Imaginary Numbers</h3>
-        <p><span style="color: var(--color-definition); font-style: italic;">Imaginary Numbers</span> are those produced as a product of real numbers and <span class="math inline">\(\sqrt{-1}\)</span>. Usually, the variable <span class="math inline">\(i = \sqrt{-1}\)</span> (although you may see it as <span class="math inline">\(j\)</span>). Examples: <span class="math inline">\(5i, -465i, 352.45i\)</span></p>
-        <p>You may notice that the square root of <span class="math inline">\(-1\)</span> does not have a solution. In other words, there is no real number you could multiply by itself to get <span class="math inline">\(-1\)</span> (hence, “imaginary”).</p>
-        <p>Also, it follows that zero is both real and imaginary (since <span class="math inline">\(0 \cdot \sqrt{-1} = 0\)</span>)</p>
-        <p><span style="color: var(--color-definition); font-style: italic;">Complex Numbers</span> describe combinations of real and imaginary numbers (e.g., through addition or subtraction). For instance, <span class="math inline">\(2 + 4i\)</span> or <span class="math inline">\(15 + 0.234i\)</span>.</p>
-        <p><span style="color: var(--color-definition); font-style: italic;">Hypercomplex Numbers</span> extend the above sets of numbers to additional dimensions. These are described below (don’t worry, these are “hypercomplex” for a reason).</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Imaginary Numbers}}</span> are those produced as a product of real numbers and <span class="math inline">\sqrt{-1}</span>. Usually, the variable <span class="math inline">i = \sqrt{-1}</span> (although you may see it as <span class="math inline">j</span>). Examples: <span class="math inline">5i, -465i, 352.45i</span></p>
+        <p>You may notice that the square root of <span class="math inline">-1</span> does not have a solution. In other words, there is no real number you could multiply by itself to get <span class="math inline">-1</span> (hence, “imaginary”).</p>
+        <p>Also, it follows that zero is both real and imaginary (since <span class="math inline">0 \cdot \sqrt{-1} = 0</span>)</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Complex Numbers}}</span> describe combinations of real and imaginary numbers (e.g., through addition or subtraction). For instance, <span class="math inline">2 + 4i</span> or <span class="math inline">15 + 0.234i</span>.</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Hypercomplex Numbers}}</span> extend the above sets of numbers to additional dimensions. These are described below (don’t worry, these are “hypercomplex” for a reason).</p>
         <ul>
             <li>
-                <span style="color: var(--color-definition); font-style: italic;">Quaternions</span> <span class="math inline">\((\mathbb{H})\)</span> - Complex numbers applied to three dimensions (3D). Often used for calculations involving 3D rotations.
+                <span class="math inline">\color{cyan}{\textnormal{Quaternions}}</span> <span class="math inline">(\mathbb{H})</span> - Complex numbers applied to three dimensions (3D). Often used for calculations involving 3D rotations.
                 <ul>
                     <li>These for a 4D associated normed division algebra over the reals.
                         <ul>
                             <li>
-                                <span style="color: var(--color-definition); font-style: italic;">Normed Division Algebra</span> basically describes numbers that have communitive and associative properties. See <a href="./3-Terminology.md#properties">Terminology’s section on Properties</a> for more.
+                                <span class="math inline">\color{cyan}{\textnormal{Normed Division Algebra}}</span> basically describes numbers that have communitive and associative properties. See <a href="./3-Terminology.md#properties">Terminology’s section on Properties</a> for more.
                             </li>
                         </ul>
                     </li>
-                    <li>Syntax: <span class="math inline">\(a + b\boldsymbol{i} + c\boldsymbol{j} + d\boldsymbol{k}\)</span></li>
-                    <li>Here, these bolded symbols (the <span class="math inline">\(\boldsymbol{i}, \boldsymbol{j}, \boldsymbol{k}\)</span>) are the <span style="color: var(--color-definition); font-style: italic;">fundamental quaternion units</span>.</li>
+                    <li>Syntax: <span class="math inline">a + b\boldsymbol{i} + c\boldsymbol{j} + d\boldsymbol{k}</span></li>
+                    <li>Here, these bolded symbols (the <span class="math inline">\boldsymbol{i}, \boldsymbol{j}, \boldsymbol{k}</span>) are the <span class="math inline">\color{cyan}{\textnormal{fundamental quaternion units}}</span>.</li>
                 </ul>
             </li>
-            <li><span style="color: var(--color-definition); font-style: italic;">Octonions</span> <span class="math inline">\((\mathbb{O})\)</span> - Extends the quaternions to eight dimensions. These are nonassociative and noncommutative. These have applications in string theory, relativity, and quantum logic.</li>
-            <li><span style="color: var(--color-definition); font-style: italic;">Sedenions</span> <span class="math inline">\((\mathbb{S})\)</span> - Extends to 16 dimensions. Also nonassociative and noncommutative. Formed from the <em>Cayley-Dickson construction</em> applied to octonions.</li>
+            <li><span class="math inline">\color{cyan}{\textnormal{Octonions}}</span> <span class="math inline">(\mathbb{O})</span> - Extends the quaternions to eight dimensions. These are nonassociative and noncommutative. These have applications in string theory, relativity, and quantum logic.</li>
+            <li><span class="math inline">\color{cyan}{\textnormal{Sedenions}}</span> <span class="math inline">(\mathbb{S})</span> - Extends to 16 dimensions. Also nonassociative and noncommutative. Formed from the <em>Cayley-Dickson construction</em> applied to octonions.</li>
         </ul>
         <h2 id="constants-special-numbers">Constants: Special Numbers</h2>
-        <p>There are numbers in mathematics that have been discovered to have special properties, are assigned special properties, or are just so common that they have a special symbol. These are <span style="color: var(--color-definition); font-style: italic;">constants</span>. These play an important role in math, so this section lists out some of the many constants that exist.</p>
+        <p>There are numbers in mathematics that have been discovered to have special properties, are assigned special properties, or are just so common that they have a special symbol. These are <span class="math inline">\color{cyan}{\textnormal{constants}}</span>. These play an important role in math, so this section lists out some of the many constants that exist.</p>
         <p>This is obviously not an exhaustive list, as there are plenty more, but this highlights some of the more common constants.</p>
         <p>Some of the essential constants include:</p>
         <ul>
-            <li><span style="color: var(--color-definition); font-style: italic;">Pi</span> <span class="math inline">\((\pi)\)</span> - Constant that is involved with everything from probability to geometry to calculus and beyond. Geometrically, it is the ratio between the circumference of a circle and its diameter.</li>
-            <li><span style="color: var(--color-definition); font-style: italic;">Euler's Number</span> <span class="math inline">\((e)\)</span> - Related to exponential growth (hence it’s alternative name, the _exponential growth constant*). Commonly defined as:</li>
+            <li><span class="math inline">\color{cyan}{\textnormal{Pi}}</span> <span class="math inline">(\pi)</span> - Constant that is involved with everything from probability to geometry to calculus and beyond. Geometrically, it is the ratio between the circumference of a circle and its diameter.</li>
+            <li><span class="math inline">\color{cyan}{\textnormal{Euler&#39;s Number}}</span> <span class="math inline">(e)</span> - Related to exponential growth (hence it’s alternative name, the _exponential growth constant*). Commonly defined as:</li>
         </ul>
-        <p><span class="math display">\[e = \lim_{n\rightarrow\infty}{(1 + \frac{1}{n})^n}\]</span></p>
+        <p><span class="math display">e = \lim_{n\rightarrow\infty}{(1 + \frac{1}{n})^n}</span></p>
         <ul>
             <li>
-                <span style="color: var(--color-definition); font-style: italic;">Imaginary Unit</span> <span class="math inline">\((i)\)</span> - Used for imaginary numbers. <span class="math inline">\(i = \sqrt{-1}\)</span>. This constant has special properties: <span class="math display">\[i^2=-1\]</span> <span class="math display">\[i^3=-1\]</span> <span class="math display">\[i^4=1\]</span> <span class="math display">\[i^5=i\]</span> <span class="math display">\[i^6=-1\]</span>
+                <span class="math inline">\color{cyan}{\textnormal{Imaginary Unit}}</span> <span class="math inline">(i)</span> - Used for imaginary numbers. <span class="math inline">i = \sqrt{-1}</span>. This constant has special properties: <span class="math display">i^2=-1</span> <span class="math display">i^3=-1</span> <span class="math display">i^4=1</span> <span class="math display">i^5=i</span> <span class="math display">i^6=-1</span>
                 <ul>
                     <li>This cycle continues indefinitely</li>
                 </ul>
             </li>
             <li>
-                <span style="color: var(--color-definition); font-style: italic;">Pythagoras's Constant</span> - Square root of two <span class="math inline">\((\sqrt{2})\)</span>. Originates in the Pythagorean Theorem (see Unit 2 for Geometry) where the sides of the triangle are 1, so the hypotenuse is <span class="math inline">\(\sqrt{2}\)</span>.
+                <span class="math inline">\color{cyan}{\textnormal{Pythagoras&#39;s Constant}}</span> - Square root of two <span class="math inline">(\sqrt{2})</span>. Originates in the Pythagorean Theorem (see Unit 2 for Geometry) where the sides of the triangle are 1, so the hypotenuse is <span class="math inline">\sqrt{2}</span>.
                 <ul>
-                    <li>Can be approximated by <span class="math inline">\(99/70\)</span>.</li>
+                    <li>Can be approximated by <span class="math inline">99/70</span>.</li>
                 </ul>
             </li>
-            <li><span style="color: var(--color-definition); font-style: italic;">Golden Ratio</span> <span class="math inline">\((\phi)\)</span> - A special ratio that frequently appears in geometry. It is represented by the following:</li>
+            <li><span class="math inline">\color{cyan}{\textnormal{Golden Ratio}}</span> <span class="math inline">(\phi)</span> - A special ratio that frequently appears in geometry. It is represented by the following:</li>
         </ul>
-        <p><span class="math display">\[\phi = 2\cdot\sin{54^\circ} = \frac{1 + \sqrt{5}}{2} \approx 1.618033988...\]</span></p>
+        <p><span class="math display">\phi = 2\cdot\sin{54^\circ} = \frac{1 + \sqrt{5}}{2} \approx 1.618033988...</span></p>
         <hr>
         <hr>
         <h2 id="closing">Closing</h2>

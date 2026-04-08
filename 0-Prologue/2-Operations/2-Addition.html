@@ -29,10 +29,40 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section 0.2.2: Addition</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../util/math-config.js"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-    <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><!-- MATH -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <script>
+        // This script is responsible for kickstarting the KaTeX rendering.
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "\x24\x24", right: "\x24\x24", display: true },
+                    { left: "\x24", right: "\x24", display: false },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true }
+                ]
+            });
+        });
+    </script>
+    <script defer src="/usr/share/javascript/katex/katex.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var mathElements = document.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+    katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+    });
+    }}});
+    </script>
+    <link rel="stylesheet" href="/usr/share/javascript/katex/katex.min.css"><!-- CSS -->
     <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/extra.css">
 </head>
@@ -212,7 +242,7 @@
         </ul>
         <h2 id="overview">Overview</h2>
         <p>Addition and subtraction represent the two simplest arithmetic operations.</p>
-        <p><span style="color: var(--color-definition); font-style: italic;">Addition</span> is the act of aggregating two numbers together.</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Addition}}</span> is the act of aggregating two numbers together.</p>
         <blockquote>
             <p>Addition answers: “What happens when I combine one group of things with another group of things to make a larger group of things?”</p>
         </blockquote>
@@ -220,38 +250,38 @@
         <p>For instance, if I have 5 apples in one basket, and 10 apples in another basket, and combine them into a bigger basket, how many apples would I have?</p>
         <p>Well, the first step is to realize that the final basket would have the 5 apples from the first basket, and 10 apples from the second. You could perform this by taking 5 apples, dumping 10 more apples in the basket and counting each. You will get 15 apples, showing that addition is a simple expansion of counting.</p>
         <p>Alternatively, you could perform this much easier by <em>adding</em> the two quantities together. That would result in 15 total apples!</p>
-        <p>The addition operation is represented by the <span class="math inline">\(+\)</span> sign. To represent the situation above, you would write:</p>
-        <p><span class="math display">\[5 + 10\]</span></p>
+        <p>The addition operation is represented by the <span class="math inline">+</span> sign. To represent the situation above, you would write:</p>
+        <p><span class="math display">5 + 10</span></p>
         <blockquote>
             <p>This is spoken as “Five plus ten.”</p>
         </blockquote>
-        <p>Which represents the actual act of adding the two numbers. The next step when writing an expression is to <span style="color: var(--color-definition); font-style: italic;">simplify</span> it. That is, make the expression as consolidated as possible. In this case, you would add the two numbers to get <span class="math inline">\(15\)</span>. You can write this statement as the equation:</p>
-        <p><span class="math display">\[5 + 10 = 15\]</span></p>
+        <p>Which represents the actual act of adding the two numbers. The next step when writing an expression is to <span class="math inline">\color{cyan}{\textnormal{simplify}}</span> it. That is, make the expression as consolidated as possible. In this case, you would add the two numbers to get <span class="math inline">15</span>. You can write this statement as the equation:</p>
+        <p><span class="math display">5 + 10 = 15</span></p>
         <p>Or as a series of steps:</p>
-        <p><span class="math display">\[ \begin{aligned} 5 + 10\\ = 15 \end{aligned} \]</span></p>
+        <p><span class="math display">\begin{aligned} 5 + 10\\ = 15 \end{aligned}</span></p>
         <blockquote>
             <p>This is spoken as “Five plus ten equals fifteen.”</p>
         </blockquote>
         <h2 id="addition-operands">Addition Operands</h2>
-        <p>Addition refers to their terms as <span style="color: var(--color-definition); font-style: italic;">addends</span> and the result of the operation is called the <span style="color: var(--color-definition); font-style: italic;">sum</span>. That is, for <span class="math inline">\(2 + 3 = 5\)</span> the addends are <span class="math inline">\(2\)</span> and <span class="math inline">\(3\)</span>, while <span class="math inline">\(5\)</span> represents the sum. So, it can be modeled as:</p>
-        <p><span class="math display">\[\text{addend} + \text{addend} = \text{sum}\]</span></p>
+        <p>Addition refers to their terms as <span class="math inline">\color{cyan}{\textnormal{addends}}</span> and the result of the operation is called the <span class="math inline">\color{cyan}{\textnormal{sum}}</span>. That is, for <span class="math inline">2 + 3 = 5</span> the addends are <span class="math inline">2</span> and <span class="math inline">3</span>, while <span class="math inline">5</span> represents the sum. So, it can be modeled as:</p>
+        <p><span class="math display">\text{addend} + \text{addend} = \text{sum}</span></p>
         <blockquote>
-            <p>The operands is sometimes referred to as <span style="color: var(--color-definition); font-style: italic;">summands</span></p>
+            <p>The operands is sometimes referred to as <span class="math inline">\color{cyan}{\textnormal{summands}}</span></p>
         </blockquote>
         <h2 id="long-addition">Long Addition</h2>
         <p>Long addition is a method of performing addition by hand where the two addends are placed vertically. The addition is performed by “column” where numbers are aligned in a particular manner to enable adding by digit.</p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{+}100 \\ \underline{+\phantom{1}99} \\ \phantom{+}199 \\ \end{aligned} \]</span></p>
-        <p>Whenver a digit “overflows”, that is, when two digits added together exceeds the maximum value for a single digit (such as, <span class="math inline">\(5+5 = 10\)</span>; a single digit can only represent a maximum value of <span class="math inline">\(9\)</span>), the remaining value must be “carried over” to the next digit. Here’s an example of long addition where you would need to utilize such a carry-over technique.</p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{+}852 \\ \underline{+\phantom{0}299} \\ \phantom{+}1151 \\ \end{aligned} \]</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{+}100 \\ \underline{+\phantom{1}99} \\ \phantom{+}199 \\ \end{aligned}</span></p>
+        <p>Whenver a digit “overflows”, that is, when two digits added together exceeds the maximum value for a single digit (such as, <span class="math inline">5+5 = 10</span>; a single digit can only represent a maximum value of <span class="math inline">9</span>), the remaining value must be “carried over” to the next digit. Here’s an example of long addition where you would need to utilize such a carry-over technique.</p>
+        <p><span class="math display">\begin{aligned} \phantom{+}852 \\ \underline{+\phantom{0}299} \\ \phantom{+}1151 \\ \end{aligned}</span></p>
         <p>To understand how this works step by step, I will reproduce the steps necessary as individual “snapshots” of this process, with comments between each to describe what was done immediately above it.</p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{00}_1\phantom{0}\\ \phantom{+}852 \\ \underline{+\phantom{0}299} \\ \phantom{+115}1 \\ \end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{2 + 9 = 11, so you must carry the 1 to the next column. Notice the 1 at the top.} \\ \]</span></p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{0}_1\phantom{00}\\ \phantom{+}852 \\ \underline{+\phantom{0}299} \\ \phantom{+11}51 \\ \end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{1 + 5 + 9 = 15, so you must carry again!} \\ \]</span></p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{}_1\phantom{000}\\ \phantom{+}852 \\ \underline{+\phantom{0}299} \\ \phantom{+1}151 \\ \end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{1 + 8 + 2 = 11; another carry!} \\ \]</span></p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{+}852 \\ \underline{+\phantom{0}299} \\ \phantom{+}1151 \\ \end{aligned} \]</span></p>
-        <p><span class="math display">\[ \text{Simply bring the final carried 1 down. Congrats!} \\ \]</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{00}_1\phantom{0}\\ \phantom{+}852 \\ \underline{+\phantom{0}299} \\ \phantom{+115}1 \\ \end{aligned}</span></p>
+        <p><span class="math display">\text{2 + 9 = 11, so you must carry the 1 to the next column. Notice the 1 at the top.} \\</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{0}_1\phantom{00}\\ \phantom{+}852 \\ \underline{+\phantom{0}299} \\ \phantom{+11}51 \\ \end{aligned}</span></p>
+        <p><span class="math display">\text{1 + 5 + 9 = 15, so you must carry again!} \\</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{}_1\phantom{000}\\ \phantom{+}852 \\ \underline{+\phantom{0}299} \\ \phantom{+1}151 \\ \end{aligned}</span></p>
+        <p><span class="math display">\text{1 + 8 + 2 = 11; another carry!} \\</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{+}852 \\ \underline{+\phantom{0}299} \\ \phantom{+}1151 \\ \end{aligned}</span></p>
+        <p><span class="math display">\text{Simply bring the final carried 1 down. Congrats!} \\</span></p>
         <hr>
         <hr>
         <h2 id="closing">Closing</h2>
@@ -263,7 +293,7 @@
             <thead>
                 <tr class="header">
                     <th style="text-align: center;">Previous</th>
-                    <th style="text-align: left;">Next</th>
+                    <th style="text-align: center;">Next</th>
                 </tr>
             </thead>
             <tbody>
@@ -271,7 +301,7 @@
                     <td style="text-align: center;">
                         ← <a href="./1-Arithmetic.html">0.2.1: Arithmetic</a>
                     </td>
-                    <td style="text-align: left;">
+                    <td style="text-align: center;">
                         <a href="./3-Subtraction.html">0.2.3: Subtraction</a> →
                     </td>
                 </tr>

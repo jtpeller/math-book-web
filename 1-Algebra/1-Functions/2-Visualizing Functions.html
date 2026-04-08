@@ -29,10 +29,40 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section 1.1.2: Visualizing Functions</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../util/math-config.js"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-    <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><!-- MATH -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <script>
+        // This script is responsible for kickstarting the KaTeX rendering.
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "\x24\x24", right: "\x24\x24", display: true },
+                    { left: "\x24", right: "\x24", display: false },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true }
+                ]
+            });
+        });
+    </script>
+    <script defer src="/usr/share/javascript/katex/katex.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var mathElements = document.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+    katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+    });
+    }}});
+    </script>
+    <link rel="stylesheet" href="/usr/share/javascript/katex/katex.min.css"><!-- CSS -->
     <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/extra.css">
 </head>
@@ -233,17 +263,17 @@
         <p>Alternatively, you can utilize a table, which depicts different calculated values of the output of the function against its inputs, which can help identify patterns, growth, etc.</p>
         <h2 id="cartesian-planes">Cartesian Planes</h2>
         <p>Functions are most commonly graphed on Cartesian planes.</p>
-        <p>Defining Cartesian planes is tricky, since up-to-now, geometry has yet to be discussed (see: dimensions, planes, etc. in <a href="../2-Geometry/0-Introduction.html">Geometry</a>). A <span style="color: var(--color-definition); font-style: italic;">Cartesian plane</span> can be thought of as a flat surface (it has a length and a width, sometimes infinite) with two perpendicular number lines. Simply put, make a cartesian plane by simply overlapping two number lines so they overlap to make a big plus sign.</p>
+        <p>Defining Cartesian planes is tricky, since up-to-now, geometry has yet to be discussed (see: dimensions, planes, etc. in <a href="../2-Geometry/0-Introduction.html">Geometry</a>). A <span class="math inline">\color{cyan}{\textnormal{Cartesian plane}}</span> can be thought of as a flat surface (it has a length and a width, sometimes infinite) with two perpendicular number lines. Simply put, make a cartesian plane by simply overlapping two number lines so they overlap to make a big plus sign.</p>
         <figure>
-            <img src="./img/cartesian-plane.png" style="display: block; margin-left: auto; margin-right: auto; text-align: center;" alt="Figure 1.2.1: Example Cartesian Plane, with both axes ranging from -6 to 6.">
+            <img src="./img/cartesian-plane.png" alt="Figure 1.2.1: Example Cartesian Plane, with both axes ranging from -6 to 6.">
             <figcaption aria-hidden="true">
                 Figure 1.2.1: Example Cartesian Plane, with both axes ranging from -6 to 6.
             </figcaption>
         </figure>
         <h2 id="parts-of-a-cartesian-plane">Parts of a Cartesian Plane</h2>
         <h3 id="axes">Axes</h3>
-        <p>The number lines are called <span style="color: var(--color-definition); font-style: italic;">axes</span>, and they each represent a specific quantity. The input (usually represented by the letter <span class="math inline">\(x\)</span>) is represented by the horizontal line, while the output (usually, <span class="math inline">\(y\)</span> or <span class="math inline">\(f(x)\)</span>) is represented by the vertical line.</p>
-        <p>The points at which numbers are annotated on the axes are generally referred to as <span style="color: var(--color-definition); font-style: italic;">ticks</span>. Ticks are usually denoted with a small line that stems from the axes itself (the <strong><em>tick mark</em></strong>). Ticks help make charts easier to read.</p>
+        <p>The number lines are called <span class="math inline">\color{cyan}{\textnormal{axes}}</span>, and they each represent a specific quantity. The input (usually represented by the letter <span class="math inline">x</span>) is represented by the horizontal line, while the output (usually, <span class="math inline">y</span> or <span class="math inline">f(x)</span>) is represented by the vertical line.</p>
+        <p>The points at which numbers are annotated on the axes are generally referred to as <span class="math inline">\color{cyan}{\textnormal{ticks}}</span>. Ticks are usually denoted with a small line that stems from the axes itself (the <strong><em>tick mark</em></strong>). Ticks help make charts easier to read.</p>
         <p>In the chart above (Figure 1.2.1), the chart instead utilizes grid marks, which make it even easier to study the behavior of the function. Grid marks essentially extend the tick marks to the edges of the cartesian plane for easier viewing.</p>
         <blockquote>
             <p>Both tick marks and grid marks are completely optional, although they make it far easier to understand the graph and function.</p>
@@ -251,21 +281,21 @@
         <p>Arrows are often present at the end of the axes lines as well, which denote that the axes extend forever (infinitely). These too are optional (they are implied, typically).</p>
         <p>Further still, arrows may be present on the line itself, implying that this behavior extends forever as well. The use of these kinds of arrows depends on the nature of the function being graphed!</p>
         <h3 id="scales">Scales</h3>
-        <p>The number lines can be scaled as desired to show whichever behavior or characteristic is desired. The most common scale for the axes is <span style="color: var(--color-definition); font-style: italic;">linear</span>, which means that the distance between tick marks represents a constant value (e.g., increasing by 1: <span class="math inline">\(1, 2, 3, ...\)</span>; by 2: <span class="math inline">\(2, 4, 6, ...\)</span>; etc.).</p>
-        <p>Another relatively common scale includes the <span style="color: var(--color-definition); font-style: italic;">logarithmic</span> scale, which is useful for quickly growing (or decaying) functions. A scale that is logarithmic increases by the power of ten (each ‘tick’ represents <span class="math inline">\(10^0, 10^1, 10^2, ...\)</span>).</p>
-        <p>It is also possible to scale the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> axes differently. For instance, one may be linearly scaled while the other is logarithmically scaled. Alternatively, you could have both be linear scales, but the <span class="math inline">\(x\)</span> axis increases by 1 every tick mark, while the <span class="math inline">\(y\)</span> axis could increase by 2.</p>
+        <p>The number lines can be scaled as desired to show whichever behavior or characteristic is desired. The most common scale for the axes is <span class="math inline">\color{cyan}{\textnormal{linear}}</span>, which means that the distance between tick marks represents a constant value (e.g., increasing by 1: <span class="math inline">1, 2, 3, ...</span>; by 2: <span class="math inline">2, 4, 6, ...</span>; etc.).</p>
+        <p>Another relatively common scale includes the <span class="math inline">\color{cyan}{\textnormal{logarithmic}}</span> scale, which is useful for quickly growing (or decaying) functions. A scale that is logarithmic increases by the power of ten (each ‘tick’ represents <span class="math inline">10^0, 10^1, 10^2, ...</span>).</p>
+        <p>It is also possible to scale the <span class="math inline">x</span> and <span class="math inline">y</span> axes differently. For instance, one may be linearly scaled while the other is logarithmically scaled. Alternatively, you could have both be linear scales, but the <span class="math inline">x</span> axis increases by 1 every tick mark, while the <span class="math inline">y</span> axis could increase by 2.</p>
         <blockquote>
             <p>The scales you choose for a graph depend on the nature of the graph itself and what you are trying to study or understand.</p>
         </blockquote>
         <h2 id="how-to-graph">How to Graph</h2>
-        <p>The graph above has a linear scale. You can see that because each tick is labeled with a number, and those numbers are a constant value apart (in this case, <span class="math inline">\(2\)</span>). You can also see that the graph displays a linear function: one that grows at a constant rate. In this case, <span class="math inline">\(y=f(x)=2x\)</span>.</p>
+        <p>The graph above has a linear scale. You can see that because each tick is labeled with a number, and those numbers are a constant value apart (in this case, <span class="math inline">2</span>). You can also see that the graph displays a linear function: one that grows at a constant rate. In this case, <span class="math inline">y=f(x)=2x</span>.</p>
         <blockquote>
-            <p>This function, <span class="math inline">\(f(x)=2x\)</span>, is a linear function in slope-intercept form, but this will be explored more in <a href="../4-Linear%20Functions/0-Introduction.html">Linear Functions</a>, but let’s not get ahead of ourselves.</p>
+            <p>This function, <span class="math inline">f(x)=2x</span>, is a linear function in slope-intercept form, but this will be explored more in <a href="../4-Linear%20Functions/0-Introduction.html">Linear Functions</a>, but let’s not get ahead of ourselves.</p>
         </blockquote>
-        <p>A graph can be created for any function or relationship by computing input and output pairs. These input and output pairs are called <span style="color: var(--color-definition); font-style: italic;">ordered pairs</span>, named because the input comes first, then the output: <span class="math inline">\((x, y)\)</span>. Hence, they are <em>in order</em>.</p>
-        <p>Every place in a cartesian plane may be indexed via a pair of values; one from the x-axis and one from the y-axis. These are coupled together in an ordered pair, like this: <span class="math inline">\((x_1, y_1)\)</span>. This allows referring to any given point in a cartesian plane.</p>
-        <p>Now, the center point, when <span class="math inline">\(x_1=0\)</span> and <span class="math inline">\(y_1=0\)</span> is referred to as the <span style="color: var(--color-definition); font-style: italic;">origin</span>. It is the point at which the axes cross. Where <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> are zero.</p>
-        <p>To create a graph of a line, you need at least two ordered pairs, since two points create a line. The chart above utilizes two points: <span class="math inline">\((-3, -6)\)</span> and <span class="math inline">\((3, 6)\)</span> to create the plot. Now, that line that is graphed actually has an INFINITE number of ordered pairs! That’s because you can use any real number as an input, meaning you can have any ordered pair you want, like <span class="math inline">\((1.25, 2.5)\)</span> or maybe even <span class="math inline">\((2.2222222, 4.4444444)\)</span>.</p>
+        <p>A graph can be created for any function or relationship by computing input and output pairs. These input and output pairs are called <span class="math inline">\color{cyan}{\textnormal{ordered pairs}}</span>, named because the input comes first, then the output: <span class="math inline">(x, y)</span>. Hence, they are <em>in order</em>.</p>
+        <p>Every place in a cartesian plane may be indexed via a pair of values; one from the x-axis and one from the y-axis. These are coupled together in an ordered pair, like this: <span class="math inline">(x_1, y_1)</span>. This allows referring to any given point in a cartesian plane.</p>
+        <p>Now, the center point, when <span class="math inline">x_1=0</span> and <span class="math inline">y_1=0</span> is referred to as the <span class="math inline">\color{cyan}{\textnormal{origin}}</span>. It is the point at which the axes cross. Where <span class="math inline">x</span> and <span class="math inline">y</span> are zero.</p>
+        <p>To create a graph of a line, you need at least two ordered pairs, since two points create a line. The chart above utilizes two points: <span class="math inline">(-3, -6)</span> and <span class="math inline">(3, 6)</span> to create the plot. Now, that line that is graphed actually has an INFINITE number of ordered pairs! That’s because you can use any real number as an input, meaning you can have any ordered pair you want, like <span class="math inline">(1.25, 2.5)</span> or maybe even <span class="math inline">(2.2222222, 4.4444444)</span>.</p>
         <h2 id="graphing-non-trivial-functions">Graphing Non-Trivial Functions</h2>
         <p>Plotting a function gets a bit more tricky with more complicated functions. You need more points to better represent their behavior, which requires more number-crunching and overall makes the entire effort much less fun.</p>
         <p>Luckily, that’s where graphing calculators come in. They are capable of graphing a particular function (some of them even support multivariate functions; plotting in 3D!) across a particular window of values (that is, what you are able to see in the <em>window</em>).</p>
@@ -275,17 +305,17 @@
         </blockquote>
         <h2 id="the-straight-line-test">The Straight-Line Test</h2>
         <p>If you have a graph of a <em>formula</em>, you can classify it as a <em>function</em> using the straight-line test.</p>
-        <p>The <span style="color: var(--color-definition); font-style: italic;">Straight-Line Test</span> (aka, the vertical-line test) is a visual test to identify whether each and every input has only one output (and thus, whether the targeted formula is a function). To perform the test, you would draw vertical lines through each input for a function to identify whether it has only one output per input.</p>
-        <p>You could imagine that it would be quite difficult to do this for <em>every</em> input. 3.1? Then <span class="math inline">\(3.11\)</span>? And what about <span class="math inline">\(3.1111111111\)</span>?</p>
+        <p>The <span class="math inline">\color{cyan}{\textnormal{Straight-Line Test}}</span> (aka, the vertical-line test) is a visual test to identify whether each and every input has only one output (and thus, whether the targeted formula is a function). To perform the test, you would draw vertical lines through each input for a function to identify whether it has only one output per input.</p>
+        <p>You could imagine that it would be quite difficult to do this for <em>every</em> input. 3.1? Then <span class="math inline">3.11</span>? And what about <span class="math inline">3.1111111111</span>?</p>
         <p>Instead, it can be a visual cue, performed abstractly when you look at a function’s graph.</p>
         <blockquote>
             <h3 id="example-straight-line-test">Example: Straight-Line Test</h3>
-            <p>What about a linear formula, like <span class="math inline">\(y = 2x\)</span>? Is <span class="math inline">\(y\)</span> a function?</p>
+            <p>What about a linear formula, like <span class="math inline">y = 2x</span>? Is <span class="math inline">y</span> a function?</p>
             <p>You could graph the formula, and get the following graph:</p>
             <figure>
-                <img src="./img/cartesian-plane.png" style="display: block; margin-left: auto; margin-right: auto; text-align: center;" alt="Graph of y=2x">
+                <img src="./img/cartesian-plane.png" alt="Graph of y=2x">
                 <figcaption aria-hidden="true">
-                    Graph of <span class="math inline">\(y=2x\)</span>
+                    Graph of <span class="math inline">y=2x</span>
                 </figcaption>
             </figure>
             <p>If you look at each input in the graph, you’ll notice that there is exactly one output. You can verify this mathematically (that you only get one value for every input), but you can instead verify this with the vertical line test.</p>
@@ -293,7 +323,7 @@
         </blockquote>
         <h2 id="tables">Tables</h2>
         <p>Rather than taking the effort of drawing functions every single time, an alternative is to list the ordered pairs in a table. Tables help organize the values and enable quick numerical comparisons. The problem with graphs is that it may be difficult to tell the exact values that “lie on the graph”, unless you have the function handy.</p>
-        <p>If you do not have it handy, or want to know the exact values at a particular point, tables are a great alternative. Imagine instead representing <span class="math inline">\(f(x)=2x\)</span> using the table below:</p>
+        <p>If you do not have it handy, or want to know the exact values at a particular point, tables are a great alternative. Imagine instead representing <span class="math inline">f(x)=2x</span> using the table below:</p>
         <table aria-label="Data table generated by Pandoc" data-summary="Data table generated by Pandoc" style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
             <thead>
                 <tr class="header">
@@ -332,7 +362,7 @@
                 </tr>
             </tbody>
         </table>
-        <p>This makes it very easy to see a handful of inputs and their corresponding outputs. It also more easily allows computing different charactistics about the function, such as its rate of change, horizontal intercept (aka <span class="math inline">\(x\)</span>-intercept), and vertical intercept (aka <span class="math inline">\(y\)</span>-intercept). These characteristics will be discussed in Chapter 3.</p>
+        <p>This makes it very easy to see a handful of inputs and their corresponding outputs. It also more easily allows computing different charactistics about the function, such as its rate of change, horizontal intercept (aka <span class="math inline">x</span>-intercept), and vertical intercept (aka <span class="math inline">y</span>-intercept). These characteristics will be discussed in Chapter 3.</p>
         <hr>
         <hr>
         <h2 id="closing">Closing</h2>
@@ -344,16 +374,16 @@
             </colgroup>
             <thead>
                 <tr class="header">
-                    <th>Previous</th>
-                    <th>Next</th>
+                    <th style="text-align: center;">Previous</th>
+                    <th style="text-align: center;">Next</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="odd">
-                    <td>
+                    <td style="text-align: center;">
                         ← <a href="./1-Functions.html">1.1.1: Functions</a>
                     </td>
-                    <td>
+                    <td style="text-align: center;">
                         <a href="./3-Characteristics%20of%20Functions.html">1.1.3: Characteristics of Functions</a> →
                     </td>
                 </tr>

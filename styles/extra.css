@@ -20,6 +20,13 @@ body {
     padding-top: 70px;
 }
 
+/* Target the specific color KaTeX generates for 'cyan' */
+.katex .textcolor-cyan,
+[style*="color: cyan"],
+[style*="color:cyan"] {
+    color: var(--color-definition) !important;
+}
+
 /***************************** NAVBAR STUFF */
 .navbar {
     background-color: var(--nav-bg) !important;
@@ -42,7 +49,6 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
-
 
 /* Unit headers should pop more than Chapter headers */
 h6.nav-header[style*="padding-left: 15px"] {

@@ -29,10 +29,40 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section 1.3.1: Linear Functions</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../util/math-config.js"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-    <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><!-- MATH -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <script>
+        // This script is responsible for kickstarting the KaTeX rendering.
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "\x24\x24", right: "\x24\x24", display: true },
+                    { left: "\x24", right: "\x24", display: false },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true }
+                ]
+            });
+        });
+    </script>
+    <script defer src="/usr/share/javascript/katex/katex.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var mathElements = document.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+    katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+    });
+    }}});
+    </script>
+    <link rel="stylesheet" href="/usr/share/javascript/katex/katex.min.css"><!-- CSS -->
     <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/extra.css">
 </head>
@@ -211,28 +241,28 @@
         <p>Linear functions describe functions that preserve both <em>additivity</em> and <em>scalar multiplication</em>.</p>
         <p>To break this jargon down:</p>
         <ul>
-            <li><strong><em>Additivity</em></strong>: Property of a function where the following holds true: <span class="math inline">\(f(u + v) = f(u) + f(v)\)</span></li>
-            <li><strong><em>Scalar multiplication</em></strong>: Property of a function where the following holds true: <span class="math inline">\(f(cu) = cf(u)\)</span></li>
+            <li><strong><em>Additivity</em></strong>: Property of a function where the following holds true: <span class="math inline">f(u + v) = f(u) + f(v)</span></li>
+            <li><strong><em>Scalar multiplication</em></strong>: Property of a function where the following holds true: <span class="math inline">f(cu) = cf(u)</span></li>
         </ul>
-        <p>To think about this much more easily, <strong><em>Linear Functions</em></strong> are functions where the input variable has a <em>degree</em> (that is, exponent value) of 1 (like <span class="math inline">\(f(x)=2x + 2\)</span>) or 0 (like <span class="math inline">\(f(x)=2\)</span>).</p>
+        <p>To think about this much more easily, <strong><em>Linear Functions</em></strong> are functions where the input variable has a <em>degree</em> (that is, exponent value) of 1 (like <span class="math inline">f(x)=2x + 2</span>) or 0 (like <span class="math inline">f(x)=2</span>).</p>
         <h2 id="types">Types</h2>
         <p><strong><em>Linear functions</em></strong> present themselves like the following chart. Notice that the graph is just a line (hence, <em>LINEar</em>)</p>
         <figure>
-            <img src="img/linear-graph.png" style="display: block; margin-left: auto; margin-right: auto; text-align: center;" alt="Figure 1.4.1: Linear Function, where f(x)=-2x+2">
+            <img src="img/linear-graph.png" alt="Figure 1.4.1: Linear Function, where f(x)=-2x+2">
             <figcaption aria-hidden="true">
                 Figure 1.4.1: Linear Function, where f(x)=-2x+2
             </figcaption>
         </figure>
-        <p><strong><em>Constant functions</em></strong> are a special type of linear function where, for all output, the output is the same value. These are of the form <span class="math inline">\(f(x) = c\)</span>, where <span class="math inline">\(c\)</span> simply represents some numerical value.</p>
+        <p><strong><em>Constant functions</em></strong> are a special type of linear function where, for all output, the output is the same value. These are of the form <span class="math inline">f(x) = c</span>, where <span class="math inline">c</span> simply represents some numerical value.</p>
         <figure>
-            <img src="img/constant-graph.png" style="display: block; margin-left: auto; margin-right: auto; text-align: center;" alt="Figure 1.4.2: Constant Function, where f(x)=4">
+            <img src="img/constant-graph.png" alt="Figure 1.4.2: Constant Function, where f(x)=4">
             <figcaption aria-hidden="true">
                 Figure 1.4.2: Constant Function, where f(x)=4
             </figcaption>
         </figure>
-        <p><strong><em>Identity</em></strong>: A special type of <strong>linear</strong> function where the output is the same as the input. It is of the form, <span class="math inline">\(f(x) = x\)</span>.</p>
+        <p><strong><em>Identity</em></strong>: A special type of <strong>linear</strong> function where the output is the same as the input. It is of the form, <span class="math inline">f(x) = x</span>.</p>
         <figure>
-            <img src="img/identity-graph.png" style="display: block; margin-left: auto; margin-right: auto; text-align: center;" alt="Figure 1.4.3: Identity Function, where f(x)=4">
+            <img src="img/identity-graph.png" alt="Figure 1.4.3: Identity Function, where f(x)=4">
             <figcaption aria-hidden="true">
                 Figure 1.4.3: Identity Function, where f(x)=4
             </figcaption>
@@ -240,54 +270,54 @@
         <h2 id="forms">Forms</h2>
         <p>Linear functions have important characteristics beyond the preservation of additivity and scalar multiplication.</p>
         <p>Linear functions are typically of the form:</p>
-        <p><span class="math display">\[ y = mx + b \]</span></p>
-        <p>Where <span class="math inline">\(y\)</span> is the output variable (could be <span class="math inline">\(f(x)\)</span>, <span class="math inline">\(g(x)\)</span>, <span class="math inline">\(z\)</span>, etc.), <span class="math inline">\(x\)</span> is the input variable, and:</p>
+        <p><span class="math display">y = mx + b</span></p>
+        <p>Where <span class="math inline">y</span> is the output variable (could be <span class="math inline">f(x)</span>, <span class="math inline">g(x)</span>, <span class="math inline">z</span>, etc.), <span class="math inline">x</span> is the input variable, and:</p>
         <ol type="1">
             <li>
-                <strong><em>Slope</em></strong> (<span class="math inline">\(m\)</span>): The number describing the direction and steepness of the function’s behavior.
+                <strong><em>Slope</em></strong> (<span class="math inline">m</span>): The number describing the direction and steepness of the function’s behavior.
                 <ol type="1">
                     <li>Also known as <strong><em>rate of change</em></strong>.</li>
                     <li>A function’s <em>steepness</em> is given by the magnitude of the slope (that is, how big).</li>
                     <li>A function’s <em>direction</em> is given by the sign of the slope. That is:
                         <ol type="1">
-                            <li>A positive slope (<span class="math inline">\(m &gt; 0\)</span>) means the output grows as the input grows.</li>
-                            <li>A negative slope (<span class="math inline">\(m &lt; 0\)</span>) means the output shrinks (“grows” more negative) as the input grows larger.</li>
-                            <li>A slope of zero (<span class="math inline">\(m=0\)</span>) means the output remains the same no matter the input. That is, this is a <strong>constant function</strong>!</li>
+                            <li>A positive slope (<span class="math inline">m &gt; 0</span>) means the output grows as the input grows.</li>
+                            <li>A negative slope (<span class="math inline">m &lt; 0</span>) means the output shrinks (“grows” more negative) as the input grows larger.</li>
+                            <li>A slope of zero (<span class="math inline">m=0</span>) means the output remains the same no matter the input. That is, this is a <strong>constant function</strong>!</li>
                         </ol>
                     </li>
                 </ol>
             </li>
             <li>
-                <strong><em>Intercept</em></strong> (<span class="math inline">\(b\)</span>): The constant number which essentially provides a shift of the function’s values.
+                <strong><em>Intercept</em></strong> (<span class="math inline">b</span>): The constant number which essentially provides a shift of the function’s values.
                 <ol type="1">
-                    <li>This may also be thought of as the “default” value for <span class="math inline">\(y\)</span>, which is the value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x=0\)</span>. This is known as the <strong><em><span class="math inline">\(y\)</span>-intercept</em></strong>.</li>
+                    <li>This may also be thought of as the “default” value for <span class="math inline">y</span>, which is the value of <span class="math inline">y</span> when <span class="math inline">x=0</span>. This is known as the <strong><em><span class="math inline">y</span>-intercept</em></strong>.</li>
                 </ol>
             </li>
         </ol>
-        <p>For this reason, the form, <span class="math inline">\(y=mx+b\)</span> is known as <strong><em>slope-intercept form</em></strong> since it describes both the slope and the intercept of a single function.</p>
+        <p>For this reason, the form, <span class="math inline">y=mx+b</span> is known as <strong><em>slope-intercept form</em></strong> since it describes both the slope and the intercept of a single function.</p>
         <hr>
         <hr>
         <p>Another form that may be utilized is the <strong><em>point-slope form</em></strong>, which enables defining a function utilizing two ordered pairs.</p>
-        <p><span class="math display">\[ y - y_1 = m(x-x_1) \]</span></p>
-        <p>The first pair is going to be <span class="math inline">\((x, y)\)</span>, as you are defining the behavior between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. The second pair will be <strong>ANY</strong> point on the line, represented by <span class="math inline">\((x_1, y_1)\)</span>.</p>
+        <p><span class="math display">y - y_1 = m(x-x_1)</span></p>
+        <p>The first pair is going to be <span class="math inline">(x, y)</span>, as you are defining the behavior between <span class="math inline">x</span> and <span class="math inline">y</span>. The second pair will be <strong>ANY</strong> point on the line, represented by <span class="math inline">(x_1, y_1)</span>.</p>
         <blockquote>
             <p>Point-slope form may always be simplified into slope-intercept form, and slope-intercept form may always be expanded into point-slope form (so long as the point chosen resides on the line).</p>
             <p>Example:</p>
-            <p><span class="math display">\[y - 3 = 2(x-4)\]</span></p>
-            <p><span class="math display">\[y - 3 = 2x - 2(4)\]</span></p>
-            <p><span class="math display">\[y - 3 = 2x - 8\]</span></p>
-            <p><span class="math display">\[\boxed{y = 2x - 5}\]</span></p>
+            <p><span class="math display">y - 3 = 2(x-4)</span></p>
+            <p><span class="math display">y - 3 = 2x - 2(4)</span></p>
+            <p><span class="math display">y - 3 = 2x - 8</span></p>
+            <p><span class="math display">\boxed{y = 2x - 5}</span></p>
             <p>Point-slope form is converted to slope-intercept by solving for y!</p>
-            <p>Slope-intercept form is more open-ended, since you may chose any point. You simply extract the slope and choose a point on the line. For instance: <span class="math inline">\(y = f(x) = 2x - 5\)</span>.</p>
-            <p>Say we choose to utilize <span class="math inline">\(x_1=12\)</span>.</p>
-            <p>First, solve for <span class="math inline">\(f(12)\)</span>: <span class="math display">\[y = f(12) = 2(12) - 5 = 24 - 5 = \boxed{19}\]</span></p>
-            <p>This is your <span class="math inline">\((x_1, y_1)\)</span> ordered pair. Now, we know that the original slope is 2 (since, in slope intercept form, we have <span class="math inline">\(y = \underline{2}x - 5\)</span>). Plug this into the point-slope form template:</p>
-            <p><span class="math display">\[y - y_1 = m(x - x_1)\]</span></p>
-            <p><span class="math display">\[y - 19 = 2(x - 12)\]</span></p>
+            <p>Slope-intercept form is more open-ended, since you may chose any point. You simply extract the slope and choose a point on the line. For instance: <span class="math inline">y = f(x) = 2x - 5</span>.</p>
+            <p>Say we choose to utilize <span class="math inline">x_1=12</span>.</p>
+            <p>First, solve for <span class="math inline">f(12)</span>: <span class="math display">y = f(12) = 2(12) - 5 = 24 - 5 = \boxed{19}</span></p>
+            <p>This is your <span class="math inline">(x_1, y_1)</span> ordered pair. Now, we know that the original slope is 2 (since, in slope intercept form, we have <span class="math inline">y = \underline{2}x - 5</span>). Plug this into the point-slope form template:</p>
+            <p><span class="math display">y - y_1 = m(x - x_1)</span></p>
+            <p><span class="math display">y - 19 = 2(x - 12)</span></p>
             <p>To confirm there are no more mistakes, you can convert it back to slope intercept form, to ensure that the original form is the same as this new form!</p>
-            <p><span class="math display">\[y - 19 = 2(x - 12)\]</span></p>
-            <p><span class="math display">\[y - 19 = 2x - 24\]</span></p>
-            <p><span class="math display">\[\boxed{y = 2x - 5} \; \checkmark\]</span></p>
+            <p><span class="math display">y - 19 = 2(x - 12)</span></p>
+            <p><span class="math display">y - 19 = 2x - 24</span></p>
+            <p><span class="math display">\boxed{y = 2x - 5} \; \checkmark</span></p>
         </blockquote>
         <hr>
         <hr>
@@ -295,16 +325,16 @@
         <table aria-label="Data table generated by Pandoc" data-summary="Data table generated by Pandoc" style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
             <thead>
                 <tr class="header">
-                    <th>Previous</th>
-                    <th>Next</th>
+                    <th style="text-align: center;">Previous</th>
+                    <th style="text-align: center;">Next</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="odd">
-                    <td>
+                    <td style="text-align: center;">
                         ← <a href="./0-Introduction.html">1.3.0</a>
                     </td>
-                    <td>
+                    <td style="text-align: center;">
                         <a href="./2-Forms.html">1.3.2: Forms</a> →
                     </td>
                 </tr>

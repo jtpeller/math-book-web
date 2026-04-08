@@ -29,10 +29,40 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section 0.2.6: Equality</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../util/math-config.js"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-    <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><!-- MATH -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <script>
+        // This script is responsible for kickstarting the KaTeX rendering.
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "\x24\x24", right: "\x24\x24", display: true },
+                    { left: "\x24", right: "\x24", display: false },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true }
+                ]
+            });
+        });
+    </script>
+    <script defer src="/usr/share/javascript/katex/katex.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var mathElements = document.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+    katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+    });
+    }}});
+    </script>
+    <link rel="stylesheet" href="/usr/share/javascript/katex/katex.min.css"><!-- CSS -->
     <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/extra.css">
 </head>
@@ -228,21 +258,21 @@
         </ul>
         <h2 id="overview">Overview</h2>
         <p>Recall that expressions may be converted into an equation using an equal sign. That is, you could make the following:</p>
-        <p><span class="math display">\[100 + 50\]</span></p>
+        <p><span class="math display">100 + 50</span></p>
         <p>Into an equation by writing what it is equal to:</p>
-        <p><span class="math display">\[100 + 50 = 150\]</span></p>
+        <p><span class="math display">100 + 50 = 150</span></p>
         <p>But, you don’t have to stop there, you could write this equation in an infinite number of ways!</p>
-        <p><span class="math display">\[100 + 50 = 99 + 51 = 98 + 52 = ... = 1 + 149 = 150\]</span></p>
+        <p><span class="math display">100 + 50 = 99 + 51 = 98 + 52 = ... = 1 + 149 = 150</span></p>
         <p>You might be saying that this is clearly bounded. But, don’t forget about decimals!</p>
-        <p><span class="math display">\[ 100 + 50 = 99.99 + 50.01 = ... = 150\]</span></p>
-        <p>Therefore, it is possible to represent any number an infinite number of ways. That being said, in almost no scenario would you want to write the number <span class="math inline">\(150\)</span> as <span class="math inline">\(99.9999999 + 50.0000001\)</span>.</p>
+        <p><span class="math display">100 + 50 = 99.99 + 50.01 = ... = 150</span></p>
+        <p>Therefore, it is possible to represent any number an infinite number of ways. That being said, in almost no scenario would you want to write the number <span class="math inline">150</span> as <span class="math inline">99.9999999 + 50.0000001</span>.</p>
         <div class="markdown-alert alert-important">
             <p>Convention dictates you utilize the simplest form when representing numbers.</p>
         </div>
         <p>The only time you break from this convention is when you are trying to simplify further, although this will be discussed in Algebra.</p>
         <h2 id="relations">Relations</h2>
         <p>Ultimately, equality is not the only relationship that two numbers may have.</p>
-        <p>Numbers can have many relationships with each other, and it is common to have to describe these relationships. You can describe numbers <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> as:</p>
+        <p>Numbers can have many relationships with each other, and it is common to have to describe these relationships. You can describe numbers <span class="math inline">A</span> and <span class="math inline">B</span> as:</p>
         <table aria-label="Data table generated by Pandoc" data-summary="Data table generated by Pandoc" style="margin-left: auto; margin-right: auto; border-collapse: collapse;">
             <colgroup>
                 <col style="width: 19%">
@@ -266,77 +296,77 @@
                 <tr class="odd">
                     <td style="text-align: left;"><strong><em>Equal</em></strong></td>
                     <td style="text-align: left;">A and B have the same value</td>
-                    <td style="text-align: center;"><span class="math inline">\(=\)</span></td>
-                    <td style="text-align: center;"><span class="math inline">\(A = B\)</span></td>
+                    <td style="text-align: center;"><span class="math inline">=</span></td>
+                    <td style="text-align: center;"><span class="math inline">A = B</span></td>
                     <td style="text-align: center;">“equals”, “is”</td>
-                    <td style="text-align: center;"><span class="math inline">\(5=5\)</span></td>
+                    <td style="text-align: center;"><span class="math inline">5=5</span></td>
                 </tr>
                 <tr class="even">
                     <td style="text-align: left;"><strong><em>Approx</em></strong></td>
                     <td style="text-align: left;">A and B have “about” the same value (this is relative)</td>
-                    <td style="text-align: center;"><span class="math inline">\(\approx\)</span></td>
-                    <td style="text-align: center;"><span class="math inline">\(A\approx B\)</span></td>
+                    <td style="text-align: center;"><span class="math inline">\approx</span></td>
+                    <td style="text-align: center;"><span class="math inline">A\approx B</span></td>
                     <td style="text-align: center;">“approximately”, “about”</td>
-                    <td style="text-align: center;"><span class="math inline">\(5.0001 \approx 5\)</span></td>
+                    <td style="text-align: center;"><span class="math inline">5.0001 \approx 5</span></td>
                 </tr>
                 <tr class="odd">
                     <td style="text-align: left;"><strong><em>Not Equal</em></strong></td>
                     <td style="text-align: left;">A and B do not have the same value</td>
-                    <td style="text-align: center;"><span class="math inline">\(\not=\)</span></td>
-                    <td style="text-align: center;"><span class="math inline">\(A \not= B\)</span></td>
+                    <td style="text-align: center;"><span class="math inline">\not=</span></td>
+                    <td style="text-align: center;"><span class="math inline">A \not= B</span></td>
                     <td style="text-align: center;">“not equal”, “is not”</td>
-                    <td style="text-align: center;"><span class="math inline">\(2 \not= 5\)</span></td>
+                    <td style="text-align: center;"><span class="math inline">2 \not= 5</span></td>
                 </tr>
                 <tr class="even">
                     <td style="text-align: left;"><strong><em>Less than</em></strong></td>
                     <td style="text-align: left;">The value of A is smaller than the value of B.</td>
-                    <td style="text-align: center;"><span class="math inline">\(&lt;\)</span></td>
-                    <td style="text-align: center;"><span class="math inline">\(A &lt; B\)</span></td>
+                    <td style="text-align: center;"><span class="math inline">&lt;</span></td>
+                    <td style="text-align: center;"><span class="math inline">A &lt; B</span></td>
                     <td style="text-align: center;">“less than”, “fewer than”</td>
-                    <td style="text-align: center;"><span class="math inline">\(2 \leq 3\)</span></td>
+                    <td style="text-align: center;"><span class="math inline">2 \leq 3</span></td>
                 </tr>
                 <tr class="odd">
                     <td style="text-align: left;"><strong><em>Less than or Equal To</em></strong></td>
                     <td style="text-align: left;">The value of A is smaller, or the same as, the value of B.</td>
-                    <td style="text-align: center;"><span class="math inline">\(\leq\)</span></td>
-                    <td style="text-align: center;"><span class="math inline">\(A \leq B\)</span></td>
+                    <td style="text-align: center;"><span class="math inline">\leq</span></td>
+                    <td style="text-align: center;"><span class="math inline">A \leq B</span></td>
                     <td style="text-align: center;">“at most”</td>
-                    <td style="text-align: center;"><span class="math inline">\(3 \leq 3\)</span></td>
+                    <td style="text-align: center;"><span class="math inline">3 \leq 3</span></td>
                 </tr>
                 <tr class="even">
                     <td style="text-align: left;"><strong><em>Greater than</em></strong></td>
                     <td style="text-align: left;">The value of A is larger than the value of B.</td>
-                    <td style="text-align: center;"><span class="math inline">\(&gt;\)</span></td>
-                    <td style="text-align: center;"><span class="math inline">\(A &gt; B\)</span></td>
+                    <td style="text-align: center;"><span class="math inline">&gt;</span></td>
+                    <td style="text-align: center;"><span class="math inline">A &gt; B</span></td>
                     <td style="text-align: center;">“greater than”, “more than”</td>
-                    <td style="text-align: center;"><span class="math inline">\(5 &gt; 4\)</span></td>
+                    <td style="text-align: center;"><span class="math inline">5 &gt; 4</span></td>
                 </tr>
                 <tr class="odd">
                     <td style="text-align: left;"><strong><em>Greater than or Equal To</em></strong></td>
                     <td style="text-align: left;">The value of A is larger, or the same as, the value of B.</td>
-                    <td style="text-align: center;"><span class="math inline">\(\geq\)</span></td>
-                    <td style="text-align: center;"><span class="math inline">\(A \geq B\)</span></td>
+                    <td style="text-align: center;"><span class="math inline">\geq</span></td>
+                    <td style="text-align: center;"><span class="math inline">A \geq B</span></td>
                     <td style="text-align: center;">“at least”</td>
-                    <td style="text-align: center;"><span class="math inline">\(3 \leq 3\)</span></td>
+                    <td style="text-align: center;"><span class="math inline">3 \leq 3</span></td>
                 </tr>
             </tbody>
         </table>
         <blockquote>
-            <p>A and B can be arbitrary expressions. For instance, you could say: <span class="math inline">\(4x &gt; -16\)</span>. Rules when working with relational symbols will be described in Unit 1.</p>
+            <p>A and B can be arbitrary expressions. For instance, you could say: <span class="math inline">4x &gt; -16</span>. Rules when working with relational symbols will be described in Unit 1.</p>
         </blockquote>
         <h2 id="caveats-about-equality">Caveats About Equality</h2>
         <p>There are some “gotchas” in equality that make it a bit annoying to accurately specify what you’re actually trying to say.</p>
         <h3 id="units">Units</h3>
-        <p>Let’s say you measure an apple to be 175 grams. You know that this is equivalent to 0.175 kilograms. But you can’t just state that <span class="math inline">\(175 = 0.175\)</span> beacuse that’s just not true. Here, the units are what describe how the number should be interpreted. Without the units, you are losing out on valuable context that describe the numbers’ true value.</p>
+        <p>Let’s say you measure an apple to be 175 grams. You know that this is equivalent to 0.175 kilograms. But you can’t just state that <span class="math inline">175 = 0.175</span> beacuse that’s just not true. Here, the units are what describe how the number should be interpreted. Without the units, you are losing out on valuable context that describe the numbers’ true value.</p>
         <h3 id="show-your-work">Show Your Work</h3>
         <p>When you simplify an expression, it is critical that you simplify it in a way where the relationship is preserved. If it isn’t, then the equation is no longer true and therefore you have manipulated the equation in an illegal manner.</p>
         <blockquote>
             <p>“Illegal” here seems vague and “made-up”. In layman’s terms, it just means that the equation is no longer valid, and thus <em>untrue</em>.</p>
-            <p>For instance, if you were to “simplify” <span class="math inline">\(20 + 20\)</span> by stating that: <span class="math inline">\(20+20=50\)</span>, this would be false (and thus illegal).</p>
+            <p>For instance, if you were to “simplify” <span class="math inline">20 + 20</span> by stating that: <span class="math inline">20+20=50</span>, this would be false (and thus illegal).</p>
             <p>This is why it is important to show your work. If you make mistakes, it would be trackable and fixable.</p>
         </blockquote>
         <h2 id="inequalities">Inequalities</h2>
-        <p><span style="color: var(--color-definition); font-style: italic;">Inequalities</span> constrain the values of the two expressions for which they define a relationship. They are depicted in the table above, but are reproduced here for ease of reference:</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Inequalities}}</span> constrain the values of the two expressions for which they define a relationship. They are depicted in the table above, but are reproduced here for ease of reference:</p>
         <ul>
             <li>Less than</li>
             <li>Less than or equal to</li>
@@ -346,10 +376,10 @@
         <p>These are the inequality relationships, and it is important to understand how they work and what they mean.</p>
         <h3 id="inequality-example">Inequality Example</h3>
         <p>To make inequalities easier to grasp, I’ll walk through an example to demonstrate their usefulness.</p>
-        <p>Say you ordered an unknown quantity of watermelons and you knew the total price was $150. Let’s say you also know the price per watermelon was somewhere more than $3 but less than $4 for each watermelon. If you represent the number of watermelons as <span class="math inline">\(W\)</span> and the price per watermelon as <span class="math inline">\(P\)</span>, then you can represent this situation as:</p>
-        <p><span class="math display">\[ \begin{aligned} P * W = 150 \end{aligned} \]</span></p>
+        <p>Say you ordered an unknown quantity of watermelons and you knew the total price was $150. Let’s say you also know the price per watermelon was somewhere more than $3 but less than $4 for each watermelon. If you represent the number of watermelons as <span class="math inline">W</span> and the price per watermelon as <span class="math inline">P</span>, then you can represent this situation as:</p>
+        <p><span class="math display">\begin{aligned} P * W = 150 \end{aligned}</span></p>
         <p>You <em>KNOW</em> this is true because you have the final total. What you DO NOT know is the number of watermelons nor the exact price per watermelon. However, you can represent the potential prices as an inequality, since you know that the price was somewhere between $3 and $5:</p>
-        <p><span class="math display">\[ \begin{aligned} 3 * W &gt; 150\\ 5 * W &lt; 150 \end{aligned} \]</span></p>
+        <p><span class="math display">\begin{aligned} 3 * W &gt; 150\\ 5 * W &lt; 150 \end{aligned}</span></p>
         <p>You also <em>KNOW</em> these must be true because you know the price was more than $3 but less than $5. Therefore the number of watermelons must be defined by those two inequalities. The price point of $3 represents the lower end (that is, the minimum, and thus, the number of watermelons must be larger than that). Likewise, the price point of $5 represents the upper end (the maximum).</p>
         <p>The table toward the top shows 4 inequalities (approximate and not-equal are not included). Now, if you want to estimate how many watermelons you actually had, you need to isolate W in order to identify the number of watermelons.</p>
         <div class="markdown-alert alert-important">
@@ -357,11 +387,11 @@
             <p>For now, I suppose this may just look like gibberish, but hopefully the comments may help identify what is going on.</p>
         </div>
         <p>On the low end (that is, if P was 3), then you could estimate the minimum number of watermelons you purchased.</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;3 * W \gt 150\phantom{000000}\text{First step is to isolate W. Divide both sides by }3\\ &amp;\frac{3 * W}{3} \gt \frac{150}{3}\phantom{00000}\text{Now you can simplify the fractions.}\\ &amp;\frac{\cancel{3} * W}{\cancel{3}} \gt 50\phantom{000000.}\text{You may cancel the 3 in the other fraction since 3 / 3 = 1. Also, 150 divided by 3 is 50.}\\ &amp;\boxed{W \gt 50} \end{aligned} \]</span></p>
+        <p><span class="math display">\begin{aligned} &amp;3 * W \gt 150\phantom{000000}\text{First step is to isolate W. Divide both sides by }3\\ &amp;\frac{3 * W}{3} \gt \frac{150}{3}\phantom{00000}\text{Now you can simplify the fractions.}\\ &amp;\frac{\cancel{3} * W}{\cancel{3}} \gt 50\phantom{000000.}\text{You may cancel the 3 in the other fraction since 3 / 3 = 1. Also, 150 divided by 3 is 50.}\\ &amp;\boxed{W \gt 50} \end{aligned}</span></p>
         <p>Now, you know that the number of watermelons you purchased is more than 50. Now, let’s do the same work for if the price was $5 to find the maximum number of watermelons you purchased.</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;5 * W \lt 150\phantom{000000}\text{First step is to isolate W. Divide both sides by }5\\ &amp;\frac{5 * W}{5} \lt \frac{150}{5}\phantom{00000}\text{Now you can simplify the fractions.}\\ &amp;\frac{\cancel{5} * W}{\cancel{5}} \lt 30\phantom{000000.}\text{You may cancel the 5 in the other fraction since 5 / 5 = 1. Also, 150 divided by 5 is 30.}\\ &amp;\boxed{W \lt 30} \end{aligned} \]</span></p>
-        <p>Now it’s not expected that you know all of the work that was done to isolate <span class="math inline">\(W\)</span> just yet (more will be discussed in Algebra). The important part is that we now know that the number of watermelons purchased is somewhere between 30 and 50. To represent this mathemtically:</p>
-        <p><span class="math display">\[30 &lt; W &lt; 50\]</span></p>
+        <p><span class="math display">\begin{aligned} &amp;5 * W \lt 150\phantom{000000}\text{First step is to isolate W. Divide both sides by }5\\ &amp;\frac{5 * W}{5} \lt \frac{150}{5}\phantom{00000}\text{Now you can simplify the fractions.}\\ &amp;\frac{\cancel{5} * W}{\cancel{5}} \lt 30\phantom{000000.}\text{You may cancel the 5 in the other fraction since 5 / 5 = 1. Also, 150 divided by 5 is 30.}\\ &amp;\boxed{W \lt 30} \end{aligned}</span></p>
+        <p>Now it’s not expected that you know all of the work that was done to isolate <span class="math inline">W</span> just yet (more will be discussed in Algebra). The important part is that we now know that the number of watermelons purchased is somewhere between 30 and 50. To represent this mathemtically:</p>
+        <p><span class="math display">30 &lt; W &lt; 50</span></p>
         <p>We now have a useful and narrow range of numbers for how many watermelons were purchased. Of course this example was a bit silly, but it should demonstrate that inequalities can be incredibly useful to represent situations where there is uncertainty (especially useful in scientific or engineering applications).</p>
         <h3 id="simplifying-inequalities">Simplifying Inequalities</h3>
         <p>There are special rules in order to preserve the “truthiness” of an Inequality; that is, whether or not the two expressions’ relationship has been preserved.</p>
@@ -377,7 +407,7 @@
             <thead>
                 <tr class="header">
                     <th style="text-align: center;">Previous</th>
-                    <th style="text-align: left;">Next</th>
+                    <th style="text-align: center;">Next</th>
                 </tr>
             </thead>
             <tbody>
@@ -385,7 +415,7 @@
                     <td style="text-align: center;">
                         ← <a href="./5-Division.html">0.2.5: Division</a>
                     </td>
-                    <td style="text-align: left;">
+                    <td style="text-align: center;">
                         <a href="./7-Properties%20of%20Operations.html">0.2.7: Properties of Operations</a> →
                     </td>
                 </tr>

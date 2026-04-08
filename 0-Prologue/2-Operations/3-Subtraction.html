@@ -29,10 +29,40 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section 0.2.3: Subtraction</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../util/math-config.js"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-    <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><!-- MATH -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <script>
+        // This script is responsible for kickstarting the KaTeX rendering.
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "\x24\x24", right: "\x24\x24", display: true },
+                    { left: "\x24", right: "\x24", display: false },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true }
+                ]
+            });
+        });
+    </script>
+    <script defer src="/usr/share/javascript/katex/katex.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var mathElements = document.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+    katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+    });
+    }}});
+    </script>
+    <link rel="stylesheet" href="/usr/share/javascript/katex/katex.min.css"><!-- CSS -->
     <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/extra.css">
 </head>
@@ -211,34 +241,34 @@
             </li>
         </ul>
         <h2 id="overview">Overview</h2>
-        <p><span style="color: var(--color-definition); font-style: italic;">Subtraction</span> is the act of separating numbers.</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Subtraction}}</span> is the act of separating numbers.</p>
         <blockquote>
             <p>Subtraction answers: “What happens when I take away a certain amount of things from another group?”</p>
         </blockquote>
         <h2 id="example-of-subtraction">Example of Subtraction</h2>
         <p>For instance, if I have 20 watermelons at a party, and the partygoers eat 12 watermelons, how many will I have left?</p>
         <p>To model this situation, you would write the following:</p>
-        <p><span class="math display">\[20 - 12\]</span></p>
+        <p><span class="math display">20 - 12</span></p>
         <blockquote>
             <p>This is spoken as “Twenty minus twelve.”</p>
         </blockquote>
-        <p>Because you start with 20 watermelons, you write that first. Then, 12 are eaten, so you would <em>subtract</em> 12 from 20. This would result in <span class="math inline">\(8\)</span> watermelons, which can be written as:</p>
-        <p><span class="math display">\[20 - 12 = 8\]</span></p>
+        <p>Because you start with 20 watermelons, you write that first. Then, 12 are eaten, so you would <em>subtract</em> 12 from 20. This would result in <span class="math inline">8</span> watermelons, which can be written as:</p>
+        <p><span class="math display">20 - 12 = 8</span></p>
         <blockquote>
             <p>This is spoken as “Twenty minus twelve equals eight.”</p>
         </blockquote>
-        <p>Subtraction is the <span style="color: var(--color-definition); font-style: italic;">inverse operation</span> to addition. That is, the following is true:</p>
-        <p><span class="math display">\[20 + 12 - 12 = 20\]</span></p>
+        <p>Subtraction is the <span class="math inline">\color{cyan}{\textnormal{inverse operation}}</span> to addition. That is, the following is true:</p>
+        <p><span class="math display">20 + 12 - 12 = 20</span></p>
         <p>By adding 12, then subtracting twelve, you end up back where you started! That is, inverse operations perform the opposite task. Addition and subtraction are inverse operations, which means they can be “cancelled out” <strong><em>if the quantities are the same</em></strong>, as shown in the equation above.</p>
         <p>Inverse operations are critical for simplifications and other work, which will be explored in later sections.</p>
         <h2 id="subtraction-operands">Subtraction Operands</h2>
-        <p>Subtraction refers to their terms in a particular order, since the order of the terms is more important for subtraction. The first term is known as the <span style="color: var(--color-definition); font-style: italic;">subtrahend</span> or <span style="color: var(--color-definition); font-style: italic;">minuend</span>, while the second term is known as the <span style="color: var(--color-definition); font-style: italic;">subtrahere</span>. It is extremely unlikely that you will come across these names (I had to look them up myself) but come trivia night you may have the upper hand. The result of subtraction is known as the <span style="color: var(--color-definition); font-style: italic;">difference</span>, which is a much more common term to know.</p>
-        <p><span class="math display">\[\text{subtrahend} + \text{subtrahere} = \text{difference}\]</span></p>
+        <p>Subtraction refers to their terms in a particular order, since the order of the terms is more important for subtraction. The first term is known as the <span class="math inline">\color{cyan}{\textnormal{subtrahend}}</span> or <span class="math inline">\color{cyan}{\textnormal{minuend}}</span>, while the second term is known as the <span class="math inline">\color{cyan}{\textnormal{subtrahere}}</span>. It is extremely unlikely that you will come across these names (I had to look them up myself) but come trivia night you may have the upper hand. The result of subtraction is known as the <span class="math inline">\color{cyan}{\textnormal{difference}}</span>, which is a much more common term to know.</p>
+        <p><span class="math display">\text{subtrahend} + \text{subtrahere} = \text{difference}</span></p>
         <h2 id="long-subtraction">Long Subtraction</h2>
-        <p><span style="color: var(--color-definition); font-style: italic;">Long Subtraction</span> is similar to long addition, except instead of a carry, you may require what is called a <em>borrow</em>!</p>
-        <p><span style="color: var(--color-definition); font-style: italic;">Borrows</span> work how you probably think they do. Rather than carrying the overflow over to the next column, you instead may take away from the next column (hence, borrow).</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Long Subtraction}}</span> is similar to long addition, except instead of a carry, you may require what is called a <em>borrow</em>!</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Borrows}}</span> work how you probably think they do. Rather than carrying the overflow over to the next column, you instead may take away from the next column (hence, borrow).</p>
         <p>For example, if you take the addition step and instead execute it as subtraction, you may see how this could happen.</p>
-        <p><span class="math display">\[ \begin{aligned} \phantom{00}_{-1}\phantom{0}\\ \phantom{-}852 \\ \underline{-\phantom{0}299} \\ \phantom{-055}3 \\ \end{aligned} \\ \\ 2-9 \text{ is negative, so you need to borrow from the tens place to change the 2 into a 12:} \\ 12-9=3\\ \text{Notice the borrow is marked as negative; this indicates a borrow.}\\ \phantom{\n} \\ \begin{aligned} \phantom{0}_{-1}\phantom{00}\\ \phantom{-}852 \\ \underline{-\phantom{0}299} \\ \phantom{-05}53 \\ \end{aligned} \\ \\ -1 - 5 - 9 \text{ also requires a borrow:}\\ 15 - 1 - 9 = 14-9=5 \\ \\ \begin{aligned} \phantom{-}852 \\ \underline{-\phantom{0}299} \\ \phantom{-0}553 \\ \end{aligned} \\ 8 - 2 - 1 = 5 \\ \\ \text{ This requires no borrow!}\\ \]</span></p>
+        <p><span class="math display">\begin{aligned} \phantom{00}_{-1}\phantom{0}\\ \phantom{-}852 \\ \underline{-\phantom{0}299} \\ \phantom{-055}3 \\ \end{aligned} \\ \\ 2-9 \text{ is negative, so you need to borrow from the tens place to change the 2 into a 12:} \\ 12-9=3\\ \text{Notice the borrow is marked as negative; this indicates a borrow.}\\ \phantom{\n} \\ \begin{aligned} \phantom{0}_{-1}\phantom{00}\\ \phantom{-}852 \\ \underline{-\phantom{0}299} \\ \phantom{-05}53 \\ \end{aligned} \\ \\ -1 - 5 - 9 \text{ also requires a borrow:}\\ 15 - 1 - 9 = 14-9=5 \\ \\ \begin{aligned} \phantom{-}852 \\ \underline{-\phantom{0}299} \\ \phantom{-0}553 \\ \end{aligned} \\ 8 - 2 - 1 = 5 \\ \\ \text{ This requires no borrow!}\\</span></p>
         <hr>
         <hr>
         <h2 id="closing">Closing</h2>
@@ -250,7 +280,7 @@
             <thead>
                 <tr class="header">
                     <th style="text-align: center;">Previous</th>
-                    <th style="text-align: left;">Next</th>
+                    <th style="text-align: center;">Next</th>
                 </tr>
             </thead>
             <tbody>
@@ -258,7 +288,7 @@
                     <td style="text-align: center;">
                         ← <a href="./2-Addition.html">0.2.2: Addition</a>
                     </td>
-                    <td style="text-align: left;">
+                    <td style="text-align: center;">
                         <a href="./4-Multiplication.html">0.2.4: Multiplication</a> →
                     </td>
                 </tr>

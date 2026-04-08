@@ -29,10 +29,40 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section 1.1.3: Characteristics Of Functions</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../util/math-config.js"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-    <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><!-- MATH -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <script>
+        // This script is responsible for kickstarting the KaTeX rendering.
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "\x24\x24", right: "\x24\x24", display: true },
+                    { left: "\x24", right: "\x24", display: false },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true }
+                ]
+            });
+        });
+    </script>
+    <script defer src="/usr/share/javascript/katex/katex.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var mathElements = document.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+    katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+    });
+    }}});
+    </script>
+    <link rel="stylesheet" href="/usr/share/javascript/katex/katex.min.css"><!-- CSS -->
     <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/extra.css">
 </head>
@@ -249,85 +279,85 @@
         <p>Behavior-based classifications are discussed across the next few chapters, while characteristic-based classifications are discussed in the next sections.</p>
         <h2 id="describing-a-functions-input-or-output">Describing a Function’s Input or Output</h2>
         <h3 id="intercepts">Intercepts</h3>
-        <p>One such way to describe a function is to identify where the function intersects with the <span class="math inline">\(x\)</span> or <span class="math inline">\(y\)</span> axes.</p>
+        <p>One such way to describe a function is to identify where the function intersects with the <span class="math inline">x</span> or <span class="math inline">y</span> axes.</p>
         <p>This is a particularly useful tool when graphing a function, because it gives a clear starting point for plotting.</p>
         <p>For a 2D function (that is, only one input, and thus one corresponding output) there are 2 intercepts.</p>
-        <p>The <span style="color: var(--color-definition);">x-\textit{intercept</span> is the point at which the function intersects with the <span class="math inline">\(x\)</span> axis. That is, what value of <span class="math inline">\(x\)</span> results in a value of the function of <span class="math inline">\(0\)</span>?</p>
-        <p>You can find the <span class="math inline">\(x\)</span>-intercept by solving for <span class="math inline">\(x\)</span> when <span class="math inline">\(f(x) = 0\)</span>.</p>
-        <p>The other intercept is the <span style="color: var(--color-definition);">y-\textit{intercept</span>, which is the point at which the function intersects with the <span class="math inline">\(y\)</span> axis. That is, what value of <span class="math inline">\(y\)</span> results from an input value of <span class="math inline">\(x=0\)</span>?</p>
-        <p>You can find the <span class="math inline">\(y\)</span>-intercept by calculating <span class="math inline">\(f(0)\)</span>.</p>
-        <p>Some functions may have more than one <span class="math inline">\(x\)</span>-intercept, but no <strong><em>function</em></strong> should have more than one <span class="math inline">\(y\)</span>-intercept (formula and equations might, however!). Ultimately, this depends on the nature of the function itself, and will be described in more detail upon those details.</p>
+        <p>The <span class="math inline">\color{cyan}{x-\textnormal{intercept}}</span> is the point at which the function intersects with the <span class="math inline">x</span> axis. That is, what value of <span class="math inline">x</span> results in a value of the function of <span class="math inline">0</span>?</p>
+        <p>You can find the <span class="math inline">x</span>-intercept by solving for <span class="math inline">x</span> when <span class="math inline">f(x) = 0</span>.</p>
+        <p>The other intercept is the <span class="math inline">\color{cyan}{y-\textnormal{intercept}}</span>, which is the point at which the function intersects with the <span class="math inline">y</span> axis. That is, what value of <span class="math inline">y</span> results from an input value of <span class="math inline">x=0</span>?</p>
+        <p>You can find the <span class="math inline">y</span>-intercept by calculating <span class="math inline">f(0)</span>.</p>
+        <p>Some functions may have more than one <span class="math inline">x</span>-intercept, but no <strong><em>function</em></strong> should have more than one <span class="math inline">y</span>-intercept (formula and equations might, however!). Ultimately, this depends on the nature of the function itself, and will be described in more detail upon those details.</p>
         <h3 id="continuity">Continuity</h3>
         <p>Functions may be described as <em>continuous</em> or <em>discontinuous</em>.</p>
-        <p>Functions lacking abrupt changes in value are considered <span style="color: var(--color-definition); font-style: italic;">continuous</span>.</p>
+        <p>Functions lacking abrupt changes in value are considered <span class="math inline">\color{cyan}{\textnormal{continuous}}</span>.</p>
         <div class="markdown-alert alert-note">
-            <p>More specifically, a <strong>continuous function</strong> is one that meets all of the following criteria for all <span class="math inline">\(c\)</span>, where <span class="math inline">\(c\)</span> is a possible value of the input variable.</p>
+            <p>More specifically, a <strong>continuous function</strong> is one that meets all of the following criteria for all <span class="math inline">c</span>, where <span class="math inline">c</span> is a possible value of the input variable.</p>
             <ul>
-                <li><span class="math inline">\(f(x)\)</span> is defined at <span class="math inline">\(x = c\)</span></li>
-                <li><span class="math inline">\(\lim_{x \to c}{f(x)}\)</span> exists.</li>
-                <li><span class="math inline">\(\lim_{x \to c}{f(x)} = f(c)\)</span></li>
+                <li><span class="math inline">f(x)</span> is defined at <span class="math inline">x = c</span></li>
+                <li><span class="math inline">\lim_{x \to c}{f(x)}</span> exists.</li>
+                <li><span class="math inline">\lim_{x \to c}{f(x)} = f(c)</span></li>
             </ul>
             <p><em>(You are not expected to know this just yet. Limits will be discussed soon!)</em></p>
         </div>
         <hr>
-        <p><span style="color: var(--color-definition); font-style: italic;">Discontinuous</span> functions feature a characteristic known as a <span style="color: var(--color-definition); font-style: italic;">discontinuity</span>, which is any abrupt change in value.</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Discontinuous}}</span> functions feature a characteristic known as a <span class="math inline">\color{cyan}{\textnormal{discontinuity}}</span>, which is any abrupt change in value.</p>
         <h4 id="removable-discontinuity">Removable Discontinuity</h4>
-        <p>The “simplest” kind of discontinuity is a <span style="color: var(--color-definition); font-style: italic;">Removable Discontinuity</span>, which is one in which the function approaches the same values regardless of the direction <span class="math inline">\(x\)</span> is approaching.</p>
+        <p>The “simplest” kind of discontinuity is a <span class="math inline">\color{cyan}{\textnormal{Removable Discontinuity}}</span>, which is one in which the function approaches the same values regardless of the direction <span class="math inline">x</span> is approaching.</p>
         <figure>
-            <img src="img/removable-discontinuity.png" style="display: block; margin-left: auto; margin-right: auto; text-align: center;" alt="Figure 1.3.1: Removable Discontinuity at x0">
+            <img src="img/removable-discontinuity.png" alt="Figure 1.3.1: Removable Discontinuity at x0">
             <figcaption aria-hidden="true">
                 Figure 1.3.1: Removable Discontinuity at x0
             </figcaption>
         </figure>
-        <p>Notice that if you approach <span class="math inline">\(x_0\)</span> from the left side (that is, <span class="math inline">\(x\)</span> increases from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(x_0\)</span>), then the function approaches the y-value denoted at the red-circle.</p>
-        <p>Likewise, when approaching <span class="math inline">\(x_0\)</span> from the right side (that is, <span class="math inline">\(x\)</span> decreases from <span class="math inline">\(\infty\)</span> to <span class="math inline">\(x_0\)</span>), the function approaches the y-value denoted at the red circle. Despite these conclusions, though, the function’s actual value at <span class="math inline">\(x_0\)</span> is denoted by the solid circle.</p>
+        <p>Notice that if you approach <span class="math inline">x_0</span> from the left side (that is, <span class="math inline">x</span> increases from <span class="math inline">-\infty</span> to <span class="math inline">x_0</span>), then the function approaches the y-value denoted at the red-circle.</p>
+        <p>Likewise, when approaching <span class="math inline">x_0</span> from the right side (that is, <span class="math inline">x</span> decreases from <span class="math inline">\infty</span> to <span class="math inline">x_0</span>), the function approaches the y-value denoted at the red circle. Despite these conclusions, though, the function’s actual value at <span class="math inline">x_0</span> is denoted by the solid circle.</p>
         <blockquote>
             <p>This solid versus hollow circle notation is important.</p>
-            <p>A <strong><em>hollow circle</em></strong> denotes that the value does NOT exist at this location. It indicates a <span style="color: var(--color-definition); font-style: italic;">hole</span> in the graph.</p>
-            <p>A <strong><em>solid circle</em></strong> denotes an output at a particular point, which should be labelled. In the case of the Figure above, it is labelled at <span class="math inline">\(x_0\)</span></p>
+            <p>A <strong><em>hollow circle</em></strong> denotes that the value does NOT exist at this location. It indicates a <span class="math inline">\color{cyan}{\textnormal{hole}}</span> in the graph.</p>
+            <p>A <strong><em>solid circle</em></strong> denotes an output at a particular point, which should be labelled. In the case of the Figure above, it is labelled at <span class="math inline">x_0</span></p>
         </blockquote>
         <h4 id="jump-discontinuity">Jump Discontinuity</h4>
-        <p>Another type of discontinuity is a <span style="color: var(--color-definition); font-style: italic;">Jump Discontinuity</span>, where the function approaches different values based on the direction <span class="math inline">\(x\)</span> is approaching.</p>
+        <p>Another type of discontinuity is a <span class="math inline">\color{cyan}{\textnormal{Jump Discontinuity}}</span>, where the function approaches different values based on the direction <span class="math inline">x</span> is approaching.</p>
         <figure>
-            <img src="img/jump-discontinuity.png" style="display: block; margin-left: auto; margin-right: auto; text-align: center;" alt="Figure 1.3.2: Jump Discontinuity at x0">
+            <img src="img/jump-discontinuity.png" alt="Figure 1.3.2: Jump Discontinuity at x0">
             <figcaption aria-hidden="true">
                 Figure 1.3.2: Jump Discontinuity at x0
             </figcaption>
         </figure>
-        <p>You’ll notice that if you do the same approach of approaching <span class="math inline">\(x_0\)</span> from the left and right, the values they approach do not match. When approaching from the left, you approach <span class="math inline">\(P\)</span>. When approaching from the right, you approach <span class="math inline">\(M\)</span>. This is the fundamental characteristic of a jump discontinuity.</p>
+        <p>You’ll notice that if you do the same approach of approaching <span class="math inline">x_0</span> from the left and right, the values they approach do not match. When approaching from the left, you approach <span class="math inline">P</span>. When approaching from the right, you approach <span class="math inline">M</span>. This is the fundamental characteristic of a jump discontinuity.</p>
         <h4 id="infinite-discontinuity">Infinite Discontinuity</h4>
-        <p>The final kind of discontinuity to discuss is an <span style="color: var(--color-definition); font-style: italic;">Infinite Discontinuity</span>. This is a special kind of jump discontinuity such that the limits from either side approach infinity (may be both positive, both negative, or one each):</p>
+        <p>The final kind of discontinuity to discuss is an <span class="math inline">\color{cyan}{\textnormal{Infinite Discontinuity}}</span>. This is a special kind of jump discontinuity such that the limits from either side approach infinity (may be both positive, both negative, or one each):</p>
         <figure>
-            <img src="img/infinite-discontinuity.png" style="display: block; margin-left: auto; margin-right: auto; text-align: center;" alt="Figure 1.3.3: Infinite Discontinuity at x0, for f(x)=1/x">
+            <img src="img/infinite-discontinuity.png" alt="Figure 1.3.3: Infinite Discontinuity at x0, for f(x)=1/x">
             <figcaption aria-hidden="true">
                 Figure 1.3.3: Infinite Discontinuity at x0, for f(x)=1/x
             </figcaption>
         </figure>
-        <p>These kinds of discontinuities are also known as a <span style="color: var(--color-definition); font-style: italic;">Vertical Asymptote</span>.</p>
+        <p>These kinds of discontinuities are also known as a <span class="math inline">\color{cyan}{\textnormal{Vertical Asymptote}}</span>.</p>
         <h3 id="bounded-functions">Bounded Functions</h3>
-        <p>A <span style="color: var(--color-definition); font-style: italic;">bounded</span> function is one that is finite.</p>
-        <p>In other words, all values of the function will lie between some values <span class="math inline">\(k\)</span> and <span class="math inline">\(m\)</span>, where both <span class="math inline">\(k\)</span> and <span class="math inline">\(m\)</span> are real numbers. That is, the following will be true:</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;f(x) \leq k \\ &amp;f(x) \geq m \\ \end{aligned} \]</span></p>
-        <p>Because both <span class="math inline">\(k\)</span> and <span class="math inline">\(m\)</span> are real numbers, this enforces the concept that no value of <span class="math inline">\(f(x)\)</span> will be infinite!</p>
-        <p><span style="color: var(--color-definition); font-style: italic;">Unbounded</span> functions are those that extend toward infinity. Many functions are <em>unbounded</em>. For instance, Linear functions are unbounded.</p>
+        <p>A <span class="math inline">\color{cyan}{\textnormal{bounded}}</span> function is one that is finite.</p>
+        <p>In other words, all values of the function will lie between some values <span class="math inline">k</span> and <span class="math inline">m</span>, where both <span class="math inline">k</span> and <span class="math inline">m</span> are real numbers. That is, the following will be true:</p>
+        <p><span class="math display">\begin{aligned} &amp;f(x) \leq k \\ &amp;f(x) \geq m \\ \end{aligned}</span></p>
+        <p>Because both <span class="math inline">k</span> and <span class="math inline">m</span> are real numbers, this enforces the concept that no value of <span class="math inline">f(x)</span> will be infinite!</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Unbounded}}</span> functions are those that extend toward infinity. Many functions are <em>unbounded</em>. For instance, Linear functions are unbounded.</p>
         <p>Some functions are “semi-bounded”, meaning they are only bounded on one side of the output. That is, there may be functions that are…</p>
         <ul>
-            <li><span style="color: var(--color-definition); font-style: italic;">Bounded above</span>, which means that only <span class="math inline">\(f(x) \leq k\)</span> holds true. In other words, all function values are less than (or equal to) some real number <span class="math inline">\(k\)</span>.</li>
-            <li><span style="color: var(--color-definition); font-style: italic;">Bounded below</span>, which means that only <span class="math inline">\(f(x) \geq m\)</span> holds true. In other words, all function values are greater than (or equal to) some real number <span class="math inline">\(m\)</span>.</li>
+            <li><span class="math inline">\color{cyan}{\textnormal{Bounded above}}</span>, which means that only <span class="math inline">f(x) \leq k</span> holds true. In other words, all function values are less than (or equal to) some real number <span class="math inline">k</span>.</li>
+            <li><span class="math inline">\color{cyan}{\textnormal{Bounded below}}</span>, which means that only <span class="math inline">f(x) \geq m</span> holds true. In other words, all function values are greater than (or equal to) some real number <span class="math inline">m</span>.</li>
         </ul>
         <h2 id="describing-a-functions-shape">Describing a Function’s Shape</h2>
         <h3 id="smooth-functions">Smooth Functions</h3>
-        <p>A <span style="color: var(--color-definition); font-style: italic;">smooth</span> function describes one such that the function is <em>differentiable</em> everywhere. Put more simply, a smooth function is essentially a special type of continuous function where there are no immediate shifts in its rate of change. For instance, a linear graph is smooth, while the following graph is not smooth. It is a graph of the absolute value of <span class="math inline">\(x\)</span> (that is, <span class="math inline">\(f(x) = |x|\)</span>)</p>
+        <p>A <span class="math inline">\color{cyan}{\textnormal{smooth}}</span> function describes one such that the function is <em>differentiable</em> everywhere. Put more simply, a smooth function is essentially a special type of continuous function where there are no immediate shifts in its rate of change. For instance, a linear graph is smooth, while the following graph is not smooth. It is a graph of the absolute value of <span class="math inline">x</span> (that is, <span class="math inline">f(x) = |x|</span>)</p>
         <figure>
-            <img src="img/absolute-graph.png" style="display: block; margin-left: auto; margin-right: auto; text-align: center;" alt="Figure 1.3.4: Graph of an Absolute Value function">
+            <img src="img/absolute-graph.png" alt="Figure 1.3.4: Graph of an Absolute Value function">
             <figcaption aria-hidden="true">
                 Figure 1.3.4: Graph of an Absolute Value function
             </figcaption>
         </figure>
         <h3 id="symmetry">Symmetry</h3>
-        <p>A <span style="color: var(--color-definition); font-style: italic;">symmetrical</span> function describes a function such that the function is the same across an axis.</p>
-        <p>Typically, symmetry for functions applies across the <span class="math inline">\(y\)</span> axis.</p>
-        <p>Functions like the Quadratic function is symmetric across the <span class="math inline">\(y\)</span> axis. Some functions, like the Cubic function, are actually symmetric across <span class="math inline">\(f(x)=-x\)</span> (that is, reflected diagonally).</p>
+        <p>A <span class="math inline">\color{cyan}{\textnormal{symmetrical}}</span> function describes a function such that the function is the same across an axis.</p>
+        <p>Typically, symmetry for functions applies across the <span class="math inline">y</span> axis.</p>
+        <p>Functions like the Quadratic function is symmetric across the <span class="math inline">y</span> axis. Some functions, like the Cubic function, are actually symmetric across <span class="math inline">f(x)=-x</span> (that is, reflected diagonally).</p>
         <hr>
         <hr>
         <h2 id="closing">Closing</h2>
@@ -338,16 +368,16 @@
             </colgroup>
             <thead>
                 <tr class="header">
-                    <th>Previous</th>
-                    <th>Next</th>
+                    <th style="text-align: center;">Previous</th>
+                    <th style="text-align: center;">Next</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="odd">
-                    <td>
+                    <td style="text-align: center;">
                         ← <a href="./2-Visualizing%20Functions.html">1.1.2: Visualizing Functions</a>
                     </td>
-                    <td>
+                    <td style="text-align: center;">
                         <a href="../2-Manipulating%20Functions/0-Introduction.html">Chapter 2: Manipulating Functions</a> →
                     </td>
                 </tr>

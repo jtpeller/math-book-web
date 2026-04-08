@@ -29,10 +29,40 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section 0.2.8: Exponentiation</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../util/math-config.js"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-    <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><!-- MATH -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <script>
+        // This script is responsible for kickstarting the KaTeX rendering.
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "\x24\x24", right: "\x24\x24", display: true },
+                    { left: "\x24", right: "\x24", display: false },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true }
+                ]
+            });
+        });
+    </script>
+    <script defer src="/usr/share/javascript/katex/katex.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var mathElements = document.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+    katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+    });
+    }}});
+    </script>
+    <link rel="stylesheet" href="/usr/share/javascript/katex/katex.min.css"><!-- CSS -->
     <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/extra.css">
 </head>
@@ -233,98 +263,98 @@
         <p>This section is the first in a series that introduces additional operations which build upon the Arithmetic operations. These are usually considered Arithmetic operations due to their nature. They build upon the previous operations, hence their separation into an “intermediate” series of operations.</p>
         <p>These “new” operations are useful in many different fields of math, such as Algebra, Geometry, and more. These will be revisited later, but it is important to understand these operations early to better contextualize things later.</p>
         <p>This first section introduces <em>Exponentiation</em>!</p>
-        <p><span style="color: var(--color-definition); font-style: italic;">Exponentiation</span> is most simply repeated multiplication, but in a very particular manner. It involves multiplying a number by itself a specified number of times.</p>
-        <p>The <span style="color: var(--color-definition); font-style: italic;">Base</span> specifies the number undergoing the operation. The number of multiplication operations to perform is designated by the <span style="color: var(--color-definition); font-style: italic;">Exponent</span>. Finally, the result of exponentiation is known as the <span style="color: var(--color-definition); font-style: italic;">Power</span>.</p>
+        <p><span class="math inline">\color{cyan}{\textnormal{Exponentiation}}</span> is most simply repeated multiplication, but in a very particular manner. It involves multiplying a number by itself a specified number of times.</p>
+        <p>The <span class="math inline">\color{cyan}{\textnormal{Base}}</span> specifies the number undergoing the operation. The number of multiplication operations to perform is designated by the <span class="math inline">\color{cyan}{\textnormal{Exponent}}</span>. Finally, the result of exponentiation is known as the <span class="math inline">\color{cyan}{\textnormal{Power}}</span>.</p>
         <p>An example is:</p>
-        <p><span class="math display">\[2^3 = 8\]</span></p>
-        <p>Here, the base is <span class="math inline">\(2\)</span>, the exponent is <span class="math inline">\(3\)</span>, and the power is <span class="math inline">\(8\)</span>.</p>
+        <p><span class="math display">2^3 = 8</span></p>
+        <p>Here, the base is <span class="math inline">2</span>, the exponent is <span class="math inline">3</span>, and the power is <span class="math inline">8</span>.</p>
         <blockquote>
             <p>Interestingly, this would be read as “Two to the power of three equals eight.”</p>
             <p>Power doubles as the name used for the result, but also the action of putting a number under exponentiation.</p>
         </blockquote>
         <p>There are some interesting properties of exponetiation:</p>
         <p>A number to the power of 0 is always 1. That is:</p>
-        <p><span class="math display">\[10^0 = 1\]</span></p>
+        <p><span class="math display">10^0 = 1</span></p>
         <p>A number to the power of 1 is always itself. That is:</p>
-        <p><span class="math display">\[10^1 = 10\]</span></p>
+        <p><span class="math display">10^1 = 10</span></p>
         <p>These naturally make sense. If you “repeat” multiplication one time, then the expression naturally becomes the number itself; there is no repetition.</p>
         <p>The number to the power of 0 being 1 is actually a result of a more complicated analysis of exponents, which will be explored later.</p>
         <p>Exponents can also be negative. These signify that the inverse of the number is to be taken. So:</p>
-        <p><span class="math display">\[10^{-1} = \frac{1}{10^1} = \frac{1}{10}\]</span></p>
+        <p><span class="math display">10^{-1} = \frac{1}{10^1} = \frac{1}{10}</span></p>
         <p>And:</p>
-        <p><span class="math display">\[ 10^{-2} = \frac{1}{10^2} = \frac{1}{100}\]</span></p>
+        <p><span class="math display">10^{-2} = \frac{1}{10^2} = \frac{1}{100}</span></p>
         <h2 id="inverting-exponentiation">Inverting Exponentiation</h2>
         <p>This operation can be inverted in two different ways, depending on what you are trying to find.</p>
         <p>If you are trying to find the exponent, then utilize a <a href="./10-Logarithms.html">Logarithm</a>.</p>
         <p>If you are trying to find the base, use the <a href="./9-Nth%20Root.html">Root</a>.</p>
         <h2 id="cool-exponentiation-laws">Cool Exponentiation Laws</h2>
-        <p>Let’s take a cool example of exponentiation. Say you have some Real Number value <span class="math inline">\(x\)</span>, and say it is undergoing exponentiation, like <span class="math inline">\(x^3\)</span>.</p>
+        <p>Let’s take a cool example of exponentiation. Say you have some Real Number value <span class="math inline">x</span>, and say it is undergoing exponentiation, like <span class="math inline">x^3</span>.</p>
         <h3 id="multiplying-terms-under-exponentiation">Multiplying Terms under Exponentiation</h3>
-        <p>Say this <span class="math inline">\(x^3\)</span> is being multiplied by <span class="math inline">\(x^2\)</span>. What happens now? Can we simplify this? Of course! Let’s take a look:</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;x^3 \cdot x^2 &amp;&amp; \text{Starting point.} \\ &amp;=(x \cdot x \cdot x) \cdot (x \cdot x) &amp;&amp; \text{Break the exponents into repeated multiplication.} \\ &amp;=x \cdot x \cdot x \cdot x \cdot x &amp;&amp; \text{Multiplication is Associative, so the parentheses aren&#39;t needed.} \\ &amp;\boxed{=x^5} &amp;&amp; \text{There are 5 }x\text{&#39;s, so the exponent is }5 \\ \end{aligned} \]</span></p>
+        <p>Say this <span class="math inline">x^3</span> is being multiplied by <span class="math inline">x^2</span>. What happens now? Can we simplify this? Of course! Let’s take a look:</p>
+        <p><span class="math display">\begin{aligned} &amp;x^3 \cdot x^2 &amp;&amp; \text{Starting point.} \\ &amp;=(x \cdot x \cdot x) \cdot (x \cdot x) &amp;&amp; \text{Break the exponents into repeated multiplication.} \\ &amp;=x \cdot x \cdot x \cdot x \cdot x &amp;&amp; \text{Multiplication is Associative, so the parentheses aren&#39;t needed.} \\ &amp;\boxed{=x^5} &amp;&amp; \text{There are 5 }x\text{&#39;s, so the exponent is }5 \\ \end{aligned}</span></p>
         <p>Therefore, you <em>add</em> the exponents when multiplying terms <strong>with the same base</strong>.</p>
         <div class="markdown-alert alert-important">
             <p>To really emphasize this: THE TERMS MUST HAVE THE SAME BASE!</p>
         </div>
         <p>This can be generalized as follows:</p>
-        <p><span class="math display">\[x^m \cdot x^n = x^{m+n}\]</span></p>
+        <p><span class="math display">x^m \cdot x^n = x^{m+n}</span></p>
         <p>Remember this for the future! It <em>will</em> come in handy!</p>
         <h3 id="dividing-terms-under-exponentiation">Dividing Terms under Exponentiation</h3>
-        <p>Let’s also now say that this <span class="math inline">\(x^3\)</span> is being divided by <span class="math inline">\(x\)</span>. What happens now? Can we simplify this?</p>
+        <p>Let’s also now say that this <span class="math inline">x^3</span> is being divided by <span class="math inline">x</span>. What happens now? Can we simplify this?</p>
         <p>We can. Let’s take a look!</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;\frac{x^3}{x} &amp;&amp; \text{Starting point.}\\ &amp;= \frac{x \cdot x \cdot x}{x} &amp;&amp; \text{We know that: } x^3 = x \cdot x \cdot x\\ &amp;= \frac{x \cdot x \cdot \cancel{x}}{\cancel{x}} &amp;&amp; \text{Cancel, since } x / x = 1\\ &amp;\boxed{= x}\; \checkmark &amp;&amp; \text{All done!} \end{aligned} \]</span></p>
+        <p><span class="math display">\begin{aligned} &amp;\frac{x^3}{x} &amp;&amp; \text{Starting point.}\\ &amp;= \frac{x \cdot x \cdot x}{x} &amp;&amp; \text{We know that: } x^3 = x \cdot x \cdot x\\ &amp;= \frac{x \cdot x \cdot \cancel{x}}{\cancel{x}} &amp;&amp; \text{Cancel, since } x / x = 1\\ &amp;\boxed{= x}\; \checkmark &amp;&amp; \text{All done!} \end{aligned}</span></p>
         <p>Therefore, you <em>subtract</em> the exponents when dividing terms <strong>with the same base</strong>.</p>
         <div class="markdown-alert alert-important">
             <p>To really emphasize this (again): THE TERMS MUST HAVE THE SAME BASE!</p>
         </div>
         <p>This can be generalized as follows:</p>
-        <p><span class="math display">\[\frac{x^m}{x^n} = x^{m-n}\]</span></p>
+        <p><span class="math display">\frac{x^m}{x^n} = x^{m-n}</span></p>
         <p>Remember this for the future! It <em>will</em> come in handy!</p>
         <h3 id="even-more-fun-rules">Even More Fun Rules</h3>
         <h4 id="layered-exponentiation">Layered Exponentiation</h4>
         <p>What happens if a number to an exponent undergoes exponentiation? That is:</p>
-        <p><span class="math display">\[(x^3)^2\]</span></p>
+        <p><span class="math display">(x^3)^2</span></p>
         <p>Well, let’s break it down!</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;(x^3)^2 &amp;&amp; \text{Starting point.}\\ &amp;=(x \cdot x \cdot x)^2 &amp;&amp; \text{Break the term in the parentheses into repeated multiplication}\\ &amp;=(x \cdot x \cdot x) \cdot (x \cdot x \cdot x) &amp;&amp; \text{Break this compound term into repeated multiplication}\\ &amp;=x \cdot x \cdot x \cdot x \cdot x \cdot x &amp;&amp; \text{Multiplication is associative!}\\ &amp;\boxed{=x^6} &amp;&amp; \text{There are 6 }x\text{&#39;s now!}\\ \end{aligned} \]</span></p>
-        <p>Let’s look at this again: <span class="math inline">\((x^3)^2=x^6\)</span>. Notice something…? That’s right, the exponents multiplied together! That is:</p>
-        <p><span class="math display">\[(x^m)^n = x^{mn}\]</span></p>
+        <p><span class="math display">\begin{aligned} &amp;(x^3)^2 &amp;&amp; \text{Starting point.}\\ &amp;=(x \cdot x \cdot x)^2 &amp;&amp; \text{Break the term in the parentheses into repeated multiplication}\\ &amp;=(x \cdot x \cdot x) \cdot (x \cdot x \cdot x) &amp;&amp; \text{Break this compound term into repeated multiplication}\\ &amp;=x \cdot x \cdot x \cdot x \cdot x \cdot x &amp;&amp; \text{Multiplication is associative!}\\ &amp;\boxed{=x^6} &amp;&amp; \text{There are 6 }x\text{&#39;s now!}\\ \end{aligned}</span></p>
+        <p>Let’s look at this again: <span class="math inline">(x^3)^2=x^6</span>. Notice something…? That’s right, the exponents multiplied together! That is:</p>
+        <p><span class="math display">(x^m)^n = x^{mn}</span></p>
         <h4 id="parenthetical-exponents">Parenthetical Exponents</h4>
-        <p>Exponents may be applied to terms inside parentheses. For instance, let’s say we have <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, and they are nested inside a block of exponentiation:</p>
-        <p><span class="math display">\[(xy)^n\]</span></p>
+        <p>Exponents may be applied to terms inside parentheses. For instance, let’s say we have <span class="math inline">x</span> and <span class="math inline">y</span>, and they are nested inside a block of exponentiation:</p>
+        <p><span class="math display">(xy)^n</span></p>
         <p>What does this simplify to? Well, let’s work on it:</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;(xy)^3 &amp;&amp; \text{Starting point.}\\ &amp;=(xy) \cdot (xy) \cdot (xy) &amp;&amp; \text{Convert to repeated multiplication!}\\ &amp;=xyxyxy &amp;&amp; \text{Multiplication is associative. Parentheses are unnecessary here}\\ &amp;=xxxyyy &amp;&amp; \text{Rearrange for clarity}\\ &amp;\boxed{=x^3y^3} &amp;&amp; \text{All done!} \end{aligned} \]</span></p>
+        <p><span class="math display">\begin{aligned} &amp;(xy)^3 &amp;&amp; \text{Starting point.}\\ &amp;=(xy) \cdot (xy) \cdot (xy) &amp;&amp; \text{Convert to repeated multiplication!}\\ &amp;=xyxyxy &amp;&amp; \text{Multiplication is associative. Parentheses are unnecessary here}\\ &amp;=xxxyyy &amp;&amp; \text{Rearrange for clarity}\\ &amp;\boxed{=x^3y^3} &amp;&amp; \text{All done!} \end{aligned}</span></p>
         <p>This demonstrates the next law, which is that exponents can be “distributed” to each term in the parentheses!</p>
-        <p><span class="math display">\[(xy)^n = x^ny^n\]</span></p>
+        <p><span class="math display">(xy)^n = x^ny^n</span></p>
         <hr>
         <p>What about division? What if x and y are being divided, like the following expression? Can <em>that</em> be simplified?</p>
-        <p><span class="math display">\[(x/y)^n\]</span></p>
+        <p><span class="math display">(x/y)^n</span></p>
         <p>Of course! Let’s take a look</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;(x/y)^3 &amp;&amp; \text{Starting point.}\\ &amp;=(x/y) \cdot (x/y) \cdot (x/y) &amp;&amp; \text{Convert to repeated multiplication!}\\ &amp;=xxx/yyy &amp;&amp; \text{Division is associative. Consolidate the fractions}\\ &amp;\boxed{=x^3/y^3} &amp;&amp; \text{All done!} \end{aligned} \]</span></p>
+        <p><span class="math display">\begin{aligned} &amp;(x/y)^3 &amp;&amp; \text{Starting point.}\\ &amp;=(x/y) \cdot (x/y) \cdot (x/y) &amp;&amp; \text{Convert to repeated multiplication!}\\ &amp;=xxx/yyy &amp;&amp; \text{Division is associative. Consolidate the fractions}\\ &amp;\boxed{=x^3/y^3} &amp;&amp; \text{All done!} \end{aligned}</span></p>
         <p>Therefore, we have seen the demonstration of this next law:</p>
-        <p><span class="math display">\[(x/y)^n = \frac{x^n}{y^n}\]</span></p>
+        <p><span class="math display">(x/y)^n = \frac{x^n}{y^n}</span></p>
         <hr>
         <h2 id="scientific-notation">Scientific Notation</h2>
-        <p>Exponentiation can be used to represent very large numbers in an extremely helpful way. For instance, take the (estimated and approximate) U.S. National Debt at the time of writing this (2026.03.22): <span class="math inline">\(\$39,021,882,900,000\)</span>. Rather than having to write out this number all the time, it is possible to write the number in <span style="color: var(--color-definition); font-style: italic;">Scientific Notation</span>, which allows for improved readability and far less writing.</p>
+        <p>Exponentiation can be used to represent very large numbers in an extremely helpful way. For instance, take the (estimated and approximate) U.S. National Debt at the time of writing this (2026.03.22): <span class="math inline">\$39,021,882,900,000</span>. Rather than having to write out this number all the time, it is possible to write the number in <span class="math inline">\color{cyan}{\textnormal{Scientific Notation}}</span>, which allows for improved readability and far less writing.</p>
         <p>Writing this National Debt number would be:</p>
-        <p><span class="math display">\[3.90218829 \cdot 10^13\]</span></p>
-        <p>This essentially “extracts” the “size” of the number (that is, how many digits there are) into the <span class="math inline">\(10^13\)</span> value. Generally, numbers in scientific form are written as:</p>
-        <p><span class="math display">\[m \times 10^n\]</span></p>
-        <p>Where <span class="math inline">\(m\)</span> is a number (rational, irrational, or integer) that is between 1 and 10 (or, between -10 and -1). Note that this does not include the number 10.</p>
-        <p>But, scientific notation can also represent small numbers too! Recall that negative exponents allow you to express numbers smaller than 1 (that is, decimals or fractions). You can therefore represent small numbers too! Imagine instead you were trying to represent the average thickness of a human hair, which is <span class="math inline">\(~75\)</span> microns (micrometers). This is equivalent to <span class="math inline">\(0.000075\)</span> meters. You could also represent this as:</p>
-        <p><span class="math display">\[7.5 \times 10^-5\]</span></p>
-        <p>In order to manually represent a number in scientific notation, you just need to figure out the exponent, since you already know the number you’re trying to represent. To figure out the <span class="math inline">\(n\)</span> in scientific notation form, you will need to count the number of decimal places you would have to move the decimal in the original number to get to the final number which must be between 1 and 10.</p>
+        <p><span class="math display">3.90218829 \cdot 10^13</span></p>
+        <p>This essentially “extracts” the “size” of the number (that is, how many digits there are) into the <span class="math inline">10^13</span> value. Generally, numbers in scientific form are written as:</p>
+        <p><span class="math display">m \times 10^n</span></p>
+        <p>Where <span class="math inline">m</span> is a number (rational, irrational, or integer) that is between 1 and 10 (or, between -10 and -1). Note that this does not include the number 10.</p>
+        <p>But, scientific notation can also represent small numbers too! Recall that negative exponents allow you to express numbers smaller than 1 (that is, decimals or fractions). You can therefore represent small numbers too! Imagine instead you were trying to represent the average thickness of a human hair, which is <span class="math inline">~75</span> microns (micrometers). This is equivalent to <span class="math inline">0.000075</span> meters. You could also represent this as:</p>
+        <p><span class="math display">7.5 \times 10^-5</span></p>
+        <p>In order to manually represent a number in scientific notation, you just need to figure out the exponent, since you already know the number you’re trying to represent. To figure out the <span class="math inline">n</span> in scientific notation form, you will need to count the number of decimal places you would have to move the decimal in the original number to get to the final number which must be between 1 and 10.</p>
         <p>First, let’s follow the process to represent the U.S. National Debt in scientific notation. We’ll remove the commas to make it clearer how things work. Recall that the commas are not necessary, do not take a digit’s place, and are only visual cues for reading the number.</p>
-        <p><span class="math display">\[ \begin{aligned} 39021882900000 \phantom{00000}\text{(0)} \\ 3902188290000 \phantom{00000}\text{(1)} \\ 390218829000 \phantom{00000}\text{(2)} \\ 39021882900 \phantom{00000}\text{(3)} \\ 3902188290 \phantom{00000}\text{(4)} \\ 390218829 \phantom{00000}\text{(5)} \\ 39021882.9 \phantom{00000}\text{(6)} \\ 3902188.29 \phantom{00000}\text{(7)} \\ 390218.829 \phantom{00000}\text{(8)} \\ 39021.8829 \phantom{00000}\text{(9)} \\ 3902.18829 \phantom{0000}\text{(10)} \\ 390.218829 \phantom{0000}\text{(11)} \\ 39.0218829 \phantom{0000}\text{(12)} \\ 3.90218829 \phantom{0000}\text{(13)} \\ \end{aligned} \]</span></p>
+        <p><span class="math display">\begin{aligned} 39021882900000 \phantom{00000}\text{(0)} \\ 3902188290000 \phantom{00000}\text{(1)} \\ 390218829000 \phantom{00000}\text{(2)} \\ 39021882900 \phantom{00000}\text{(3)} \\ 3902188290 \phantom{00000}\text{(4)} \\ 390218829 \phantom{00000}\text{(5)} \\ 39021882.9 \phantom{00000}\text{(6)} \\ 3902188.29 \phantom{00000}\text{(7)} \\ 390218.829 \phantom{00000}\text{(8)} \\ 39021.8829 \phantom{00000}\text{(9)} \\ 3902.18829 \phantom{0000}\text{(10)} \\ 390.218829 \phantom{0000}\text{(11)} \\ 39.0218829 \phantom{0000}\text{(12)} \\ 3.90218829 \phantom{0000}\text{(13)} \\ \end{aligned}</span></p>
         <p>This most obviously demonstrates the idea of “dividing-by-10-repeatedly” to identify the exponent.</p>
         <div class="markdown-alert alert-important">
             <p>The rule for counting in this situation is that moving the decimal place to the left involves multiplying by 10, thus adding 1 to the exponent value.</p>
         </div>
-        <p>Now let’s follow the process to represent <span class="math inline">\(0.000075\)</span> in scientific notation:</p>
-        <p><span class="math display">\[ \begin{aligned} 0.000075 \phantom{0000}\text{(0)} \\ 0.00075 \phantom{0000}\text{(-1)} \\ 0.0075 \phantom{0000}\text{(-2)} \\ 0.075 \phantom{0000}\text{(-3)} \\ 0.75 \phantom{0000}\text{(-4)} \\ 7.5 \phantom{0000}\text{(-5)} \\ \end{aligned} \]</span></p>
+        <p>Now let’s follow the process to represent <span class="math inline">0.000075</span> in scientific notation:</p>
+        <p><span class="math display">\begin{aligned} 0.000075 \phantom{0000}\text{(0)} \\ 0.00075 \phantom{0000}\text{(-1)} \\ 0.0075 \phantom{0000}\text{(-2)} \\ 0.075 \phantom{0000}\text{(-3)} \\ 0.75 \phantom{0000}\text{(-4)} \\ 7.5 \phantom{0000}\text{(-5)} \\ \end{aligned}</span></p>
         <div class="markdown-alert alert-important">
             <p>The rule for counting in this situation is that moving the decimal place to the left involves <strong>dividing</strong> by 10, thus subtracting 1 from the exponent value.</p>
         </div>
-        <p>You counted that it would take 5 decimal places to get to scientific notation! Therefore you would simply multiply <span class="math inline">\(7.5\)</span> by <span class="math inline">\(10^{-5}\)</span> to get back to the original number.</p>
+        <p>You counted that it would take 5 decimal places to get to scientific notation! Therefore you would simply multiply <span class="math inline">7.5</span> by <span class="math inline">10^{-5}</span> to get back to the original number.</p>
         <p>Likewise, this demonstrates the idea of “multiplying-by-10-repeatedly” to identify the exponent.</p>
         <hr>
         <hr>

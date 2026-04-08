@@ -29,10 +29,40 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Section 1.2.1: Simplifications</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="../../util/math-config.js"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
-    <script src="/usr/share/javascript/mathjax/MathJax.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"><!-- MATH -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+    <script>
+        // This script is responsible for kickstarting the KaTeX rendering.
+        document.addEventListener("DOMContentLoaded", function () {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    { left: "\x24\x24", right: "\x24\x24", display: true },
+                    { left: "\x24", right: "\x24", display: false },
+                    { left: "\\(", right: "\\)", display: false },
+                    { left: "\\[", right: "\\]", display: true }
+                ]
+            });
+        });
+    </script>
+    <script defer src="/usr/share/javascript/katex/katex.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var mathElements = document.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+    var texText = mathElements[i].firstChild;
+    if (mathElements[i].tagName == "SPAN") {
+    katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+    });
+    }}});
+    </script>
+    <link rel="stylesheet" href="/usr/share/javascript/katex/katex.min.css"><!-- CSS -->
     <link rel="stylesheet" href="../../styles/styles.css">
     <link rel="stylesheet" href="../../styles/extra.css">
 </head>
@@ -237,56 +267,56 @@
         <p>When setting up functions to model something, you will inevitably need to simplify the equation to ensure it is in its <em>simplest form</em>. There are plenty of different properties of math (recall: Associative, Commutative, Distributive, etc.) as well as properties of algebra that will help achieve this.</p>
         <p>This section details common simplifications that can be done and why they can be done so that way you can save lots of time when simplifying your algebraic functions.</p>
         <h2 id="combining-like-terms">Combining Like Terms</h2>
-        <p>One of the most useful simplifications is to <span style="color: var(--color-definition); font-style: italic;">Combining "Like" Terms</span>, which is a concept where terms with similar characteristics may be combined across arithmetic operations to simplify the expression, equation, or function.</p>
-        <p>At a basic level, think about writing <span class="math inline">\(1 + 1 + 1 + 1 + 1\)</span> to represent 5. You could just write <span class="math inline">\(5\)</span> instead! Similarly, you may be writing <span class="math inline">\(x+x+x+x+x\)</span>, when you could just write <span class="math inline">\(5x\)</span>.</p>
+        <p>One of the most useful simplifications is to <span class="math inline">\color{cyan}{\textnormal{Combining &quot;Like&quot; Terms}}</span>, which is a concept where terms with similar characteristics may be combined across arithmetic operations to simplify the expression, equation, or function.</p>
+        <p>At a basic level, think about writing <span class="math inline">1 + 1 + 1 + 1 + 1</span> to represent 5. You could just write <span class="math inline">5</span> instead! Similarly, you may be writing <span class="math inline">x+x+x+x+x</span>, when you could just write <span class="math inline">5x</span>.</p>
         <p>The following subsections detail how these simplifications may occur.</p>
         <h3 id="addition-subtraction">Addition &amp; Subtraction</h3>
         <p>Coefficients can be added together so long as their variable is the same. This is also known as <strong><em>adding like terms</em></strong>.</p>
         <p>You may add or subtract like terms if they consist of the same variables. That is, coefficients may be added together:</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;3x + 5x + 2x &amp;&amp; \text{Starting point.}\\ &amp;(x+x+x) + (x+x+x+x+x) + (x+x) &amp;&amp; \text{Multiplication is repeated addition!} \\ &amp;x+x+x + x+x+x+x+x + x+x &amp;&amp; \text{Addition is associative! No need for parentheses; the order is guaranteed OK.} \\ &amp;\boxed{= 10x}&amp;&amp; \text{There are 10 }x\text{&#39;s, hence: } 10x\\ \end{aligned} \]</span></p>
+        <p><span class="math display">\begin{aligned} &amp;3x + 5x + 2x &amp;&amp; \text{Starting point.}\\ &amp;(x+x+x) + (x+x+x+x+x) + (x+x) &amp;&amp; \text{Multiplication is repeated addition!} \\ &amp;x+x+x + x+x+x+x+x + x+x &amp;&amp; \text{Addition is associative! No need for parentheses; the order is guaranteed OK.} \\ &amp;\boxed{= 10x}&amp;&amp; \text{There are 10 $x$&#39;s, hence: $10x$}\\ \end{aligned}</span></p>
         <p>What about if there’s multiple variables in the expression?</p>
-        <p><span class="math display">\[ 3x + 5xy + 2x = 5x + 5xy \]</span></p>
+        <p><span class="math display">3x + 5xy + 2x = 5x + 5xy</span></p>
         <div class="markdown-alert alert-important">
             <p>Coefficients can be combined only if all the variables in the term are the same.</p>
         </div>
-        <p>Notice that the <span class="math inline">\(5xy\)</span> may not be combined with the <span class="math inline">\(3x\)</span> or the <span class="math inline">\(2x\)</span> because they do not have the same variables present. <em>(this actually relies on a concept called a term’s “degree”, but this will be discussed in Polynomials)</em></p>
+        <p>Notice that the <span class="math inline">5xy</span> may not be combined with the <span class="math inline">3x</span> or the <span class="math inline">2x</span> because they do not have the same variables present. <em>(this actually relies on a concept called a term’s “degree”, but this will be discussed in Polynomials)</em></p>
         <p>Another thing to be aware of is that the variables must also be of the same power! For instance, the following is already in simplest form!</p>
-        <p><span class="math display">\[ 2x + 5x^2 + 7y + 5y^2 \]</span></p>
+        <p><span class="math display">2x + 5x^2 + 7y + 5y^2</span></p>
         <p>All of these rules also apply to subtraction. Just make sure you don’t forget about a number’s sign!</p>
         <h3 id="constants">Constants</h3>
         <p>Recall that a coefficient is simply the numerical term that is being multiplied by a variable. For instance, in the equation:</p>
-        <p><span class="math display">\[ f(x) = 5x^2 - 3x + 2 - b \]</span></p>
-        <p>The coefficients are <span class="math inline">\(5\)</span> and <span class="math inline">\(-3\)</span>. Both <span class="math inline">\(2\)</span> and the <span class="math inline">\(b\)</span> are <strong><em>constants</em></strong>. $ are simply terms that are not impacted by the input variable (in this case, <span class="math inline">\(x\)</span>). That is, they stay the same no matter the input into the equation (hence, <em>constant</em>).</p>
+        <p><span class="math display">f(x) = 5x^2 - 3x + 2 - b</span></p>
+        <p>The coefficients are <span class="math inline">5</span> and <span class="math inline">-3</span>. Both <span class="math inline">2</span> and the <span class="math inline">b</span> are <strong><em>constants</em></strong>. $ are simply terms that are not impacted by the input variable (in this case, <span class="math inline">x</span>). That is, they stay the same no matter the input into the equation (hence, <em>constant</em>).</p>
         <h3 id="multiplication-division">Multiplication &amp; Division</h3>
         <h4 id="multiplying-the-same-variable">Multiplying the Same Variable</h4>
         <p>Similar to the previous simplification, you may come across the following:</p>
-        <p><span class="math display">\[ x \cdot 2x \cdot 3x \]</span></p>
+        <p><span class="math display">x \cdot 2x \cdot 3x</span></p>
         <p>With an expression like this, where terms with coefficients are being multiplied, you could see how it becomes:</p>
-        <p><span class="math display">\[ x \cdot (x + x) \cdot (x + x + x) \]</span></p>
+        <p><span class="math display">x \cdot (x + x) \cdot (x + x + x)</span></p>
         <p>Using what you know of the distributive property, you can simplify this further:</p>
-        <p><span class="math display">\[ x \cdot (x + x) \cdot (x + x + x) = (x\cdot x+x\cdot x) \cdot (x+x+x) \]</span></p>
-        <p>Notice therefore, that because the variables are being multiplied together, you can simplify the <span class="math inline">\(x \cdot x\)</span> to <span class="math inline">\(x^2\)</span>. Using this, the simplification can reduce down to a single term:</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;x \cdot 2x \cdot 3x \\ &amp;= x \cdot (x + x) \cdot (x + x + x) \\ &amp;= (x\cdot x+x\cdot x) \cdot (x + x + x) \\ &amp;= (x^2+x^2) \cdot (x + x + x) \\ &amp;= (x^2\cdot x+x^2\cdot x+x^2\cdot x) + (x^2\cdot x+x^2\cdot x+x^2\cdot x) \\ &amp;= x^3 + x^3 + x^3 + x^3 + x^3 + x^3 \\ &amp;\boxed{= 6x^3} \\ \end{aligned} \]</span></p>
+        <p><span class="math display">x \cdot (x + x) \cdot (x + x + x) = (x\cdot x+x\cdot x) \cdot (x+x+x)</span></p>
+        <p>Notice therefore, that because the variables are being multiplied together, you can simplify the <span class="math inline">x \cdot x</span> to <span class="math inline">x^2</span>. Using this, the simplification can reduce down to a single term:</p>
+        <p><span class="math display">\begin{aligned} &amp;x \cdot 2x \cdot 3x \\ &amp;= x \cdot (x + x) \cdot (x + x + x) \\ &amp;= (x\cdot x+x\cdot x) \cdot (x + x + x) \\ &amp;= (x^2+x^2) \cdot (x + x + x) \\ &amp;= (x^2\cdot x+x^2\cdot x+x^2\cdot x) + (x^2\cdot x+x^2\cdot x+x^2\cdot x) \\ &amp;= x^3 + x^3 + x^3 + x^3 + x^3 + x^3 \\ &amp;= 6x^3 \\ \end{aligned}</span></p>
         <hr>
         <hr>
         <h4 id="multiplying-different-variables">Multiplying Different Variables</h4>
         <p>You may multiply terms with any variable together. That is:</p>
-        <p><span class="math display">\[2x * 3y * 4z = 24xyz\]</span></p>
+        <p><span class="math display">2x * 3y * 4z = 24xyz</span></p>
         <p>For multiplication, the presence or lack of a variable does not matter. Let’s take the following simplification example to understand why this occurs. First, let’s see what a typical symplification could result with:</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;w = 5x \cdot 6xy \cdot 12xyz \\ &amp;w = 30x^2y \cdot 12xyz \\ &amp;w = 360x^3y^2z \end{aligned} \]</span></p>
+        <p><span class="math display">\begin{aligned} &amp;w = 5x \cdot 6xy \cdot 12xyz \\ &amp;w = 30x^2y \cdot 12xyz \\ &amp;w = 360x^3y^2z \end{aligned}</span></p>
         <p>Now, recall that the terms themselves are essentially all multiplied together. Do not forget that when a multiplication symbol is omitted for a single term; it still exists. We could write the previous example as shown below:</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;w = 5 \cdot x \cdot 6 \cdot x \cdot y \cdot 12 \cdot x \cdot y \cdot z \\ &amp;w = 360 \cdot x \cdot x \cdot y \cdot x \cdot y \cdot z \\ &amp;w = 360 \cdot x^3 \cdot y \cdot y \cdot z \\ &amp;\boxed{w = 360 \cdot x^3 \cdot y^2 \cdot z} \\ \end{aligned} \]</span></p>
+        <p><span class="math display">\begin{aligned} &amp;w = 5 \cdot x \cdot 6 \cdot x \cdot y \cdot 12 \cdot x \cdot y \cdot z \\ &amp;w = 360 \cdot x \cdot x \cdot y \cdot x \cdot y \cdot z \\ &amp;w = 360 \cdot x^3 \cdot y \cdot y \cdot z \\ &amp;\boxed{w = 360 \cdot x^3 \cdot y^2 \cdot z} \\ \end{aligned}</span></p>
         <p>Thus, any arbitrary problem involving this will be able to be solved without having to show all this work. You could show it if you wanted, but these properties enable quicker simplifications (a shortcut). For instance, the following simplification becomes second nature.</p>
-        <p><span class="math display">\[ x \cdot 5x \cdot 4y \cdot 2x^2 \cdot 15y^5 = \boxed{600x^4y^6} \]</span></p>
+        <p><span class="math display">x \cdot 5x \cdot 4y \cdot 2x^2 \cdot 15y^5 = \boxed{600x^4y^6}</span></p>
         <hr>
         <hr>
         <h4 id="dividing">Dividing</h4>
         <p>Now, division is slightly more tricky. Let’s start with an example of division:</p>
-        <p><span class="math display">\[ w = 12xy / 6x \]</span></p>
+        <p><span class="math display">w = 12xy / 6x</span></p>
         <p>This is a simple case, but think about it as a fraction:</p>
-        <p><span class="math display">\[ w = \frac{12xy}{6x} \]</span></p>
-        <p>Now, it may become obvious that you may fully divide the <span class="math inline">\(12x\)</span> part of the numerator with the <span class="math inline">\(6x\)</span> in the denominator. That is, you may do the following simplification:</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;w = \frac{12xy}{6x} &amp;&amp; \text{Start} \\ &amp;w = \frac{12\cancel{x}{y}}{6\cancel{x}} &amp;&amp; \text{We know that: } 12x/6x=2 \\ &amp;w = \frac{12y}{6} &amp;&amp; \text{Removed the cancelled terms} \\ &amp;\boxed{w = 2y} \\ \end{aligned} \]</span></p>
+        <p><span class="math display">w = \frac{12xy}{6x}</span></p>
+        <p>Now, it may become obvious that you may fully divide the <span class="math inline">12x</span> part of the numerator with the <span class="math inline">6x</span> in the denominator. That is, you may do the following simplification:</p>
+        <p><span class="math display">\begin{aligned} &amp;w = \frac{12xy}{6x} &amp;&amp; \text{Start} \\ &amp;w = \frac{12\cancel{x}{y}}{6\cancel{x}} &amp;&amp; \text{We know that: } 12x/6x=2 \\ &amp;w = \frac{12y}{6} &amp;&amp; \text{Removed the cancelled terms} \\ &amp;\boxed{w = 2y} \\ \end{aligned}</span></p>
         <div class="markdown-alert alert-important">
             <h4 id="cancellation-but-why">Cancellation: But Why??</h4>
             <p>What is this cancellation? You might be a little hazy on why it’s okay to just “cancel” something. Why? What does this even mean?</p>
@@ -296,26 +326,26 @@
                 <li>A number divided by itself is 1 (unless it’s zero, but that’s a different problem)</li>
                 <li>A number multiplied by 1 is itself.</li>
             </ul>
-            <p>Therefore, we can see that when we have <span class="math inline">\(x/x\)</span>, we can simply “cancel” it because it is equivalent to 1. And, because <span class="math inline">\(1\)</span> multiplied by anything is that anything (for instance, <span class="math inline">\(4 \cdot 1=4\)</span> or perhaps <span class="math inline">\(xy\cdot 1 = xy\)</span>), we can safely “remove” this (cancel) it from the equation.</p>
+            <p>Therefore, we can see that when we have <span class="math inline">x/x</span>, we can simply “cancel” it because it is equivalent to 1. And, because <span class="math inline">1</span> multiplied by anything is that anything (for instance, <span class="math inline">4 \cdot 1=4</span> or perhaps <span class="math inline">xy\cdot 1 = xy</span>), we can safely “remove” this (cancel) it from the equation.</p>
         </div>
         <hr>
         <hr>
         <h3 id="example-combining-like-terms">Example: Combining Like Terms</h3>
         <p>Here’s an example covering all 4 arithmetic operations:</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;z = \frac{3x + 6xy - 18x \cdot 21xy + (6x)^2 - 15}{3x} \\ \; \\ &amp;z = \frac{3x + 6xy - 378x^2y + 36x^2 - 15}{3x} \\ \; \\ &amp;z = \boxed{\frac{x + 2xy - 126x^2y + 12x^2 - 5}{x}} \\ \end{aligned} \]</span></p>
-        <p>You could take this a step further, if you prefer. Notice how <span class="math inline">\(x\)</span> is a part of every single term in the numerator except the <span class="math inline">\(-5\)</span>. You can do something really neat here that can help simplify this equation further:</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;z = \frac{x + 2xy - 126x^2y + 12x^2 - 5}{x} \\ &amp;z = \frac{x + 2xy - 126x^2y + 12x^2}{x} - \frac{5}{x} \\ \end{aligned} \]</span></p>
+        <p><span class="math display">\begin{aligned} &amp;z = \frac{3x + 6xy - 18x \cdot 21xy + (6x)^2 - 15}{3x} \\ \; \\ &amp;z = \frac{3x + 6xy - 378x^2y + 36x^2 - 15}{3x} \\ \; \\ &amp;z = \boxed{\frac{x + 2xy - 126x^2y + 12x^2 - 5}{x}} \\ \end{aligned}</span></p>
+        <p>You could take this a step further, if you prefer. Notice how <span class="math inline">x</span> is a part of every single term in the numerator except the <span class="math inline">-5</span>. You can do something really neat here that can help simplify this equation further:</p>
+        <p><span class="math display">\begin{aligned} &amp;z = \frac{x + 2xy - 126x^2y + 12x^2 - 5}{x} \\ &amp;z = \frac{x + 2xy - 126x^2y + 12x^2}{x} - \frac{5}{x} \\ \end{aligned}</span></p>
         <blockquote>
             <h4 id="proof-splitting-fractions-is-legal">Proof: Splitting Fractions is Legal</h4>
-            <p>You might wonder why this is a “legal” operation. Let’s walk through a far simpler example before continuing with simplifying <span class="math inline">\(z\)</span>. Say you have the following fraction:</p>
-            <p><span class="math display">\[ \frac{2x + y}{x} \]</span></p>
-            <p>You can draw parallels as to why this fraction is similar to the fraction obtained for <span class="math inline">\(z\)</span>, since there’s parts of the numerator that <em>do</em> have <span class="math inline">\(x\)</span> (<span class="math inline">\(2x\)</span> or <span class="math inline">\(x + 2xy - 126x^2y + 12x^2\)</span>), and parts that <em>do not</em> (<span class="math inline">\(y\)</span>, or <span class="math inline">\(5\)</span>).</p>
+            <p>You might wonder why this is a “legal” operation. Let’s walk through a far simpler example before continuing with simplifying <span class="math inline">z</span>. Say you have the following fraction:</p>
+            <p><span class="math display">\frac{2x + y}{x}</span></p>
+            <p>You can draw parallels as to why this fraction is similar to the fraction obtained for <span class="math inline">z</span>, since there’s parts of the numerator that <em>do</em> have <span class="math inline">x</span> (<span class="math inline">2x</span> or <span class="math inline">x + 2xy - 126x^2y + 12x^2</span>), and parts that <em>do not</em> (<span class="math inline">y</span>, or <span class="math inline">5</span>).</p>
             <p>Now, neatly, you can make the same break. Don’t worry, I’ll show mathematically why it’s similar in just a moment.</p>
-            <p><span class="math display">\[ \begin{aligned} \frac{2x}{x}+\frac{y}{x} \\ 2 + \frac{y}{x} \end{aligned} \]</span></p>
-            <p>Now, we can show that this is equivalent to the original fraction! Let’s set them equal to each other, then plug in some values for <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>.</p>
-            <p><span class="math display">\[ \begin{aligned} &amp;\frac{2x + y}{x} = 2 + \frac{y}{x} &amp;&amp; \text{Set up the equation} \\ &amp;\frac{2(2) + (10)}{(2)} = 2 + \frac{(10)}{(2)} &amp;&amp; \text{Plug in the chosen values} \\ &amp;\frac{4 + 10}{2} = 2 + 5 &amp;&amp; \text{Simplify some of the operations} \\ &amp;\frac{14}{2} = 7 &amp;&amp; \text{Addition!} \\ &amp;\boxed{7 = 7} \; \checkmark &amp;&amp; \text{Both sides are indeed equal!} \\ \end{aligned} \]</span></p>
+            <p><span class="math display">\begin{aligned} \frac{2x}{x}+\frac{y}{x} \\ 2 + \frac{y}{x} \end{aligned}</span></p>
+            <p>Now, we can show that this is equivalent to the original fraction! Let’s set them equal to each other, then plug in some values for <span class="math inline">x</span> and <span class="math inline">y</span>.</p>
+            <p><span class="math display">\begin{aligned} &amp;\frac{2x + y}{x} = 2 + \frac{y}{x} &amp;&amp; \text{Set up the equation} \\ &amp;\frac{2(2) + (10)}{(2)} = 2 + \frac{(10)}{(2)} &amp;&amp; \text{Plug in the chosen values} \\ &amp;\frac{4 + 10}{2} = 2 + 5 &amp;&amp; \text{Simplify some of the operations} \\ &amp;\frac{14}{2} = 7 &amp;&amp; \text{Addition!} \\ &amp;\boxed{7 = 7} \; \checkmark &amp;&amp; \text{Both sides are indeed equal!} \\ \end{aligned}</span></p>
             <p>Maybe you’re still not convinced. What if it just works with just those numbers? Okay, I can prove it without plugging any in!</p>
-            <p><span class="math display">\[ \begin{aligned} &amp;\frac{2x + y}{x} = 2 + \frac{y}{x} &amp;&amp; \text{Set up the equation} \\ &amp;(\frac{2x + y}{x}) \cdot x = (2 + \frac{y}{x}) \cdot x &amp;&amp; \text{Multiply both sides by }x\\ &amp;(\frac{2x + y}{\cancel{x}}) \cdot \cancel{x} = (2 + \frac{y}{x}) \cdot x &amp;&amp; \text{Cancel out }x\text{ on the left side}\\ &amp;2x + y = 2x + \frac{yx}{x} &amp;&amp; \text{Distribute $x$ to each term in the parentheses} \\ &amp;2x + y = 2x + \frac{y\cancel{x}}{\cancel{x}} &amp;&amp; \text{Cancel out }x \\ &amp;\boxed{2x + y = 2x + y}\; \checkmark &amp;&amp; \text{Both sides are the same!} \end{aligned} \]</span></p>
+            <p><span class="math display">\begin{aligned} &amp;\frac{2x + y}{x} = 2 + \frac{y}{x} &amp;&amp; \text{Set up the equation} \\ &amp;(\frac{2x + y}{x}) \cdot x = (2 + \frac{y}{x}) \cdot x &amp;&amp; \text{Multiply both sides by }x\\ &amp;(\frac{2x + y}{\cancel{x}}) \cdot \cancel{x} = (2 + \frac{y}{x}) \cdot x &amp;&amp; \text{Cancel out }x\text{ on the left side}\\ &amp;2x + y = 2x + \frac{yx}{x} &amp;&amp; \text{Distribute $x$ to each term in the parentheses} \\ &amp;2x + y = 2x + \frac{y\cancel{x}}{\cancel{x}} &amp;&amp; \text{Cancel out }x \\ &amp;\boxed{2x + y = 2x + y}\; \checkmark &amp;&amp; \text{Both sides are the same!} \end{aligned}</span></p>
             <p>This should help demonstrate two things:</p>
             <ol type="1">
                 <li>Algebra is especially powerful in proving various properties of mathematics and operations.</li>
@@ -323,13 +353,13 @@
             </ol>
             <p>This should help demonstrate that math is based on proven actions, concepts, etc.</p>
         </blockquote>
-        <p>Now, we can continue onward to simplify the function for <span class="math inline">\(z\)</span>. First, let’s remind ourselves of what we were working with, and continue from there.</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;z = \frac{x + 2xy - 126x^2y + 12x^2}{x} - \frac{5}{x} &amp;&amp; \text{Starting point.}\\ &amp;z = \frac{\cancel{x} + 2\cancel{x}y - 126x^{\cancel{2}}y + 12x^{\cancel{2}}}{\cancel{x}} - \frac{5}{x} &amp;&amp; \text{Show what you&#39;re going to cancel.}\\ &amp;z = 1 + 2y - 126xy + 12x - \frac{5}{x}&amp;&amp; \text{Perform the cancellation of }x \text{ in the first fraction} \\ &amp;\boxed{z = 1 + 12x + 2y - 126xy - \frac{5}{x}} &amp;&amp; \text{There&#39;s no more to do (besides reorder for readability)!} \\ \end{aligned} \]</span></p>
-        <p>Notice that the two <span class="math inline">\(x^2\)</span> values in the numerator only cancel the exponent. Well, more explicitly, they deduct <span class="math inline">\(1\)</span> from the exponent because the exponent only signals repeated multiplication. This was discussed in <a href="../../0-Prologue/2-Operations/8-Exponentiation.md#dividing-terms-under-exponentiation">Chapter 0.2.8: Exponentiation</a>.</p>
+        <p>Now, we can continue onward to simplify the function for <span class="math inline">z</span>. First, let’s remind ourselves of what we were working with, and continue from there.</p>
+        <p><span class="math display">\begin{aligned} &amp;z = \frac{x + 2xy - 126x^2y + 12x^2}{x} - \frac{5}{x} &amp;&amp; \text{Starting point.}\\ &amp;z = \frac{\cancel{x} + 2\cancel{x}y - 126x^{\cancel{2}}y + 12x^{\cancel{2}}}{\cancel{x}} - \frac{5}{x} &amp;&amp; \text{Show what you&#39;re going to cancel.}\\ &amp;z = 1 + 2y - 126xy + 12x - \frac{5}{x}&amp;&amp; \text{Perform the cancellation of }x \text{ in the first fraction} \\ &amp;\boxed{z = 1 + 12x + 2y - 126xy - \frac{5}{x}} &amp;&amp; \text{There&#39;s no more to do (besides reorder for readability)!} \\ \end{aligned}</span></p>
+        <p>Notice that the two <span class="math inline">x^2</span> values in the numerator only cancel the exponent. Well, more explicitly, they deduct <span class="math inline">1</span> from the exponent because the exponent only signals repeated multiplication. This was discussed in <a href="../../0-Prologue/2-Operations/8-Exponentiation.md#dividing-terms-under-exponentiation">Chapter 0.2.8: Exponentiation</a>.</p>
         <h3 id="multiplying-variables">Multiplying Variables</h3>
         <p>Therefore, when multiplying values, the coefficients multiply, and the variables are raised to the power such that the exponents are added.</p>
-        <p>In fact, this can be demonstrated with a slightly more complex version. You would expect the result to be <span class="math inline">\(6x^4\)</span>, since there are 4 exponents.</p>
-        <p><span class="math display">\[ \begin{aligned} &amp;x \cdot 2x \cdot 3x^2 = x \cdot (x + x) \cdot (x^2 + x^2 + x^2) \\ &amp;= (x\cdot x+x\cdot x) \cdot (x^2 + x^2 + x^2) \\ &amp;= (x^2+x^2) \cdot (x^2 + x^2 + x^2) \\ &amp;= (x^2\cdot x^2+x^2\cdot x^2+x^2\cdot x^2) + (x^2\cdot x^2+x^2\cdot x^2+x^2\cdot x^2) \\ &amp;= x^4 + x^4 + x^4 + x^4 + x^4 + x^4 \\ &amp;\boxed{=6x^4} \\ \end{aligned} \]</span></p>
+        <p>In fact, this can be demonstrated with a slightly more complex version. You would expect the result to be <span class="math inline">6x^4</span>, since there are 4 exponents.</p>
+        <p><span class="math display">\begin{aligned} &amp;x \cdot 2x \cdot 3x^2 = x \cdot (x + x) \cdot (x^2 + x^2 + x^2) \\ &amp;= (x\cdot x+x\cdot x) \cdot (x^2 + x^2 + x^2) \\ &amp;= (x^2+x^2) \cdot (x^2 + x^2 + x^2) \\ &amp;= (x^2\cdot x^2+x^2\cdot x^2+x^2\cdot x^2) + (x^2\cdot x^2+x^2\cdot x^2+x^2\cdot x^2) \\ &amp;= x^4 + x^4 + x^4 + x^4 + x^4 + x^4 \\ &amp;\boxed{=6x^4} \\ \end{aligned}</span></p>
         <hr>
         <hr>
         <h2 id="closing">Closing</h2>
@@ -340,16 +370,16 @@
             </colgroup>
             <thead>
                 <tr class="header">
-                    <th>Previous</th>
-                    <th>Next</th>
+                    <th style="text-align: center;">Previous</th>
+                    <th style="text-align: center;">Next</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="odd">
-                    <td>
+                    <td style="text-align: center;">
                         ← <a href="./0-Introduction.html">1.2.0: Introduction</a>
                     </td>
-                    <td>
+                    <td style="text-align: center;">
                         <a href="./2-Factoring.html">1.2.2: Factoring</a> →
                     </td>
                 </tr>
