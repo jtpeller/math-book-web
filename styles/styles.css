@@ -190,6 +190,10 @@ ul.task-list li input[type="checkbox"] {
     /* Light grey background */
 }
 
+.markdown-body {
+    padding: 1rem 4rem;
+}
+
 /* Note (Blue) */
 .alert-note {
     border-left-color: var(--color-note);
